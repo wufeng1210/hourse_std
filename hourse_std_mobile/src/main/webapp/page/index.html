@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>适当性双录系统</title>
+    <script>
+        (function(){
+            var html = document.documentElement;
+            var hWidth = html.getBoundingClientRect().width;
+            html.style.fontSize = hWidth/10 + 'px';
+        })();
+        var LOGIN_STATUS = false;
+    </script>
+    <link rel="stylesheet" href="css/framework7.min.css">
+    <link rel="stylesheet" href="css/framework7.themes.min.css">
+    <link rel="stylesheet" href="css/zy.media.min.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+<div class="views tabs toolbar-fixed theme-pink">
+    <div id="workbenchView" class="view tab active">
+        <div class="navbar"></div>
+        <div class="pages navbar-through">
+            <div class="page no-navbar">
+                <div class="page-content">
+                    <div class="fix-center">
+                        <span class="preloader"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Tab 2 - View 2 -->
+    <div id="customerView" class="view tab">
+        <div class="navbar"></div>
+        <div class="pages navbar-through">
+            <div class="page no-navbar">
+                <div class="page-content">
+                    <div class="fix-center">
+                        <span class="preloader"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Tab 3 - View 3 -->
+    <div id="productView" class="view tab">
+        <div class="navbar"></div>
+        <div class="pages navbar-through">
+            <div class="page no-navbar">
+                <div class="page-content">
+                    <div class="fix-center">
+                        <span class="preloader"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Tab 4 - View 4 -->
+    <div id="myView" class="view tab">
+        <div class="navbar"></div>
+        <div class="pages navbar-through">
+            <div class="page no-navbar">
+                <div class="page-content">
+                    <div class="fix-center">
+                        <span class="preloader"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="toolbar tabbar tabbar-labels">
+        <div class="toolbar-inner">
+            <a href="#workbenchView" class="tab-link active">
+                <i class="iconfont demo-icon-1"></i>
+                <span class="tabbar-label">工作台</span>
+            </a>
+            <a href="#customerView" class="tab-link">
+                <i class="iconfont demo-icon-2">
+                </i>
+                <span class="tabbar-label">客户</span>
+            </a>
+            <a href="#productView" class="tab-link">
+                <i class="iconfont demo-icon-3"></i>
+                <span class="tabbar-label">产品</span>
+            </a>
+            <a href="#myView" class="tab-link">
+                <i class="iconfont demo-icon-4"></i>
+                <span class="tabbar-label">我的</span>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="popup"></div>
+<!-- build:js -->
+<script src="js/libs/zy.media.min.js"></script>
+<script data-main="js/app.js?rnd=2017041501" src="js/libs/require.js"></script>
+<!-- endbuild -->
+</body>
+
+</html>
