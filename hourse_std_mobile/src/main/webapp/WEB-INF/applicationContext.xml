@@ -15,7 +15,7 @@
     <!-- 引入jdbc配置文件 -->
     <context:property-placeholder location="WEB-INF/config/jdbc.properties" system-properties-mode="FALLBACK"/>
 
-    <bean id="PropertiesUtils" class="com.hourse.app.util.PropertiesUtils">
+    <bean id="PropertiesUtils" class="com.hourse.web.util.PropertiesUtils">
         <property name="fileList">
             <list>
                 <value>/hourse/config.properties</value>

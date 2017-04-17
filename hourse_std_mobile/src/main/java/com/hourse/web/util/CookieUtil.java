@@ -1,4 +1,4 @@
-package com.hourse.app.util;
+package com.hourse.web.util;
 
 import com.google.gson.Gson;
 import org.apache.commons.lang3.StringUtils;
