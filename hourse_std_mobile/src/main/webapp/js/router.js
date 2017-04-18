@@ -10,25 +10,25 @@ define([], function () {
         });
 
         window.mainView = workbenchView;
-        workbenchView.loadPage('page/workbench.html');
+        mainView.loadPage('/workbench.do');
         $$('#workbenchView').on('show', function () {
             window.mainView = workbenchView;
-            workbenchView.loadPage('page/workbench.html');
+            workbenchView.loadPage('/workbench.do');
         });
 
         $$('#customerView').on('show', function () {
             window.mainView = customerView;
-            customerView.loadPage('page/customer.html');
+            // customerView.loadPage('page/customer.html');
         });
 
         $$('#productView').on('show', function () {
             window.mainView = productView;
-            productView.loadPage('page/product.html');
+            // productView.loadPage('page/product.html');
         });
 
         $$('#myView').on('show', function () {
             window.mainView = myView;
-            myView.loadPage('page/my.html');
+            // myView.loadPage('page/my.html');
         });
         window.mainView = window.workbenchView;//这个是当前公用view对象
 

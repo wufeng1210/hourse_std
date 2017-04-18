@@ -60,15 +60,8 @@ public class LoginController {
         return modelAndView;
     }
 
-    @ResponseBody
-    @RequestMapping()
-    public Map<String, Object> getAuth() {
-        Map<String, Object> resMap = new HashMap<String, Object>();
-        try{
-
-        }catch (Exception e){
-
-        }
-        return resMap;
+    @RequestMapping(value = "workbench")
+    public String getAuth() {
+        return "workbench";
     }
 }
