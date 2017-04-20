@@ -21,7 +21,7 @@ require(['Framework7', 'router', 'utils'], function (Framework7, Router, Utils) 
 
 	if (device.android) {
 		window.App = new Framework7({
-            cache: false,
+            cache: true,
             pushState: true,
             swipeBackPage: false,
             preloadPreviousPage: false,
@@ -35,7 +35,7 @@ require(['Framework7', 'router', 'utils'], function (Framework7, Router, Utils) 
 		});
 	} else {
 		window.App = new Framework7({
-            cache: false,
+            cache: true,
             pushState: true,
             swipeBackPage: false,
             preloadPreviousPage: false,
