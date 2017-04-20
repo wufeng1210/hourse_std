@@ -11,10 +11,10 @@ define([], function () {
 
         //window.location.href= "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0fcaa7eb18ec769e&redirect_uri=http%3a%2f%2fadmin.jingtianwangluo.com%2findex%2f&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
         window.mainView = workbenchView;
-        mainView.loadPage('/workbench.do');
+        mainView.loadPage('/home.do');
         $$('#workbenchView').on('show', function () {
             window.mainView = workbenchView;
-            workbenchView.loadPage('/workbench.do');
+            workbenchView.loadPage('/home.do');
         });
 
         $$('#customerView').on('show', function () {

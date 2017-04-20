@@ -20,7 +20,7 @@ require(['Framework7', 'router', 'utils'], function (Framework7, Router, Utils) 
   var device = Framework7.prototype.device;
 
 	if (device.android) {
-		window.App = new Framework7({
+		window.app = new Framework7({
             cache: true,
             pushState: true,
             swipeBackPage: false,
@@ -34,7 +34,7 @@ require(['Framework7', 'router', 'utils'], function (Framework7, Router, Utils) 
 			smartSelectBackTemplate: '<div class="left sliding"><a href="#" class="back link"><i class="icon icon-back"></i><span>{{backText}}</span></a></div>'
 		});
 	} else {
-		window.App = new Framework7({
+		window.app = new Framework7({
             cache: true,
             pushState: true,
             swipeBackPage: false,
@@ -49,16 +49,16 @@ require(['Framework7', 'router', 'utils'], function (Framework7, Router, Utils) 
 		});
 	}
 
-    window.workbenchView = window.App.addView('#workbenchView', {
+    window.workbenchView = window.app.addView('#workbenchView', {
         dynamicNavbar: true
     });
-    window.customerView = window.App.addView('#customerView', {
+    window.customerView = window.app.addView('#customerView', {
         dynamicNavbar: true
     });
-    window.productView = window.App.addView('#productView', {
+    window.productView = window.app.addView('#productView', {
         dynamicNavbar: true
     });
-    window.myView = window.App.addView('#myView', {
+    window.myView = window.app.addView('#myView', {
         dynamicNavbar: true
     });
     window.mainView = window.workbenchView;//这个是当前公用view对象

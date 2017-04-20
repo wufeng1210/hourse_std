@@ -60,8 +60,8 @@ public class LoginController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "workbench")
-    public String getAuth() {
-        return "workbench";
+    @RequestMapping(value = "home")
+    public String home() {
+        return "home";
     }
 }
