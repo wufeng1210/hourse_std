@@ -24,7 +24,7 @@ define([], function () {
 
         $$('#productView').on('show', function () {
             window.mainView = productView;
-            // productView.loadPage('page/product.html');
+            productView.loadPage('/lend.do');
         });
 
         $$('#myView').on('show', function () {

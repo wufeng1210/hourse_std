@@ -220,7 +220,7 @@ th {
 .list-block input[type="number"],
 .list-block select,
 .list-block textarea {
-  font-size: 16px;
+  font-size: 14px;
 }
 .list-block textarea {
   height: 60px;
@@ -243,11 +243,11 @@ th {
   font-size: 18px;
 }
 .modal-button {
-  font-size: 16px;
+  font-size: 14px;
 }
 .modal-text {
   padding: 10px 5px 20px;
-  font-size: 16px;
+  font-size: 14px;
 }
 .navbar {
   border-color: #e5e5e3;
@@ -535,7 +535,7 @@ html.android .agree-block i.icon-form-checkbox {
   margin-right: 3px;
 }
 .item-media {
-  font-size: 16px;
+  font-size: 14px;
 }
 html.android .panel .fixed-bottom {
   position: absolute;
@@ -634,10 +634,10 @@ button {
 }
 @media screen and (max-width: 481px) {
   .navbar-inner {
-    font-size: 16px;
+    font-size: 14px;
   }
   .navbar-inner .center {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 /* .page-content {
@@ -681,10 +681,10 @@ button {
 }
 @media screen and (max-width: 481px) {
   .toolbar-btm .toolbar-inner {
-    font-size: 16px;
+    font-size: 14px;
   }
   .toolbar-btm .toolbar-inner .center {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 .button {
@@ -705,30 +705,11 @@ button {
   font-size: 26px;
   color: #fff;
 }
-.icon-menu {
-  display: inline-block;
-  margin-top: 4px;
-  width: 37px;
-  height: 30px;
-  background-image: url(../images/menu.png);
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  vertical-align: middle;
-}
 @media screen and (max-width: 481px) {
   .icon-menu {
-    width: 16px !important;
-    height: 16px !important;
+    width: 14px !important;
+    height: 14px !important;
   }
-}
-.icon-search {
-  display: inline-block;
-  width: 37px;
-  height: 37px;
-  background-image: url(../images/icon.png);
-  background-position: 0 -74px;
-  background-repeat: no-repeat;
-  vertical-align: middle;
 }
 @media screen and (max-width: 481px) {
   .icon-search {
@@ -740,15 +721,7 @@ button {
             transform: scale(0.5);
   }
 }
-.icon-tick {
-  display: inline-block;
-  width: 37px;
-  height: 37px;
-  background-image: url(../images/icon.png);
-  background-position: 0 -110px;
-  background-repeat: no-repeat;
-  vertical-align: middle;
-}
+
 @media screen and (max-width: 481px) {
   .icon-tick {
     -webkit-transform-origin: center center;
@@ -758,15 +731,6 @@ button {
         -ms-transform: scale(0.6);
             transform: scale(0.6);
   }
-}
-.icon-tip {
-  display: inline-block;
-  width: 85px;
-  height: 85px;
-  background-image: url(../images/icon.png);
-  background-position: -55px -2px;
-  background-repeat: no-repeat;
-  vertical-align: middle;
 }
 @media screen and (max-width: 481px) {
   .icon-tip {
@@ -778,15 +742,7 @@ button {
             transform: scale(0.4);
   }
 }
-.icon-right {
-  display: inline-block;
-  width: 85px;
-  height: 85px;
-  background-image: url(../images/icon.png);
-  background-position: -55px -114px;
-  background-repeat: no-repeat;
-  vertical-align: middle;
-}
+
 @media screen and (max-width: 481px) {
   .icon-right {
     -webkit-transform-origin: center center;
@@ -797,15 +753,7 @@ button {
             transform: scale(0.4);
   }
 }
-.icon-wrong {
-  display: inline-block;
-  width: 85px;
-  height: 85px;
-  background-image: url(../images/icon.png);
-  background-position: -220px 0;
-  background-repeat: no-repeat;
-  vertical-align: middle;
-}
+
 @media screen and (max-width: 481px) {
   .icon-wrong {
     -webkit-transform-origin: center center;
@@ -816,31 +764,12 @@ button {
             transform: scale(0.4);
   }
 }
-.icon-rec {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  background-image: url(../images/rec.png);
-  background-position: center center;
-  background-repeat: no-repeat;
-  vertical-align: middle;
-  background-size: 100% 100%;
-}
+
 @media screen and (max-width: 481px) {
   .icon-rec {
     width: 20px;
     height: 20px;
   }
-}
-.icon-photo {
-  display: inline-block;
-  width: 30px;
-  height: 26px;
-  background-image: url(../images/photo.png);
-  background-position: center center;
-  background-repeat: no-repeat;
-  vertical-align: middle;
-  background-size: 100% 100%;
 }
 @media screen and (max-width: 481px) {
   .icon-photo {
@@ -884,7 +813,7 @@ body.with-panel-right-cover .panel-right {
 }
 .iconfont {
   font-family: "iconfont" !important;
-  font-size: 16px;
+  font-size: 14px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -962,7 +891,7 @@ ul.form .home-tel .input .tel-num {
   display: inline-block;
   border-radius: 4px;
   background-clip: padding-box;
-  padding: 0 16px;
+  padding: 0 14px;
 }
 @media screen and (max-width: 481px) {
   ul.form {
@@ -979,7 +908,7 @@ ul.form .home-tel .input .tel-num {
 }
 .question .question-title {
   line-height: 2;
-  padding: 16px;
+  padding: 14px;
 }
 @media screen and (max-width: 481px) {
   .question .question-title {
@@ -1005,7 +934,7 @@ ul.form .home-tel .input .tel-num {
   }
 }
 .question .select .item {
-  padding: 16px;
+  padding: 14px;
   line-height: 2;
   border-top: 2px solid #e1e1e1;
   position: relative;
@@ -1018,19 +947,7 @@ ul.form .home-tel .input .tel-num {
     border-top: 1px solid #e1e1e1;
   }
 }
-.question .select .item.checked:after {
-  position: absolute;
-  content: "";
-  display: inline-block;
-  width: 37px;
-  height: 37px;
-  background-image: url(../images/icon.png);
-  background-position: 0 -110px;
-  background-repeat: no-repeat;
-  vertical-align: middle;
-  right: 22px;
-  top: 18px;
-}
+
 @media screen and (max-width: 481px) {
   .question .select .item.checked:after {
     -webkit-transform-origin: center center;
@@ -1549,6 +1466,7 @@ html.with-statusbar-overlay body > .progressbar {
 .page-main .code-list .right .up {
   color: #333;
   width: 82%;
+  /* 以下三个样式可以将数据展示成：诚意出售，精装修，满五..（诚意出售，精装修，满五唯一）*/
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -1557,6 +1475,21 @@ html.with-statusbar-overlay body > .progressbar {
   font-size: 12px;
   color: #999;
   margin: 2px 0 10px 0;
+}
+.page-main .center {
+  position:relative;
+}
+.page-main .center .amount {
+  position:absolute;
+  top:0px;
+  right:0px;
+  font-size: 14px;
+  color: #fb374a;
+}
+.page-main .center .price {
+  position:absolute;
+  top:0px;
+  right:0px;
 }
 .page-main .code-list .right .down {
   display: -webkit-box;
@@ -1573,14 +1506,66 @@ html.with-statusbar-overlay body > .progressbar {
   background: #4c9ce6;
   margin-right: 10px;
   border-radius: 2px;
+  float: left;
+  white-space: nowrap;
 }
 .page-main .code-list .right .down .share {
   border-radius: 2px;
   padding: 3px 10px;
   width: auto;
   border: 1px solid #f5f5f5;
+  background: #f5f5f5;
   color: #a6a6a6;
+  float: left;
+  white-space: nowrap;
 }
-.page-main .code-list.active .promote {
+.page-main .code-list .active .promote {
   display: none;
+}
+#lendContent input[type="text"],
+#lendContent input[type="tel"],
+#lendContent textarea,
+#lendContent .item-after {
+  text-align: right;
+  color: #40464d;
+}
+#lendContent .item-title {
+  color: #999;
+}
+#lendContent .item-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+#lendContent .item-input .mark {
+  padding: 0 10px;
+  text-align: center;
+}
+#lendContent input.select-date {
+  padding: 0;
+  width: 80px;
+  text-align: center;
+}
+#lendContent .divider {
+  padding-left: 5px;
+}
+#lendContent .select-wrap {
+  max-width: 40%;
+}
+#lendType,#room,#office,#toilet{
+  width: 100%;
+  height: 100%;
+  color: #40464d;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+#lendType
+,#room{
+  direction: rtl;
 }
