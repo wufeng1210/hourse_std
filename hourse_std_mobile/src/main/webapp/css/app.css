@@ -1569,3 +1569,69 @@ html.with-statusbar-overlay body > .progressbar {
 ,#room{
   direction: rtl;
 }
+.rent .code-list:nth-child(2) {
+  margin-top: 20px;
+}
+.rent .code-list:last-child {
+  margin-bottom: 140px;
+}
+.rent .code-list {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background: #fff;
+  margin-top: 1px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 10px;
+}
+.rent .code-list .left {
+  width: 86px;
+  margin-right: 15px;
+}
+.rent .code-list .right {
+  width: 100%;
+}
+.rent .code-list .right .up {
+  color: #333;
+  width: 82%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.rent .code-list .right .center {
+  font-size: 12px;
+  color: #999;
+  margin: 5px 0 10px 0;
+}
+.rent .code-list .right .down {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 12px;
+  text-align: center;
+}
+.rent .code-list .right .down .promote {
+  padding: 3px 0;
+  width: 65px;
+  color: #fff;
+  background: #4c9ce6;
+  margin-right: 10px;
+  border-radius: 2px;
+}
+.rent .code-list .right .down .share {
+  border-radius: 2px;
+  padding: 3px 0;
+  width: 65px;
+  border: 1px solid #4c9ce6;
+}
+.rent .code-list.active {
+  background: url(../img/promote.png) 100% 0px no-repeat #fff;
+  background-size: 50px;
+}
+.rent .code-list.active .promote {
+  display: none;
+}

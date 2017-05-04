@@ -19,7 +19,7 @@ define([], function () {
 
         $$('#customerView').on('show', function () {
             window.mainView = customerView;
-            // customerView.loadPage('page/customer.html');
+             customerView.loadPage('/rent.do');
         });
 
         $$('#productView').on('show', function () {
@@ -29,7 +29,7 @@ define([], function () {
 
         $$('#myView').on('show', function () {
             window.mainView = myView;
-            // myView.loadPage('page/my.html');
+            myView.loadPage('/my.do');
         });
         window.mainView = window.workbenchView;//这个是当前公用view对象
 
