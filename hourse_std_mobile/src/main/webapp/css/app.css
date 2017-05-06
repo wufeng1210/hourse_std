@@ -622,7 +622,7 @@ button {
   }
 }
 .navbar-inner {
-  background-color: #fb374a;
+  background-color: #4c9ce6;
   color: #fff;
   font-size: 0.325rem;
 }
@@ -704,6 +704,9 @@ button {
 .navbar .icon-back {
   font-size: 26px;
   color: #fff;
+}
+i.icon.icon-back {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2012%2020'%3E%3Cpath%20d%3D'M10%2C0l2%2C2l-8%2C8l8%2C8l-2%2C2L0%2C10L10%2C0z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E");
 }
 @media screen and (max-width: 481px) {
   .icon-menu {
@@ -836,9 +839,7 @@ body.with-panel-right-cover .panel-right {
 .icon-password:before {
   content: "\e629";
 }
-.icon-back:before {
-  content: "\e628";
-}
+
 .icon-add:before {
   content: "+";
 }
@@ -1634,4 +1635,34 @@ html.with-statusbar-overlay body > .progressbar {
 }
 .rent .code-list.active .promote {
   display: none;
+}
+.rent-detail .share-content {
+  background-color: #fff;
+  height: auto;
+  padding: 10px 0;
+  font-size: 0;
+}
+.rent-detail .share-content .img-btn {
+  display: inline-block;
+  width: 24%;
+  text-align: center;
+  margin: 5px auto;
+}
+.rent-detail .share-content img {
+  width: 40px;
+  height: 40px;
+  margin: 0 16px;
+}
+.rent-detail .share-content .txt {
+  font-size: 12px;
+  margin-top: 5px;
+}
+.rent-detail .channel-code {
+  background: #4c9ce6;
+  text-align: center;
+  padding-bottom: 25px;
+}
+.rent-detail .channel-code img {
+  width: 45%;
+  margin-top: 25px;
 }

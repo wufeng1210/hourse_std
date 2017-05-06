@@ -6,9 +6,8 @@ define(['utils'], function (Utils) {
 
 
 
-
     function init() {
-        // Utils.bindEvents(bindings);
+
     }
 
 

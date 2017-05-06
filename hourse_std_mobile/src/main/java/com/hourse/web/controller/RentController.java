@@ -14,4 +14,11 @@ public class RentController {
 //        modelAndView.addObject("securityName","1233");
         return modelAndView;
     }
+
+    @RequestMapping("rentDetail")
+    public ModelAndView rentDetail() {
+        ModelAndView modelAndView = new ModelAndView("rent-detail");
+//        modelAndView.addObject("securityName","1233");
+        return modelAndView;
+    }
 }
