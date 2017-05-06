@@ -7,7 +7,7 @@ define(['utils'], function (Utils) {
 
 
     function init() {
-        //Utils.bindEvents(bindings);
+        // Utils.bindEvents(bindings);
         chooseAddress();
     }
 

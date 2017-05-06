@@ -7,6 +7,11 @@ define([], function () {
         $$(document).on('pageBeforeInit', function (e) {
             var page = e.detail.page;
             load(page.name, page.query);
+            if (page.container.className.indexOf('no_toolbar') > -1) {
+                $$('.toolbar').hide();
+            } else {
+                $$('.toolbar').show();
+            }
         });
 
         //window.location.href= "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0fcaa7eb18ec769e&redirect_uri=http%3a%2f%2fadmin.jingtianwangluo.com%2findex%2f&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
