@@ -3,10 +3,8 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-    <properties>
-        <property name="dialect" value="mysql" />
-    </properties>
     <settings>
+        <setting name="cacheEnabled" value="true" />
         <setting name="logImpl" value="LOG4J" />
     </settings>
 </configuration>

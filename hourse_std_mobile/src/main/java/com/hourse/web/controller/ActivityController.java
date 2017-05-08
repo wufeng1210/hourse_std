@@ -1,5 +1,6 @@
 package com.hourse.web.controller;
 
+import com.hourse.web.model.ActivityInfo;
 import com.hourse.web.service.IActivityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,9 +27,8 @@ public class ActivityController {
 
     @RequestMapping(value = "getActivity")
     @ResponseBody
-    public Map<String, String> getActivity(){
-        Map<String, String> resMap = new HashMap<String, String>();
-
-        return resMap;
+    public List<ActivityInfo> getActivity(ActivityInfo activityInfo){
+        List<ActivityInfo> activity = activityService.getActivityInfoByState(activityInfo);
+        return activity;
     }
 }
