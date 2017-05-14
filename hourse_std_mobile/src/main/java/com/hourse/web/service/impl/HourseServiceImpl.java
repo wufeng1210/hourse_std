@@ -19,7 +19,7 @@ public class HourseServiceImpl implements IHourseService {
     @Resource
     private HourseMapper hourseMapper;
     public List<Hourse> getHourseInfo(Hourse hourse) {
-        List<Hourse> hoursesList = hourseMapper.getHourseInfo(hourse);
+        List<Hourse> hoursesList = hourseMapper.queryHourseByParam(hourse);
         return hoursesList;
     }
 }

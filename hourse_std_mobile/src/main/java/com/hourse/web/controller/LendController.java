@@ -6,9 +6,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * Created by dell on 2017/4/21.
- */
+
 @Controller
 public class LendController {
 
