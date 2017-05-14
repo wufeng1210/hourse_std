@@ -8,13 +8,15 @@ import org.springframework.util.StringUtils;
  * Created by dell on 2017/5/14.
  */
 public class HourseProvider {
-    private final String TBL_ORDER = "hourse_info";
+    private final String TBL_ORDER = "hourse_info AS t";
 
     public String queryHourseByParam(Hourse hourse) {
-        SQL sql = new SQL().SELECT("*").FROM(TBL_ORDER);
-        String province = hourse.getProvince();
-        if (StringUtils.hasText(province)) {
-            sql.WHERE("province LIKE CONCAT('%',#{province},'%' )");
+        SQL sql = new SQL().SELECT("t.*").FROM(TBL_ORDER);
+        if (StringUtils.hasText(hourse.getProvince())) {
+            sql.WHERE("t.province LIKE CONCAT('%',#{province},'%' )");
+        }
+        if (StringUtils.hasText(hourse.getCity())) {
+            sql.WHERE("t.city LIKE CONCAT('%',#{city},'%' )");
         }
 
         return sql.toString();

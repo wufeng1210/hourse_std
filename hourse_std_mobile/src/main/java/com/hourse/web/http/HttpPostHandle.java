@@ -17,7 +17,7 @@ public class HttpPostHandle {
 	private static Logger logger = Logger.getLogger("HttpPostHandle");
 
 	public static final String BAIDU_MAP_AK = PropertiesUtils.get("ak.baidumap", "r7VN2piSzzyp6P9hMZiFkwar");
-	public static final String BAIDU_MAP_SERVER = PropertiesUtils.get("server.baidumap", "http://115.239.210.16");
+	public static final String BAIDU_MAP_SERVER = PropertiesUtils.get("server.baidumap", "http://api.map.baidu.com");
 	
 	public static final String BAIDU_MAP_URL_Direction = "/direction/v1"; 	//查询两地线路信息
 	public static final String BAIDU_MAP_URL_GEOCODER_V2 = "/geocoder/v2/";

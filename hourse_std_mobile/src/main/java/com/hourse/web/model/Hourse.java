@@ -1,13 +1,13 @@
 package com.hourse.web.model;
 
+import java.util.List;
+
 /**
  * Created by dell on 2017/4/10.
  */
 public class Hourse {
     private int hourseId;
     private int userId;
-    private String hourseAddr;
-    private String hourseImageUrl;
     private String province;
     private String city;
     private String area;
@@ -30,8 +30,17 @@ public class Hourse {
     private boolean airConditioner;
     private String cabinet;
     private String state;
-    private String descripbe;
+    private String description;
+    private List<ImageInfo> imageInfoList;
 
+
+    public List<ImageInfo> getImageInfoList() {
+        return imageInfoList;
+    }
+
+    public void setImageInfoList(List<ImageInfo> imageInfoList) {
+        this.imageInfoList = imageInfoList;
+    }
 
     public int getHourseId() {
         return hourseId;
@@ -47,22 +56,6 @@ public class Hourse {
 
     public void setUserId(int userId) {
         this.userId = userId;
-    }
-
-    public String getHourseAddr() {
-        return hourseAddr;
-    }
-
-    public void setHourseAddr(String hourseAddr) {
-        this.hourseAddr = hourseAddr;
-    }
-
-    public String getHourseImageUrl() {
-        return hourseImageUrl;
-    }
-
-    public void setHourseImageUrl(String hourseImageUrl) {
-        this.hourseImageUrl = hourseImageUrl;
     }
 
     public String getProvince() {
@@ -241,11 +234,11 @@ public class Hourse {
         this.state = state;
     }
 
-    public String getDescripbe() {
-        return descripbe;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescripbe(String descripbe) {
-        this.descripbe = descripbe;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

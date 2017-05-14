@@ -15,14 +15,20 @@
   <div data-page="rent" class="page rent no_toolbar">
     <div class="page-content" id="rentContent">
       <div class="list-block spe">
-        <a class="code-list">
-          <img class="left" src="../img/atUtx3uuVs.png">
-          <div class="right">
-            <div class="up">诚意出售，精装修，满五唯一</div>
-            <div class="center">3室2厅2卫 120.59平方</div>
-            <div class="center">3室2厅2卫 120.59平方</div>
-          </div>
-        </a>
+        <script type="type/template" id="rentTemplate">
+          {{#each hourseList}}
+          <a class="code-list">
+            {{#if imageInfoList[0]}}
+            <img class="left" src="{{imageInfoList[0].imageUrl}}">
+            {{/if}}
+            <div class="right">
+              <div class="up">{{description}}</div>
+              <div class="center">{{roomNum}}室{{hallNum}}厅{{toiletNum}}卫 {{areaCovered}}平方</div>
+              <div class="center">{{roomNum}}室{{hallNum}}厅{{toiletNum}}卫 {{areaCovered}}平方</div>
+            </div>
+          </a>
+          {{/each}}
+        </script>
       </div>
     </div>
   </div>

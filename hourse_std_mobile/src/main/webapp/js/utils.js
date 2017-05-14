@@ -52,9 +52,37 @@ define([], function () {
     document.body.style.height = windowHeight + 'px';
   }
 
+    function render(selector,data,type,str) {
+        var template, templateStr, parent, compiledTemplate;
+        if (!type) {
+            type = 'append';
+        }
+        switch (type) {
+            case 'append' : // 模板写在html页面时追加
+                template = $$('script' + selector);
+                templateStr = template.html();
+                parent = template.parent();
+                compiledTemplate = Template7.compile(templateStr);
+                parent.append(compiledTemplate(data));
+                break;
+            case 'replace': // 替换
+                compiledTemplate = Template7.compile(str);
+                $$(selector).html(compiledTemplate(data));
+                break;
+            case 'html' : // 模板写在html页面时
+                template = $$('script' + selector);
+                templateStr = template.html();
+                parent = template.parent();
+                compiledTemplate = Template7.compile(templateStr);
+                parent.html(compiledTemplate(data));
+                break;
+        }
+    }
+
   return {
     bindEvents: bindEvents,
     setButtonPosition: setButtonPosition,
-    resetBodyHeight: resetBodyHeight
+    resetBodyHeight: resetBodyHeight,
+      render: render
   };
 });
