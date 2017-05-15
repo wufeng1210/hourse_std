@@ -33,6 +33,15 @@ public class Hourse {
     private String description;
     private List<ImageInfo> imageInfoList;
 
+    private String imageType;
+
+    public String getImageType() {
+        return imageType;
+    }
+
+    public void setImageType(String imageType) {
+        this.imageType = imageType;
+    }
 
     public List<ImageInfo> getImageInfoList() {
         return imageInfoList;
