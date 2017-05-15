@@ -32,14 +32,6 @@ public class HourseServiceImpl implements IHourseService {
             ImageInfo imageInfo = new ImageInfo();
             imageInfo.setHourseId(hourseInfo.getHourseId());
             List<ImageInfo> imageInfoList = imageInfoMapper.getImageInfo(imageInfo);
-//            if(imageInfoList.size()>0){
-//                ImageInfo imageInfos = imageInfoList.get(0);
-//                List<ImageInfo> imageInfoLists = new ArrayList<ImageInfo>();
-//                imageInfoLists.add(imageInfos);
-//                hourseInfo.setImageInfoList(imageInfoLists);
-//            }else{
-//                hourseInfo.setImageInfoList(imageInfoList);
-//            }
             hourseInfo.setImageInfoList(imageInfoList);
         }
         return hoursesList;
