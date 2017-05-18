@@ -9,6 +9,12 @@ define(['utils'], function (Utils) {
         handler: function () {
             mainView.loadPage("/homeLend.do");
         }
+    },{
+        element: '#map',
+        event: 'click',
+        handler: function () {
+            mainView.loadPage("/map.do");
+        }
     }];
     
     function  goHomeRent() {

@@ -32,6 +32,42 @@ public class Hourse {
     private String state;
     private String description;
     private List<ImageInfo> imageInfoList;
+    private double distance;
+    private double longitude;
+    private double latitude;
+    private int hourseNum;
+
+    public int getHourseNum() {
+        return hourseNum;
+    }
+
+    public void setHourseNum(int hourseNum) {
+        this.hourseNum = hourseNum;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
 
     private String imageType;
 

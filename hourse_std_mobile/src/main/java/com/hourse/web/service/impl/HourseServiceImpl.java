@@ -36,4 +36,9 @@ public class HourseServiceImpl implements IHourseService {
         }
         return hoursesList;
     }
+
+    public List<Hourse> getMapInfo(Hourse hourse) {
+        List<Hourse> hoursesList = hourseMapper.queryHourseByParamForMap(hourse);
+        return hoursesList;
+    }
 }

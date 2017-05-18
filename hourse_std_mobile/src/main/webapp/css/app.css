@@ -1666,3 +1666,15 @@ html.with-statusbar-overlay body > .progressbar {
   width: 45%;
   margin-top: 25px;
 }
+.amap-marker .marker-route {
+  position: absolute;
+  width: 24px;
+  height: 36px;
+  color: #e90000;
+  background: url(http://webapi.amap.com/theme/v1.3/images/newpc/poi-1.png) no-repeat;
+  cursor: pointer;
+  text-align: center;
+}
+.amap-marker .marker-marker-bus-from {
+  background-position: -333px -62px;
+}

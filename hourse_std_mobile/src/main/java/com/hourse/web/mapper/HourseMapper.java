@@ -18,4 +18,7 @@ public interface HourseMapper {
 
     @SelectProvider(type = HourseProvider.class, method = "queryHourseByParam")
     List<Hourse> queryHourseByParam(Hourse hourse);
+
+    @SelectProvider(type = HourseProvider.class, method = "queryHourseByParamForMap")
+    List<Hourse> queryHourseByParamForMap(Hourse hourse);
 }
