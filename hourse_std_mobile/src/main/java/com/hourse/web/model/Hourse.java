@@ -6,7 +6,7 @@ import java.util.List;
  * Created by dell on 2017/4/10.
  */
 public class Hourse {
-    private int hourseId;
+    private String hourseId;
     private int userId;
     private String province;
     private String city;
@@ -23,6 +23,7 @@ public class Hourse {
     private String brokerCode;
     private String brokerName;
     private int areaCovered;
+    private int squarePrice; // 价格每平方
     private boolean refrigerator;
     private boolean heater;
     private boolean bed;
@@ -36,6 +37,14 @@ public class Hourse {
     private double longitude;
     private double latitude;
     private int hourseNum;
+
+    public int getSquarePrice() {
+        return squarePrice;
+    }
+
+    public void setSquarePrice(int squarePrice) {
+        this.squarePrice = squarePrice;
+    }
 
     public int getHourseNum() {
         return hourseNum;
@@ -87,11 +96,11 @@ public class Hourse {
         this.imageInfoList = imageInfoList;
     }
 
-    public int getHourseId() {
+    public String getHourseId() {
         return hourseId;
     }
 
-    public void setHourseId(int hourseId) {
+    public void setHourseId(String hourseId) {
         this.hourseId = hourseId;
     }
 

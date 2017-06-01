@@ -61,6 +61,7 @@ public class MapController {
             e.printStackTrace();
             resMap.put(Constant.ERROR_NO, "-1");
             resMap.put(Constant.ERROR_INFO, "程序异常");
+            return resMap;
         }
         hourse.setProvince(province);
         hourse.setCity(city);

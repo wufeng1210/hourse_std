@@ -17,16 +17,16 @@
       <div class="list-block spe">
         <script type="type/template" id="rentTemplate">
           {{#each hourseList}}
+          {{#if imageInfoList[0]}}
           <a class="code-list">
-            {{#if imageInfoList[0]}}
             <img class="left" src="{{imageInfoList[0].imageUrl}}">
-            {{/if}}
             <div class="right">
               <div class="up">{{description}}</div>
               <div class="center">{{roomNum}}室{{hallNum}}厅{{toiletNum}}卫 {{areaCovered}}平方</div>
               <div class="center">{{roomNum}}室{{hallNum}}厅{{toiletNum}}卫 {{areaCovered}}</div>
             </div>
           </a>
+          {{/if}}
           {{/each}}
         </script>
       </div>

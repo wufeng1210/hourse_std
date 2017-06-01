@@ -1678,3 +1678,17 @@ html.with-statusbar-overlay body > .progressbar {
 .amap-marker .marker-marker-bus-from {
   background-position: -333px -62px;
 }
+#lendContent input[type="file"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  height: 162px;
+  width: 100%;
+  opacity: 0;
+}
+#lendContent .upload {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}

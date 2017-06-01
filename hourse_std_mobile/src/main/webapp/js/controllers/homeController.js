@@ -24,13 +24,31 @@ define(['utils'], function (Utils) {
 
     function init() {
      Utils.bindEvents(bindings);
-        app.swiper('.swiper', {
-            pagination: '.swiper .swiper-pagination',
-            spaceBetween: 10,
-            autoplay: 3000
-        });
+     getActivity();
     }
 
+    function getActivity() {
+        $$.ajax({
+            url: '/getActivity.do',
+            type: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                app.hideIndicator();
+                console.info(data);
+                if(data.errorNo == "0" ){
+                    Utils.render('#homeTemplate', {model:data});
+                    app.swiper('.swiper', {
+                        pagination: '.swiper .swiper-pagination',
+                        spaceBetween: 10,
+                        autoplay: 3000
+                    });
+                }else {
+                    app.alert(data.errorInfo);
+                }
+
+            }
+        });
+    }
     return {
         init: init
     };

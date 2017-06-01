@@ -14,195 +14,202 @@
 <div class="pages toolbar-through navbar-through">
   <div data-page="lend" class="page">
     <div class="page-content" id="lendContent">
-
-      <div class="list-block">
-        <ul>
-          <li class="item-sync">
-            <div class="item-content">
-              <div class="item-inner">
-                <div class="item-title label">联系地址</div>
-                <div class="item-input">
-                  <input id="address" type="text" readonly="" placeholder="请选择省/市/区">
-                  <!-- <input id="value1" type="hidden" value="20,234,504" > -->
+      <form id="hourseForm">
+        <div class="list-block">
+          <ul>
+            <li class="item-sync">
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label">联系地址</div>
+                  <div class="item-input">
+                    <input id="address" type="text" readonly="" placeholder="请选择省/市/区">
+                    <!-- <input id="value1" type="hidden" value="20,234,504" > -->
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
-          <li>
-            <div class="item-content">
-              <div class="item-inner">
-                <div class="item-title label">地址</div>
-                <div class="item-input">
-                  <textarea name="cidAddr" id="cidAddr" placeholder="请输入房屋地址"></textarea>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label">地址</div>
+                  <div class="item-input">
+                    <textarea name="cidAddr" id="cidAddr" placeholder="请输入房屋地址"></textarea>
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
-          <li>
-            <div class="item-content">
-              <div class="item-inner">
-                <div class="item-title" style="overflow: visible;">联系地址</div>
-                <div class="select-wrap">
-                  <select id="lendType">
-                    <option value="日租/短租">日租/短租</option>
-                    <option value="月租">月租</option>
-                  </select>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title" style="overflow: visible;">联系地址</div>
+                  <div class="select-wrap">
+                    <select id="lendType">
+                      <option value="日租/短租">日租/短租</option>
+                      <option value="月租">月租</option>
+                    </select>
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
-          <li>
-            <div class="item-content">
-              <div class="item-inner">
-                <div class="item-title" style="overflow: visible;">户型</div>
-                <div class="select-wrap">
-                  <select id="room">
-                    <option value="1">1</option>
-                  </select>
-                </div>
-                <div class="divider">室</div>
-                <div class="select-wrap">
-                  <select id="office">
-                    <option value="0">0</option>
-                  </select>
-                </div>
-                <div class="divider">厅</div>
-                <div class="select-wrap">
-                  <select id="toilet">
-                    <option value="0">0</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="item-content">
-              <div class="item-inner">
-                <div class="item-title label">楼层及朝向</div>
-                <div class="item-input">
-                  <input type="text" name="floor" placeholder="请输入楼层">
-                </div>
-                <div class="divider">楼</div>
-                <div class="item-input">
-                  <input type="text"  name="orientations" maxlength="4" placeholder="请输入朝向">
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title" style="overflow: visible;">户型</div>
+                  <div class="select-wrap">
+                    <select id="room">
+                      <option value="1">1</option>
+                    </select>
+                  </div>
+                  <div class="divider">室</div>
+                  <div class="select-wrap">
+                    <select id="office">
+                      <option value="0">0</option>
+                    </select>
+                  </div>
+                  <div class="divider">厅</div>
+                  <div class="select-wrap">
+                    <select id="toilet">
+                      <option value="0">0</option>
+                    </select>
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
-          <li>
-            <div class="item-content">
-              <div class="item-inner">
-              <div class="item-title label">面积（单位：平方米）</div>
-                <div class="item-input">
-                  <input type="text"  name="area" maxlength="30" placeholder="请输入房屋面积">
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label">楼层及朝向</div>
+                  <div class="item-input">
+                    <input type="text" name="floor" placeholder="请输入楼层">
+                  </div>
+                  <div class="divider">楼</div>
+                  <div class="item-input">
+                    <input type="text"  name="orientations" maxlength="4" placeholder="请输入朝向">
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
-          <li>
-            <div class="item-content">
-              <div class="item-inner">
-                <div class="item-title" style="overflow: visible;">装修方式</div>
-                <div class="select-wrap">
-                  <select id="fixture">
-                    <option value="豪华装修">豪华装修</option>
-                  </select>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                <div class="item-title label">面积（单位：平方米）</div>
+                  <div class="item-input">
+                    <input type="text"  name="area" maxlength="30" placeholder="请输入房屋面积">
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
-          <li>
-            <div class="item-content">
-              <div class="item-inner">
-                <div class="item-title label">租金</div>
-                <div class="item-input">
-                  <input type="text" name="rent" placeholder="请输入租金">
-                </div>
-                <div class="divider">元/月</div>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="item-content">
-              <div class="item-inner">
-                <div class="item-title" style="overflow: visible;">押金</div>
-                <div class="select-wrap">
-                  <select id="deposit">
-                    <option value="押一付一">押一付一</option>
-                  </select>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title" style="overflow: visible;">装修方式</div>
+                  <div class="select-wrap">
+                    <select id="fixture">
+                      <option value="豪华装修">豪华装修</option>
+                    </select>
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
-          <li>
-            <div class="item-content">
-              <div class="item-inner">
-                <div class="item-title" style="overflow: visible;">限制</div>
-                <div class="select-wrap">
-                  <select id="limit">
-                    <option value="男女不限">男女不限</option>
-                    <option value="只限男生">只限男生</option>
-                    <option value="只限女生">只限女生</option>
-                  </select>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label">租金</div>
+                  <div class="item-input">
+                    <input type="text" name="rent" placeholder="请输入租金">
+                  </div>
+                  <div class="divider">元/月</div>
                 </div>
               </div>
-            </div>
-          </li>
-          <li>
-            <div class="item-content">
-              <div class="item-inner">
-                <div class="item-title label">家具</div>
-                <div class="item-input">
-                  <input type="text" name="furniture" placeholder="填写冰箱、电视、空调等家具">
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title" style="overflow: visible;">押金</div>
+                  <div class="select-wrap">
+                    <select id="deposit">
+                      <option value="押一付一">押一付一</option>
+                    </select>
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
-          <li>
-            <div class="item-content">
-              <div class="item-inner">
-                <div class="item-title label">交通</div>
-                <div class="item-input">
-                  <input type="text" name="traffic" placeholder="填写公交、地铁等交通">
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title" style="overflow: visible;">限制</div>
+                  <div class="select-wrap">
+                    <select id="limit">
+                      <option value="男女不限">男女不限</option>
+                      <option value="只限男生">只限男生</option>
+                      <option value="只限女生">只限女生</option>
+                    </select>
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
-          <li>
-            <div class="item-content">
-              <div class="item-inner">
-                <div class="item-title label">周边</div>
-                <div class="item-input">
-                  <input type="text" name="near" placeholder="请输入周边商场、超市">
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label">家具</div>
+                  <div class="item-input">
+                    <input type="text" name="furniture" placeholder="填写冰箱、电视、空调等家具">
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
-          <li>
-            <div class="item-content">
-              <div class="item-inner">
-                <div class="item-title label">姓名</div>
-                <div class="item-input">
-                  <input type="text" name="userName" placeholder="请输入您的姓名">
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label">交通</div>
+                  <div class="item-input">
+                    <input type="text" name="traffic" placeholder="填写公交、地铁等交通">
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
-          <li>
-            <div class="item-content">
-              <div class="item-inner">
-                <div class="item-title label">手机号</div>
-                <div class="item-input">
-                  <input type="text" name="mobile" placeholder="请输入您的手机号">
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label">周边</div>
+                  <div class="item-input">
+                    <input type="text" name="near" placeholder="请输入周边商场、超市">
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
-        </ul>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label">姓名</div>
+                  <div class="item-input">
+                    <input type="text" name="userName" placeholder="请输入您的姓名">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label">手机号</div>
+                  <div class="item-input">
+                    <input type="text" name="mobile" placeholder="请输入您的手机号">
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </form>
+      <div class="images">
+        <div class="upload">
+          <img src="../img/atUtx3uuVs.png" alt="身份证" style="width: 40%">
+          <input type="file" id="uploadImage" accept="image/*" capture="camera">
+        </div>
       </div>
-      <div class="content-block">
-        <a href="#" class="button button-big button-fill profile-next-button">提交</a>
+        <div class="content-block">
+          <a href="#" class="button button-big button-fill profile-next-button">提交</a>
+        </div>
       </div>
-    </div>
   </div>
 </div>
