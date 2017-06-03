@@ -29,24 +29,26 @@ public class RentController {
     @RequestMapping("rent")
     public ModelAndView rent() {
         ModelAndView modelAndView = new ModelAndView("rent");
-//        modelAndView.addObject("securityName","1233");
         return modelAndView;
     }
 
     @RequestMapping("homeRent")
     public ModelAndView homeRent() {
         ModelAndView modelAndView = new ModelAndView("home-rent");
-//        modelAndView.addObject("securityName","1233");
         return modelAndView;
     }
 
     @RequestMapping("rentDetail")
     public ModelAndView rentDetail() {
         ModelAndView modelAndView = new ModelAndView("rent-detail");
-//        modelAndView.addObject("securityName","1233");
         return modelAndView;
     }
 
+    /**
+     * 获取当前位置的可租房源
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping("getHourseInfo")
     public Map<String, Object> getHourseInfo(HttpServletRequest request) {

@@ -76,6 +76,20 @@ public class HourseProvider {
     }
 
     /**
+     * 根据房屋是否已出租字段和状态获取房屋信息列表
+     * @param hourse
+     * @return
+     */
+    public String queryHourseByisRentAndState(Hourse hourse){
+        StringBuffer sql = new StringBuffer("select * " );
+        sql.append(" from " + TBL_ORDER);
+        sql.append( " where 1=1 ");
+        sql.append(" and recommend = '1' and isLend  LIMIT 100");
+
+        return sql.toString();
+    }
+
+    /**
      * 增加房屋信息，返回房屋id
      * @param hourse
      * @return

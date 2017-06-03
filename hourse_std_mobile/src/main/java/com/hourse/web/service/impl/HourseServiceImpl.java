@@ -65,6 +65,18 @@ public class HourseServiceImpl implements IHourseService {
         return hoursesList;
     }
 
+    public List<Hourse> queryHourseByisRentAndState(Hourse hourse) {
+        List<Hourse> hoursesList = hourseMapper.queryHourseByisRentAndState(hourse);
+        for(int i=0; i<hoursesList.size(); i++){
+            Hourse hourseInfo = hoursesList.get(i);
+            ImageInfo imageInfo = new ImageInfo();
+            imageInfo.setHourseId(hourseInfo.getHourseId());
+            List<ImageInfo> imageInfoList = imageInfoMapper.getImageInfo(imageInfo);
+            hourseInfo.setImageInfoList(imageInfoList);
+        }
+        return hoursesList;
+    }
+
     /**
      * 增加房屋信息，返回房屋id
      * @param hourse

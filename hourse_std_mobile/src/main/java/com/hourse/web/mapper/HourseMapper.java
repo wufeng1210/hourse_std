@@ -46,4 +46,12 @@ public interface HourseMapper {
     @InsertProvider(method = "insert", type = HourseProvider.class)
    // @SelectKey(keyColumn = "hourseId", before = true, keyProperty = "hourseId", resultType = String.class, statement = "select last_insert_id() as hourseId from hourseId")
     int insert(Hourse hourse);
+
+    /**
+     * 根据房屋是否已出租字段和状态获取房屋信息列表
+     * @param hourse
+     * @return
+     */
+    @SelectProvider(type = HourseProvider.class, method = "queryHourseByisRentAndState")
+    List<Hourse> queryHourseByisRentAndState(Hourse hourse);
 }

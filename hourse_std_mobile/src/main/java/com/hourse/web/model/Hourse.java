@@ -30,12 +30,22 @@ public class Hourse {
     private boolean desk;
     private boolean airConditioner;
     private String cabinet;
-    private String state;
-    private String description;
+    private String state; // 房屋信息审核状态
+    private String description; // 房屋简介
+    private String isLend; // 是否已出租
+
+    public String getIsLend() {
+        return isLend;
+    }
+
+    public void setIsLend(String isLend) {
+        this.isLend = isLend;
+    }
+
     private List<ImageInfo> imageInfoList;
     private double distance;
-    private double longitude;
-    private double latitude;
+    private double longitude; // 房屋经度
+    private double latitude; //房屋纬度
     private int hourseNum;
 
     public int getSquarePrice() {

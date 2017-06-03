@@ -12,5 +12,7 @@ public interface IHourseService {
 
     public List<Hourse> getRecommendHourseInfo(Hourse hourse);
 
+    public List<Hourse> queryHourseByisRentAndState(Hourse hourse);
+
     public int insert(Hourse hourse);
 }
