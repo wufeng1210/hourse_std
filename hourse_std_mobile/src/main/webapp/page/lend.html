@@ -22,7 +22,7 @@
                 <div class="item-inner">
                   <div class="item-title label">联系地址</div>
                   <div class="item-input">
-                    <input id="address" type="text" readonly="" placeholder="请选择省/市/区">
+                    <input id="address" name="address" type="text" readonly="" placeholder="请选择省/市/区">
                     <!-- <input id="value1" type="hidden" value="20,234,504" > -->
                   </div>
                 </div>
@@ -43,7 +43,7 @@
                 <div class="item-inner">
                   <div class="item-title" style="overflow: visible;">联系地址</div>
                   <div class="select-wrap">
-                    <select id="lendType">
+                    <select id="lendType" name="lendType">
                       <option value="日租/短租">日租/短租</option>
                       <option value="月租">月租</option>
                     </select>
@@ -56,22 +56,23 @@
                 <div class="item-inner">
                   <div class="item-title" style="overflow: visible;">户型</div>
                   <div class="select-wrap">
-                    <select id="room">
+                    <select id="room" name="roomNum">
                       <option value="1">1</option>
                     </select>
                   </div>
                   <div class="divider">室</div>
                   <div class="select-wrap">
-                    <select id="office">
+                    <select id="office" name="hallNum">
                       <option value="0">0</option>
                     </select>
                   </div>
                   <div class="divider">厅</div>
                   <div class="select-wrap">
-                    <select id="toilet">
+                    <select id="toilet" name="toiletNum">
                       <option value="0">0</option>
                     </select>
                   </div>
+                  <div class="divider">卫</div>
                 </div>
               </div>
             </li>
@@ -104,7 +105,7 @@
                 <div class="item-inner">
                   <div class="item-title" style="overflow: visible;">装修方式</div>
                   <div class="select-wrap">
-                    <select id="fixture">
+                    <select id="fixture" name="fixtureType">
                       <option value="豪华装修">豪华装修</option>
                     </select>
                   </div>
@@ -116,7 +117,7 @@
                 <div class="item-inner">
                   <div class="item-title label">租金</div>
                   <div class="item-input">
-                    <input type="text" name="rent" placeholder="请输入租金">
+                    <input type="text" name="monthly" placeholder="请输入租金">
                   </div>
                   <div class="divider">元/月</div>
                 </div>
@@ -127,7 +128,7 @@
                 <div class="item-inner">
                   <div class="item-title" style="overflow: visible;">押金</div>
                   <div class="select-wrap">
-                    <select id="deposit">
+                    <select id="deposit" name="rentingWay">
                       <option value="押一付一">押一付一</option>
                     </select>
                   </div>
@@ -139,7 +140,7 @@
                 <div class="item-inner">
                   <div class="item-title" style="overflow: visible;">限制</div>
                   <div class="select-wrap">
-                    <select id="limit">
+                    <select id="limit" name="limitType">
                       <option value="男女不限">男女不限</option>
                       <option value="只限男生">只限男生</option>
                       <option value="只限女生">只限女生</option>
@@ -153,7 +154,7 @@
                 <div class="item-inner">
                   <div class="item-title label">家具</div>
                   <div class="item-input">
-                    <input type="text" name="furniture" placeholder="填写冰箱、电视、空调等家具">
+                    <input type="text" name="furniture" placeholder="填写冰箱、电视、空调等家具" maxlength="25">
                   </div>
                 </div>
               </div>
@@ -163,7 +164,7 @@
                 <div class="item-inner">
                   <div class="item-title label">交通</div>
                   <div class="item-input">
-                    <input type="text" name="traffic" placeholder="填写公交、地铁等交通">
+                    <input type="text" name="traffic" placeholder="填写公交、地铁等交通" maxlength="25">
                   </div>
                 </div>
               </div>
@@ -173,7 +174,7 @@
                 <div class="item-inner">
                   <div class="item-title label">周边</div>
                   <div class="item-input">
-                    <input type="text" name="near" placeholder="请输入周边商场、超市">
+                    <input type="text" name="near" placeholder="请输入周边商场、超市" maxlength="25">
                   </div>
                 </div>
               </div>
@@ -183,7 +184,7 @@
                 <div class="item-inner">
                   <div class="item-title label">姓名</div>
                   <div class="item-input">
-                    <input type="text" name="userName" placeholder="请输入您的姓名">
+                    <input type="text" name="brokerName" placeholder="请输入您的姓名" maxlength="25">
                   </div>
                 </div>
               </div>
@@ -193,7 +194,7 @@
                 <div class="item-inner">
                   <div class="item-title label">手机号</div>
                   <div class="item-input">
-                    <input type="text" name="mobile" placeholder="请输入您的手机号">
+                    <input type="text" name="brokerMobile" placeholder="请输入您的手机号" maxlength="11">
                   </div>
                 </div>
               </div>
@@ -208,7 +209,7 @@
         </div>
       </div>
         <div class="content-block">
-          <a href="#" class="button button-big button-fill profile-next-button">提交</a>
+          <a href="#" class="button button-big button-fill lend-next-button">提交</a>
         </div>
       </div>
   </div>

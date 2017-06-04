@@ -8,31 +8,64 @@ import java.util.List;
 public class Hourse {
     private String hourseId;
     private int userId;
+    private String hourseAddr;
     private String province;
     private String city;
     private String area;
     private String residentialQuarters;
-    private int roomNum;
-    private int toiletNum;
-    private int hallNum;
-    private int kitchenNum;
-    private int monthly;
+    private int roomNum; // 房间数量
+    private int toiletNum; // 卫生间数量
+    private int hallNum; // 大厅数量
+    private int kitchenNum; // 厨房数量
+    private int monthly; // 月租
     private String parkingLot;
-    private String rentingWay;
+    private String rentingWay; // 租房方式
     private String brokerMobile;
     private String brokerCode;
     private String brokerName;
     private int areaCovered;
     private int squarePrice; // 价格每平方
-    private boolean refrigerator;
-    private boolean heater;
-    private boolean bed;
-    private boolean desk;
-    private boolean airConditioner;
+    private String furniture; // 家具
     private String cabinet;
     private String state; // 房屋信息审核状态
     private String description; // 房屋简介
     private String isLend; // 是否已出租
+    private String traffic; // 交通
+    private String near; // 附近
+    private String fixtureType; //装修方式
+    private String limitType; // 限制方式（限制男生还是女生还是不限制）
+
+    public String getLimitType() {
+        return limitType;
+    }
+
+    public void setLimitType(String limitType) {
+        this.limitType = limitType;
+    }
+
+    public String getHourseAddr() {
+        return hourseAddr;
+    }
+
+    public void setHourseAddr(String hourseAddr) {
+        this.hourseAddr = hourseAddr;
+    }
+
+    public String getTraffic() {
+        return traffic;
+    }
+
+    public void setTraffic(String traffic) {
+        this.traffic = traffic;
+    }
+
+    public String getNear() {
+        return near;
+    }
+
+    public void setNear(String near) {
+        this.near = near;
+    }
 
     public String getIsLend() {
         return isLend;
@@ -43,10 +76,10 @@ public class Hourse {
     }
 
     private List<ImageInfo> imageInfoList;
-    private double distance;
+    private String distance;
     private double longitude; // 房屋经度
     private double latitude; //房屋纬度
-    private int hourseNum;
+    private String hourseNum;
 
     public int getSquarePrice() {
         return squarePrice;
@@ -56,19 +89,19 @@ public class Hourse {
         this.squarePrice = squarePrice;
     }
 
-    public int getHourseNum() {
+    public String getHourseNum() {
         return hourseNum;
     }
 
-    public void setHourseNum(int hourseNum) {
+    public void setHourseNum(String hourseNum) {
         this.hourseNum = hourseNum;
     }
 
-    public double getDistance() {
+    public String getDistance() {
         return distance;
     }
 
-    public void setDistance(double distance) {
+    public void setDistance(String distance) {
         this.distance = distance;
     }
 
@@ -242,44 +275,20 @@ public class Hourse {
         this.areaCovered = areaCovered;
     }
 
-    public boolean isRefrigerator() {
-        return refrigerator;
+    public String getFurniture() {
+        return furniture;
     }
 
-    public void setRefrigerator(boolean refrigerator) {
-        this.refrigerator = refrigerator;
+    public void setFurniture(String furniture) {
+        this.furniture = furniture;
     }
 
-    public boolean isHeater() {
-        return heater;
+    public String getFixtureType() {
+        return fixtureType;
     }
 
-    public void setHeater(boolean heater) {
-        this.heater = heater;
-    }
-
-    public boolean isBed() {
-        return bed;
-    }
-
-    public void setBed(boolean bed) {
-        this.bed = bed;
-    }
-
-    public boolean isDesk() {
-        return desk;
-    }
-
-    public void setDesk(boolean desk) {
-        this.desk = desk;
-    }
-
-    public boolean isAirConditioner() {
-        return airConditioner;
-    }
-
-    public void setAirConditioner(boolean airConditioner) {
-        this.airConditioner = airConditioner;
+    public void setFixtureType(String fixtureType) {
+        this.fixtureType = fixtureType;
     }
 
     public String getCabinet() {

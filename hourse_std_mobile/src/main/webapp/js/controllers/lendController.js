@@ -1,13 +1,30 @@
 define(['utils'], function (Utils) {
 
     var bindings = [{
-
+        element: '.lend-next-button',
+        event: 'click',
+        handler: submit
     }];
+
+    function submit() {
+        console.info(app.formToJSON("#hourseForm"));
+        var param = app.formToJSON("#hourseForm");
+        app.showIndicator();
+        $$.ajax({
+            url: '/addHourse.do',
+            type: 'POST',
+            data: param,
+            dataType: 'json',
+            success: function (data) {
+                app.hideIndicator();
+
+            }
+        });
+    }
 
 
 
     function init() {
-        // Utils.bindEvents(bindings);
         chooseAddress();
     }
 
@@ -23,6 +40,8 @@ define(['utils'], function (Utils) {
             'type': 1, //数据源类型
             'data': LAreaData //数据源
         });
+
+        Utils.bindEvents(bindings);
     }
     return {
         init: init
