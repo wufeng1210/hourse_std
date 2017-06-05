@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface IImageInfoService {
     public List<ImageInfo> getImageInfo(ImageInfo imageInfo);
+
+    public int insertImageInfo(String imageBase, ImageInfo imageInfo);
 }

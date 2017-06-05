@@ -83,6 +83,6 @@ public class HourseServiceImpl implements IHourseService {
      * @return
      */
     public int insert(Hourse hourse){
-        return hourseMapper.insert(hourse);
+       return hourseMapper.insert(hourse);
     }
 }

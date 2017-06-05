@@ -4,6 +4,8 @@ import com.hourse.web.http.HttpPostHandle;
 import com.hourse.web.model.Hourse;
 import com.hourse.web.model.ImageInfo;
 import com.hourse.web.service.IHourseService;
+import com.hourse.web.service.IImageInfoService;
+import com.hourse.web.util.ImageBase64Util;
 import com.hourse.web.util.common.Constant;
 import net.sf.json.JSONObject;
 import org.apache.commons.collections.map.HashedMap;
@@ -19,6 +21,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,6 +33,8 @@ public class LendController {
     private static Logger logger = LoggerFactory.getLogger(LendController.class);
     @Autowired
     private IHourseService iHourseService;
+    @Autowired
+    private IImageInfoService iImageInfoService;
 
     @RequestMapping("lend")
     public ModelAndView index(HttpServletRequest request) {
@@ -49,6 +55,8 @@ public class LendController {
         try {
             String address = request.getParameter("address");
             String cidAddress = request.getParameter("cidAddr");
+            String imageBases = request.getParameter("imageBases");
+
             String[] addressArr = address.split(",");
             hourse.setProvince(addressArr[0]);
             hourse.setCity(addressArr[1]);
@@ -76,8 +84,11 @@ public class LendController {
                 resMap.put(Constant.ERROR_INFO, "地址解析失败");
                 return resMap;
             }
-            int hourseId = iHourseService.insert(hourse);
-            resMap.put("hourseId", hourseId);
+            iHourseService.insert(hourse);
+            imageInfo.setHourseId(hourse.getHourseId());
+            iImageInfoService.insertImageInfo(imageBases, imageInfo);
+            resMap.put(Constant.ERROR_NO, "0");
+            resMap.put("hourseId", hourse.getHourseId());
         }catch (Exception e){
             logger.error("添加房屋信息失败：", e);
             e.printStackTrace();

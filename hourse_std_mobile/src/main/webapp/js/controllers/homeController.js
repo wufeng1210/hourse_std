@@ -28,6 +28,7 @@ define(['utils'], function (Utils) {
     }
 
     function getActivity() {
+        app.showIndicator();
         $$.ajax({
             url: '/getActivity.do',
             type: 'POST',

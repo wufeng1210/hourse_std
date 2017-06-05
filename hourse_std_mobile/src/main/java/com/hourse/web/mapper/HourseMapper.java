@@ -44,7 +44,7 @@ public interface HourseMapper {
      * @return
      */
     @InsertProvider(method = "insert", type = HourseProvider.class)
-   // @SelectKey(keyColumn = "hourseId", before = true, keyProperty = "hourseId", resultType = String.class, statement = "select last_insert_id() as hourseId from hourseId")
+    @Options(useGeneratedKeys = true, keyProperty = "hourseId")
     int insert(Hourse hourse);
 
     /**
