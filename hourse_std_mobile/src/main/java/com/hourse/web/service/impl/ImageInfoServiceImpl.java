@@ -45,6 +45,9 @@ public class ImageInfoServiceImpl implements IImageInfoService {
                 Date date= new Date();
                 String firstPath = df.format(new Date());
                 long time = date.getTime();
+                File tmpDir = new File(PropertiesUtils.get("homedir.uploader.cdn") + File.separator + firstPath);
+                if (!tmpDir.exists())
+                    tmpDir.mkdirs();
                 String path = PropertiesUtils.get("homedir.uploader.cdn") + File.separator + firstPath +File.separator+ time + ".jpg";
                 ImageBase64Util.GenerateImage(URLDecoder.decode(imageBase[i], "UTF-8"), path);
                 imageInfo.setImagePath(path);

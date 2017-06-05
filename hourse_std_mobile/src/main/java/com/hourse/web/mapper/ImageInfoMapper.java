@@ -1,12 +1,10 @@
 package com.hourse.web.mapper;
 
-import com.hourse.web.model.Hourse;
 import com.hourse.web.model.ImageInfo;
-import com.hourse.web.provider.HourseProvider;
+import com.hourse.web.provider.ImageProvider;
 import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectProvider;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -24,7 +22,7 @@ public interface ImageInfoMapper {
      * @param imageInfo
      * @return
      */
-    @InsertProvider(method = "insert", type = HourseProvider.class)
+    @InsertProvider(method = "insert", type = ImageProvider.class)
     @Options(useGeneratedKeys = true, keyProperty = "imageId")
     int insert(ImageInfo imageInfo);
 }
