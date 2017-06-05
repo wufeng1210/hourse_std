@@ -23,6 +23,5 @@ public interface ImageInfoMapper {
      * @return
      */
     @InsertProvider(method = "insert", type = ImageProvider.class)
-    @Options(useGeneratedKeys = true, keyProperty = "imageId")
     int insert(ImageInfo imageInfo);
 }

@@ -5,7 +5,7 @@ package com.hourse.web.model;
  */
 public class ImageInfo {
 
-    private int imageId;
+    private String imageId;
     private String hourseId;
     private String imageUrl;
     private String imagePath;
@@ -13,11 +13,11 @@ public class ImageInfo {
     private String imageType;
     private String imageDesc;
 
-    public int getImageId() {
+    public String getImageId() {
         return imageId;
     }
 
-    public void setImageId(int imageId) {
+    public void setImageId(String imageId) {
         this.imageId = imageId;
     }
 

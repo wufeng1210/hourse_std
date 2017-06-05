@@ -23,7 +23,6 @@ define(['utils'], function (Utils) {
 
 
     function init() {
-     Utils.bindEvents(bindings);
      getActivity();
     }
 
@@ -38,6 +37,7 @@ define(['utils'], function (Utils) {
                 console.info(data);
                 if(data.errorNo == "0" ){
                     Utils.render('#homeTemplate', {model:data});
+                    Utils.bindEvents(bindings);
                     app.swiper('.swiper', {
                         pagination: '.swiper .swiper-pagination',
                         spaceBetween: 10,
