@@ -2446,7 +2446,6 @@ html.ios-gt-6.pixel-ratio-3 .list-block .item-inner:after {
 
 .list-block .item-title {
   position: relative;
-  overflow: hidden;
   max-width: 100%;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -2465,6 +2464,7 @@ html.ios-gt-6.pixel-ratio-3 .list-block .item-inner:after {
 .list-block .item-input {
   margin-top: -8px;
   margin-bottom: -7px;
+  margin-left: 20px;
   width: 100%;
   -webkit-box-flex: 1;
   -ms-flex: 1;

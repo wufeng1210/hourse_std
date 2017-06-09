@@ -15,23 +15,12 @@
   <div data-page="rentDetail" class="page rent-detail no_toolbar">
     <div class="page-content" id="rentDetailContent">
       <script type="text/template" id="rentDetailTemplate">
-          <div class="swiper-container swiper">
-              <div class="swiper-pagination"></div>
-              <div class="swiper-wrapper mainActivityListRenderhere">
-
-              {{#each hourseList[0].imageInfoList}}
-                  <div class="swiper-slide">
-                    <a  href="#"><img src="{{imageUrl}}" alt=""></a>
-                  </div>
-              {{/each}}
-              </div>
-          </div>
           <div class="list-block">
               <ul>
                   <li class="item-content">
                       <div class="item-inner">
                       <div class="item-title">所在位置</div>
-                      <div class="item-after" style="word-wrap:break-word; word-break:normal; ">{{hourseList[0].hourseAddr}}</div>
+                      <div class="item-input" style="word-wrap:break-word; word-break:normal; ">{{hourseList[0].hourseAddr}}</div>
                       </div>
                   </li>
                   <li class="item-content">
@@ -61,6 +50,17 @@
                     </div>
                   </li>-->
               </ul>
+          </div>
+          <div class="swiper-container swiper">
+              <div class="swiper-pagination"></div>
+              <div class="swiper-wrapper mainActivityListRenderhere">
+
+                  {{#each hourseList[0].imageInfoList}}
+                  <div class="swiper-slide">
+                      <a  href="#"><img src="{{imageUrl}}" alt=""></a>
+                  </div>
+                  {{/each}}
+              </div>
           </div>
       </script>
     </div>
