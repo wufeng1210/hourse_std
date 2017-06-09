@@ -8,6 +8,8 @@ import java.util.List;
 public interface IHourseService {
     public List<Hourse> getHourseInfo(Hourse hourse);
 
+    public List<Hourse> getHourseDetail(Hourse hourse);
+
     public List<Hourse> getMapInfo(Hourse hourse);
 
     public List<Hourse> getRecommendHourseInfo(Hourse hourse);

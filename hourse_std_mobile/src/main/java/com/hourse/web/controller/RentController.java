@@ -83,4 +83,26 @@ public class RentController {
         resMap.put(Constant.ERROR_NO, "0");
         return resMap;
     }
+
+    /**
+     * 获取房源详情
+     * @param hourse
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("getHourseDetail")
+    public Map<String, Object> getHourseDetail(Hourse hourse) {
+        Map<String, Object> resMap = new HashMap<String, Object>();
+
+        try {
+            List<Hourse> hourses = hourseService.getHourseDetail(hourse);
+            resMap.put("hourseList", hourses);
+            resMap.put(Constant.ERROR_NO, "0");
+        } catch (Exception e) {
+            e.printStackTrace();
+            resMap.put(Constant.ERROR_NO, "-1");
+            resMap.put(Constant.ERROR_INFO, "程序异常");
+        }
+        return resMap;
+    }
 }

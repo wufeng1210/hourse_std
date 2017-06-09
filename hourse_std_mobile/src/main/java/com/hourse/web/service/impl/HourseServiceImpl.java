@@ -43,6 +43,23 @@ public class HourseServiceImpl implements IHourseService {
     }
 
     /**
+     * 根据房屋id获取房源信息
+     * @param hourse
+     * @return
+     */
+    public List<Hourse> getHourseDetail(Hourse hourse) {
+        List<Hourse> hoursesList = hourseMapper.getHourseDetail(hourse);
+        for(int i=0; i<hoursesList.size(); i++){
+            Hourse hourseInfo = hoursesList.get(i);
+            ImageInfo imageInfo = new ImageInfo();
+            imageInfo.setHourseId(hourseInfo.getHourseId());
+            List<ImageInfo> imageInfoList = imageInfoMapper.getImageInfo(imageInfo);
+            hourseInfo.setImageInfoList(imageInfoList);
+        }
+        return hoursesList;
+    }
+
+    /**
      * 根据用户经纬度计算距离，统计相同距离的房屋数量
      * @param hourse
      * @return

@@ -7,12 +7,12 @@ define(['utils'], function (Utils) {
     }];
 
     function goRentDetail() {
-        mainView.loadPage("/rentDetail.do")
+        var hourseId = $$(this).data("hourseId");
+        mainView.loadPage("/rentDetail.do?hourseId="+hourseId);
     }
 
 
     function init() {
-        Utils.bindEvents(bindings);
         getHourseInfo();
     }
 
@@ -27,6 +27,7 @@ define(['utils'], function (Utils) {
                 console.info(data);
                 if(data.errorNo == "0"){
                     Utils.render('#rentTemplate', data);
+                    Utils.bindEvents(bindings);
                 }else {
                     app.alert(data.errorInfo);
                 }

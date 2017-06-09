@@ -12,8 +12,8 @@ import java.util.List;
  */
 @Repository
 public interface HourseMapper {
-    @Select("select * from hourse_info where province like '%#{province}%'")
-    List<Hourse> getHourseInfo(Hourse hourse);
+    @Select("select * from hourse_info where hourseId = #{hourseId}")
+    List<Hourse> getHourseDetail(Hourse hourse);
 
     /**
      * 根据用户经纬度获取房屋信息列表，再根据距离和房屋地址排序
