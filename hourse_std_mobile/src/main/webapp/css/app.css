@@ -1459,6 +1459,7 @@ html.with-statusbar-overlay body > .progressbar {
 }
 .page-main .code-list .left {
   width: 86px;
+  height: 100px;
   margin-right: 15px;
 }
 .page-main .code-list .right {
@@ -1555,6 +1556,7 @@ html.with-statusbar-overlay body > .progressbar {
 }
 #lendContent .divider {
   padding-left: 5px;
+  white-space:nowrap;
 }
 #lendContent .select-wrap {
   max-width: 40%;
@@ -1574,7 +1576,7 @@ html.with-statusbar-overlay body > .progressbar {
   margin-top: 20px;
 }
 .rent .code-list:last-child {
-  margin-bottom: 140px;
+  margin-bottom: 20px;
 }
 .rent .code-list {
   display: -webkit-box;
@@ -1591,6 +1593,7 @@ html.with-statusbar-overlay body > .progressbar {
 }
 .rent .code-list .left {
   width: 86px;
+  height: 100px;
   margin-right: 15px;
 }
 .rent .code-list .right {
@@ -1770,4 +1773,12 @@ html.with-statusbar-overlay body > .progressbar {
 .page-my .head .list-block .item-link .item-inner .sign {
   font-size: 14px;
   opacity: .7;
+}
+.personal-data .list-block .item-after,
+.open-code-detail .list-block .item-after {
+  width: 55%;
+  text-align: right;
+  display: inline-block;
+  max-height: none;
+  white-space: normal;
 }

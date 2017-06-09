@@ -5,7 +5,7 @@ package com.hourse.web.model;
  */
 public class User {
 
-    private int userId;
+    private String userId;
     private String userName;
     private String userPassWord;
     private String secretKey;
@@ -15,11 +15,11 @@ public class User {
     private String deptName;
     private String agent;
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

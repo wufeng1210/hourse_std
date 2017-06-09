@@ -1,7 +1,9 @@
 package com.hourse.web.controller;
 
 import com.hourse.web.model.Hourse;
+import com.hourse.web.model.User;
 import com.hourse.web.service.IHourseService;
+import com.hourse.web.service.IUserService;
 import com.hourse.web.util.common.Constant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +24,8 @@ public class MyController {
 
     @Autowired
     private IHourseService hourseService;
+    @Autowired
+    private IUserService iUserService;
 
     @RequestMapping("my")
     public ModelAndView my() {
@@ -32,6 +36,12 @@ public class MyController {
     @RequestMapping("myRent")
     public ModelAndView myRent() {
         ModelAndView modelAndView = new ModelAndView("my-rent");
+        return modelAndView;
+    }
+
+    @RequestMapping("personInfo")
+    public ModelAndView personInfo() {
+        ModelAndView modelAndView = new ModelAndView("personal-data");
         return modelAndView;
     }
 
@@ -49,6 +59,24 @@ public class MyController {
             resMap.put(Constant.ERROR_NO, "-1");
             resMap.put(Constant.ERROR_INFO, "程序异常");
         }
+        return resMap;
+    }
+
+    @RequestMapping(value = "getUserInfo")
+    @ResponseBody
+    public Map<String, Object> getUserInfo(User user){
+        Map<String, Object> resMap = new HashMap<String, Object>();
+        try {
+            List<User> userList = iUserService.getUserById(user);
+            resMap.put("userList", userList);
+            resMap.put(Constant.ERROR_NO, "0");
+        }catch (Exception e){
+            e.printStackTrace();
+            logger.error("获取用户信息失败", e);
+            resMap.put(Constant.ERROR_NO, "-1");
+            resMap.put(Constant.ERROR_INFO, "程序异常");
+        }
+
         return resMap;
     }
 }

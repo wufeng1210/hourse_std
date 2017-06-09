@@ -47,7 +47,7 @@ public class LoginController {
     @RequestMapping("login")
     public ModelAndView login(User user, HttpServletResponse response){
         ModelAndView modelAndView = new ModelAndView();
-        List<User> userList =iUserService.getUserById(user);
+        List<User> userList =iUserService.getUserByUserName(user);
         if(!userList.isEmpty()){
             CookieUtil.setObjectCookie(response, userList.get(0), "hoursestd", -1, PropertiesUtils.get("domain"));
             modelAndView.addObject("userInfo",userList.get(0));

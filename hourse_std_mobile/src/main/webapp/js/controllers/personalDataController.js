@@ -6,12 +6,6 @@ define(['utils'], function (Utils) {
         handler: function () {
             mainView.loadPage("/myRent.do");
         }
-    },{
-        element: '#personInfo',
-        event: 'click',
-        handler: function () {
-            mainView.loadPage("/personInfo.do");
-        }
     }];
 
 
@@ -19,6 +13,7 @@ define(['utils'], function (Utils) {
 
     function init() {
         Utils.bindEvents(bindings);
+
     }
 
 
