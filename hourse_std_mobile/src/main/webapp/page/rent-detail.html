@@ -66,13 +66,27 @@
                           <div class="item-after">{{hourseList[0].brokerMobile}}</div>
                       </div>
                   </li>
-                  <!--<li class="item-content">
+                  <li class="item-content">
                       <div class="item-inner">
                       <div class="item-title">楼层及朝向</div>
-                      <div class="item-after">25楼朝南</div>
-
+                      <div class="item-after">{{hourseList[0].floor}}楼{{hourseList[0].orientation}}</div>
                     </div>
-                  </li>-->
+                  </li>
+                  <li>
+                      <div class="item-content">
+                          <div class="item-inner">
+                              <div class="item-title" >已收藏</div>
+                              <div class="item-after">
+                                  <div class="item-input">
+                                      <label class="label-switch" data-hourseId="{{hourseList[0].hourseId}}">
+                                          <input type="checkbox" name="collect" {{#js_compare "this.hourseList[0].collect == '1'"}}checked{{/js_compare}}>
+                                          <div class="checkbox"></div>
+                                      </label>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
               </ul>
           </div>
           <div class="swiper-container swiper">

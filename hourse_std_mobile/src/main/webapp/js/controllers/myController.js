@@ -12,6 +12,12 @@ define(['utils'], function (Utils) {
         handler: function () {
             mainView.loadPage("/personInfo.do");
         }
+    },{
+        element: '#myCollect',
+        event: 'click',
+        handler: function () {
+            mainView.loadPage("/collect.do");
+        }
     }];
 
 

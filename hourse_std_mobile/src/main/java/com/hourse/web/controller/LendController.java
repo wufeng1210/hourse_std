@@ -26,6 +26,7 @@ import java.math.BigDecimal;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -99,6 +100,38 @@ public class LendController {
             resMap.put("hourseId", hourse.getHourseId());
         }catch (Exception e){
             logger.error("添加房屋信息失败：", e);
+            e.printStackTrace();
+            resMap.put(Constant.ERROR_NO, "-1");
+            resMap.put(Constant.ERROR_INFO, "程序异常");
+        }
+        return resMap;
+    }
+
+    /**
+     * 修改房屋信息
+     * @param hourse
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("updateHourse")
+    public Map<String, Object> updateHourse(Hourse hourse, HttpServletRequest request) {
+        Map<String, Object> resMap = new HashMap<String, Object>();
+        User user = CookieUtil.getUserInfo(request);
+        if(user.getUserId() == null){
+            resMap.put(Constant.ERROR_NO, "-1");
+            resMap.put(Constant.ERROR_INFO, "用户未登录");
+            return resMap;
+        }
+        hourse.setUserId(user.getUserId());
+        try {
+            int hourses = iHourseService.update(hourse);
+            if(hourses == 1){
+                resMap.put(Constant.ERROR_NO, "0");
+            } else {
+                resMap.put(Constant.ERROR_NO, "0");
+                resMap.put(Constant.ERROR_INFO, "修改失败");
+            }
+        } catch (Exception e) {
             e.printStackTrace();
             resMap.put(Constant.ERROR_NO, "-1");
             resMap.put(Constant.ERROR_INFO, "程序异常");

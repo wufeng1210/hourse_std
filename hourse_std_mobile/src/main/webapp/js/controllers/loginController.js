@@ -7,6 +7,7 @@ define(['utils'], function (Utils) {
     }];
 
     function submit() {
+        app.showIndicator();
         var userName = $$(".userName").val();
         if(!userName){
             app.alert("用户名不能为空");

@@ -101,4 +101,17 @@ public class HourseProvider {
         return SqlProviderUtil.provideInsertNotBlank(hourse, "hourse_info");
     }
 
+    /**
+     * 修改房屋对象
+     * @param hourse
+     * @return
+     */
+    public String update(Hourse hourse) {
+        StringBuffer sql = new StringBuffer("UPDATE hourse_info ");
+        sql.append(SqlProviderUtil.provideSetterNotBlank(hourse));
+        sql.append(" WHERE ");
+
+        sql.append("hourseId=#{hourseId}");
+        return sql.toString();
+    }
 }

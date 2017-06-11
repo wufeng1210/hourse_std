@@ -34,6 +34,12 @@ public class RentController {
         return modelAndView;
     }
 
+    @RequestMapping("collect")
+    public ModelAndView collect() {
+        ModelAndView modelAndView = new ModelAndView("collect");
+        return modelAndView;
+    }
+
     @RequestMapping("homeRent")
     public ModelAndView homeRent() {
         ModelAndView modelAndView = new ModelAndView("home-rent");
@@ -113,6 +119,7 @@ public class RentController {
             resMap.put(Constant.ERROR_INFO, "用户未登录");
             return resMap;
         }
+        hourse.setUserId(user.getUserId());
         try {
             List<Hourse> hourses = hourseService.getHourseDetail(hourse);
             resMap.put("hourseList", hourses);
@@ -124,4 +131,34 @@ public class RentController {
         }
         return resMap;
     }
+
+    /**
+     * 获取已收藏房源
+     * @param hourse
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("getCollectHourse")
+    public Map<String, Object> getCollectHourse(Hourse hourse, HttpServletRequest request) {
+        Map<String, Object> resMap = new HashMap<String, Object>();
+        User user = CookieUtil.getUserInfo(request);
+        if(user.getUserId() == null){
+            resMap.put(Constant.ERROR_NO, "-1");
+            resMap.put(Constant.ERROR_INFO, "用户未登录");
+            return resMap;
+        }
+        hourse.setUserId(user.getUserId());
+        try {
+            List<Hourse> hourses = hourseService.getCollectHourse(hourse);
+            resMap.put("hourseList", hourses);
+            resMap.put(Constant.ERROR_NO, "0");
+        } catch (Exception e) {
+            e.printStackTrace();
+            resMap.put(Constant.ERROR_NO, "-1");
+            resMap.put(Constant.ERROR_INFO, "程序异常");
+        }
+        return resMap;
+    }
+
+
 }

@@ -18,7 +18,6 @@ define(['utils'], function (Utils) {
             dataType: 'json',
             success: function (data) {
                 app.hideIndicator();
-                console.info(data);
                 if(data.errorNo == "0"){
                     var map = new AMap.Map("container", {
                         resizeEnable: true,

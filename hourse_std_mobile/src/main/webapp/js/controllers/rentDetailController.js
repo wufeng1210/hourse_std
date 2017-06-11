@@ -1,9 +1,42 @@
 define(['utils'], function (Utils) {
 
     var bindings = [{
-
+        element: '.label-switch',
+        event: 'click',
+        handler: updateHourse
     }];
 
+
+    function updateHourse() {
+        var hourseId = $$(this).data("hourseId");
+        var collect = "1";
+        if($$("input[name=collect]")[0].checked){
+            collect = "0";
+        }
+        app.showIndicator();
+        $$.ajax({
+            url: '/updateHourse.do?v='+new Date().getTime(),
+            data: {
+                hourseId: hourseId,
+                collect : collect
+            },
+            type: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                app.hideIndicator();
+                if (data.errorNo == "0") {
+                    if(collect == '1'){
+                        app.alert("收藏成功");
+                    }else {
+                        app.alert("取消收藏成功");
+                    }
+
+                } else {
+                    app.alert(data.errorInfo);
+                }
+            }
+        })
+    }
 
 
     function init(query) {

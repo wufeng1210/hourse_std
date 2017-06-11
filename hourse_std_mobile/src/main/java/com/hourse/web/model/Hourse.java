@@ -36,6 +36,15 @@ public class Hourse {
     private String near; // 附近
     private String fixtureType; //装修方式
     private String limitType; // 限制方式（限制男生还是女生还是不限制）
+    private String collect; // 是否收藏
+
+    public String getCollect() {
+        return collect;
+    }
+
+    public void setCollect(String collect) {
+        this.collect = collect;
+    }
 
     public String getLimitType() {
         return limitType;

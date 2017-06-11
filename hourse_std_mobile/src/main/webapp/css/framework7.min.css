@@ -1109,7 +1109,6 @@ html.ios-gt-6.pixel-ratio-3 .navbar:after {
 }
 
 .navbar .center {
-  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;

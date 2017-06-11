@@ -269,6 +269,17 @@ i.icon-bars {
   display: -webkit-box;
   -webkit-box-pack: end;
 }
+.navbar .collect {
+  width: 30px;
+  height: 30px;
+  background: url("../img/no-collect.png") no-repeat center center;
+  background-size: 30px 30px;
+  position: relative;
+  left: -20px;
+}
+.navbar .collect + a {
+  margin-left: -25px !important;
+}
 .content-block-title {
   margin-top: 18px;
   white-space: normal;
@@ -629,9 +640,7 @@ button {
 .navbar-inner a {
   color: #fff;
 }
-.navbar-inner .center {
-  font-size: 0.325rem;
-}
+
 @media screen and (max-width: 481px) {
   .navbar-inner {
     font-size: 14px;

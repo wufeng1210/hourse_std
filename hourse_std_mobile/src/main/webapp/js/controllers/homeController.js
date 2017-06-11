@@ -42,7 +42,6 @@ define(['utils'], function (Utils) {
             dataType: 'json',
             success: function (data) {
                 app.hideIndicator();
-                console.info(data);
                 if(data.errorNo == "0" ){
                     Utils.render('#homeTemplate', {model:data});
                     Utils.bindEvents(bindings);

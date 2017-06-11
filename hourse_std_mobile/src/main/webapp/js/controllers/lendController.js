@@ -51,7 +51,6 @@ define(['utils'], function (Utils) {
                     var img_info = result.base64.split(',');
                     $$("input[name=imageBases]").val(encodeURIComponent(img_info[1])+","+ $$("input[name=imageBases]").val());
                     $$(".upload").prepend("<img src='"+result.base64+"'  style='width: 40%'>");
-                    console.info(img_info);
                 })
         })
     }

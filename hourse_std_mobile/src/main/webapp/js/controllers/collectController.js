@@ -7,25 +7,26 @@ define(['utils'], function (Utils) {
     }];
 
     function goRentDetail() {
-        mainView.loadPage("/rentDetail.do")
+        var hourseId = $$(this).data("hourseId");
+        mainView.loadPage("/rentDetail.do?hourseId="+hourseId);
     }
 
 
     function init() {
-        Utils.bindEvents(bindings);
         getHourseInfo();
     }
 
     function getHourseInfo() {
         app.showIndicator();
         $$.ajax({
-            url: '/queryHourseByisRentAndState.do',
+            url: '/getCollectHourse.do',
             type: 'POST',
             dataType: 'json',
             success: function (data) {
                 app.hideIndicator();
                 if(data.errorNo == "0"){
                     Utils.render('#rentTemplate', data);
+                    Utils.bindEvents(bindings);
                 }else {
                     app.alert(data.errorInfo);
                 }

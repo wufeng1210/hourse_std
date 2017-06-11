@@ -15,6 +15,9 @@ public interface HourseMapper {
     @Select("select * from hourse_info where hourseId = #{hourseId}")
     List<Hourse> getHourseDetail(Hourse hourse);
 
+    @Select("select * from hourse_info where userId = #{userId} and collect = 1")
+    List<Hourse> getCollectHourse(Hourse hourse);
+
     /**
      * 根据用户经纬度获取房屋信息列表，再根据距离和房屋地址排序
      * @param hourse
@@ -46,6 +49,14 @@ public interface HourseMapper {
     @InsertProvider(method = "insert", type = HourseProvider.class)
     @Options(useGeneratedKeys = true, keyProperty = "hourseId")
     int insert(Hourse hourse);
+
+    /**
+     * 修改房屋信息
+     * @param hourse
+     * @return
+     */
+    @UpdateProvider(method = "update", type = HourseProvider.class)
+    int update(Hourse hourse);
 
     /**
      * 根据房屋是否已出租字段和状态获取房屋信息列表

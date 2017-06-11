@@ -60,6 +60,23 @@ public class HourseServiceImpl implements IHourseService {
     }
 
     /**
+     * 获取已收藏房源
+     * @param hourse
+     * @return
+     */
+    public List<Hourse> getCollectHourse(Hourse hourse) {
+        List<Hourse> hoursesList = hourseMapper.getCollectHourse(hourse);
+        for(int i=0; i<hoursesList.size(); i++){
+            Hourse hourseInfo = hoursesList.get(i);
+            ImageInfo imageInfo = new ImageInfo();
+            imageInfo.setHourseId(hourseInfo.getHourseId());
+            List<ImageInfo> imageInfoList = imageInfoMapper.getImageInfo(imageInfo);
+            hourseInfo.setImageInfoList(imageInfoList);
+        }
+        return hoursesList;
+    }
+
+    /**
      * 根据用户经纬度计算距离，统计相同距离的房屋数量
      * @param hourse
      * @return
@@ -101,5 +118,9 @@ public class HourseServiceImpl implements IHourseService {
      */
     public int insert(Hourse hourse){
        return hourseMapper.insert(hourse);
+    }
+
+    public int update(Hourse hourse) {
+        return hourseMapper.update(hourse);
     }
 }

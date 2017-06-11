@@ -10,6 +10,8 @@ public interface IHourseService {
 
     public List<Hourse> getHourseDetail(Hourse hourse);
 
+    public List<Hourse> getCollectHourse(Hourse hourse);
+
     public List<Hourse> getMapInfo(Hourse hourse);
 
     public List<Hourse> getRecommendHourseInfo(Hourse hourse);
@@ -17,4 +19,6 @@ public interface IHourseService {
     public List<Hourse> queryHourseByisRentAndState(Hourse hourse);
 
     public int insert(Hourse hourse);
+
+    public int update(Hourse hourse);
 }

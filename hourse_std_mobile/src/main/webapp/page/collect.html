@@ -1,0 +1,35 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="left">
+      <a href="#" class="link icon-only back">
+        <i class="icon icon-back"></i>
+      </a>
+    </div>
+    <div class="center">已收藏租房</div>
+    <div class="right">
+    </div>
+  </div>
+</div>
+
+<div class="pages navbar-through">
+  <div data-page="collect" class="page rent no_toolbar">
+    <div class="page-content" id="rentContent">
+      <div class="list-block spe">
+        <script type="type/template" id="rentTemplate">
+          {{#each hourseList}}
+          {{#if imageInfoList[0]}}
+          <a class="code-list" data-hourseId="{{hourseId}}">
+            <img class="left" src="{{imageInfoList[0].imageUrl}}">
+            <div class="right">
+              <div class="up">{{description}}</div>
+              <div class="center">{{roomNum}}室{{hallNum}}厅{{toiletNum}}卫 {{areaCovered}}平方</div>
+              <div class="center">{{area}} {{residentialQuarters}}</div>
+            </div>
+          </a>
+          {{/if}}
+          {{/each}}
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
