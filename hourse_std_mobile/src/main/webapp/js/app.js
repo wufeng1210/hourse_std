@@ -76,5 +76,14 @@ require(['Framework7', 'router', 'utils'], function (Framework7, Router, Utils) 
     });
   }
 
+    Template7.registerHelper('countPrice', function (value, price) {
+        var val = value * price;
+        if((val/10000) >= 1){
+            return val/10000 + "万";
+        } else {
+            return val;
+        }
+    });
+
   Router.init();
 });

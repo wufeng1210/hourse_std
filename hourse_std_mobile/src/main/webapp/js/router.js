@@ -16,7 +16,7 @@ define([], function () {
 
         //window.location.href= "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0fcaa7eb18ec769e&redirect_uri=http%3a%2f%2fadmin.jingtianwangluo.com%2findex%2f&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
         window.mainView = workbenchView;
-        mainView.loadPage('/home.do');
+        mainView.loadPage('/goLogin.do');
         $$('#workbenchView').on('show', function () {
             window.mainView = workbenchView;
             workbenchView.loadPage('/home.do');
@@ -37,7 +37,6 @@ define([], function () {
             myView.loadPage('/my.do');
         });
         window.mainView = window.workbenchView;//这个是当前公用view对象
-
     }
 
     /**

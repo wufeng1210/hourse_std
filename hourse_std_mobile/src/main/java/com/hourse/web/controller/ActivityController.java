@@ -3,8 +3,11 @@ package com.hourse.web.controller;
 import com.hourse.web.http.HttpPostHandle;
 import com.hourse.web.model.ActivityInfo;
 import com.hourse.web.model.Hourse;
+import com.hourse.web.model.User;
 import com.hourse.web.service.IActivityService;
 import com.hourse.web.service.IHourseService;
+import com.hourse.web.util.CookieUtil;
+import com.hourse.web.util.TriDES;
 import com.hourse.web.util.common.Constant;
 import net.sf.json.JSONObject;
 import org.apache.commons.collections.map.HashedMap;
@@ -16,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
@@ -43,6 +47,7 @@ public class ActivityController {
     @ResponseBody
     public Map<String, Object> getActivity(ActivityInfo activityInfo, HttpServletRequest request){
         Map<String, Object> resMap = new HashMap<String, Object>();
+
         try {
             activityInfo.setState("1");
             List<ActivityInfo> activity = activityService.getActivityInfoByState(activityInfo);

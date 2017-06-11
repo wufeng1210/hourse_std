@@ -51,19 +51,19 @@
 				<div class="list-block spe">
 					{{#each model.hourseList}}
 					{{#if imageInfoList[0]}}
-					<a class="code-list" >
+					<a class="code-list" data-hourseId="{{hourseId}}">
 						<img class="left" src="{{imageInfoList[0].imageUrl}}">
 						<div class="right">
 							<div class="up">{{description}}</div>
 							<div class="info_hourse">
-								<div class="center">{{roomNum}}室{{hallNum}}厅{{toiletNum}}卫 {{areaCovered}}平方<div class="amount">440万</div></div>
-								<div class="center">{{area}} {{residentialQuarters}}<div class="price">{{squarePrice}}/平方</div></div>
+								<div class="center">{{residentialQuarters}} {{area}}</div>
 							</div>
-							<div class="down">
+								<div class="center">{{roomNum}}室{{hallNum}}厅 {{areaCovered}}平方 {{orientations}}</div>
+						</div>
+							<!--<div class="down">
 								<div class="promote" opt="promote">精品</div>
 								<div class="share" opt="share">满五唯一</div>
-							</div>
-						</div>
+							</div>-->
 					</a>
 					{{/if}}
 					{{/each}}

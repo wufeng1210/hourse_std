@@ -1,6 +1,9 @@
 package com.hourse.web.util;
 
+import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.hourse.web.model.User;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
@@ -246,5 +249,23 @@ public class CookieUtil {
 			cookie.setMaxAge(time);
 		}
 		response.addCookie(cookie);
+	}
+
+	public static User getUserInfo(HttpServletRequest request){
+		Cookie[] cookies = request.getCookies();
+		String value = "";
+		User user = new User();
+		if(cookies != null) {
+			for (Cookie cookie : cookies) {
+				cookie.getName();
+				value = TriDES.decode(cookie.getValue());
+			}
+			JSONObject jsonObject = JSONObject.parseObject(value);
+			user.setUserId(jsonObject.getString("userId"));
+			user.setRoleId(jsonObject.getInteger("roleId"));
+			user.setUserName(jsonObject.getString("userName"));
+			user.setUserType(jsonObject.getString("userType"));
+		}
+		return user;
 	}
 }

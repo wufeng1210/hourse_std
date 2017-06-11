@@ -591,7 +591,7 @@ select {
 body {
   background-color: #f0f0f0;
   color: #000000;
-  font-size: 0.325rem;
+  font-size: 14px;
   font-family: "微软雅黑", Arial, sans-serif;
 }
 * {
@@ -1781,4 +1781,35 @@ html.with-statusbar-overlay body > .progressbar {
   display: inline-block;
   max-height: none;
   white-space: normal;
+}
+.page-login .forget {
+  color: #999 ;
+  font-size: 12px;
+  display: block;
+  padding: 10px 20px;
+  float: right;
+  margin-top: -10px;
+}
+.page-login .login-btn {
+  background-color: #4c9ce6;
+}
+.page-login .login-btn.active {
+  background-color: #4c9ce6;
+}
+.page-login .register-link-btn {
+  background: #fff;
+  color: #4c9ce6;
+  border: solid 1px #ebebeb;
+}
+.page-login .desc-content {
+  position: absolute;
+  width: 100%;
+  bottom: 10px;
+  color: #999;
+  font-size: 11px;
+}
+.page-login .desc-content p {
+  width: 100%;
+  text-align: center;
+  margin: 5px 0px;
 }

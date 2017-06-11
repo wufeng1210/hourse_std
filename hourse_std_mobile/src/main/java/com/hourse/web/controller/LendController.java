@@ -3,8 +3,10 @@ package com.hourse.web.controller;
 import com.hourse.web.http.HttpPostHandle;
 import com.hourse.web.model.Hourse;
 import com.hourse.web.model.ImageInfo;
+import com.hourse.web.model.User;
 import com.hourse.web.service.IHourseService;
 import com.hourse.web.service.IImageInfoService;
+import com.hourse.web.util.CookieUtil;
 import com.hourse.web.util.ImageBase64Util;
 import com.hourse.web.util.common.Constant;
 import net.sf.json.JSONObject;
@@ -52,6 +54,12 @@ public class LendController {
     @ResponseBody
     public Map<String, Object> addHourseInfo(Hourse hourse, ImageInfo imageInfo,HttpServletRequest request){
         Map<String, Object> resMap = new HashMap<String, Object>();
+        User user = CookieUtil.getUserInfo(request);
+        if(user.getUserId() == null){
+            resMap.put(Constant.ERROR_NO, "-1");
+            resMap.put(Constant.ERROR_INFO, "用户未登录");
+            return resMap;
+        }
         try {
             String address = request.getParameter("address");
             String cidAddress = request.getParameter("cidAddr");

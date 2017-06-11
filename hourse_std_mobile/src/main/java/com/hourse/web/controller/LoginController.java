@@ -4,6 +4,7 @@ import com.hourse.web.model.User;
 import com.hourse.web.service.IUserService;
 import com.hourse.web.util.CookieUtil;
 import com.hourse.web.util.PropertiesUtils;
+import com.hourse.web.util.common.Constant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,20 +45,30 @@ public class LoginController {
      * @param response
      * @return
      */
+    @ResponseBody
     @RequestMapping("login")
-    public ModelAndView login(User user, HttpServletResponse response){
-        ModelAndView modelAndView = new ModelAndView();
+    public Map<String, Object> login(User user, HttpServletResponse response){
+        Map<String, Object> resMap = new HashMap<String, Object>();
+
         List<User> userList =iUserService.getUserByUserName(user);
         if(!userList.isEmpty()){
             CookieUtil.setObjectCookie(response, userList.get(0), "hoursestd", -1, PropertiesUtils.get("domain"));
-            modelAndView.addObject("userInfo",userList.get(0));
-            modelAndView.setViewName("home");
-        }else{
-            modelAndView.setViewName("index");
-            modelAndView.addObject("securityName","12212");
+            resMap.put(Constant.ERROR_NO, "0");
+        } else {
+            resMap.put(Constant.ERROR_NO, -1);
+            resMap.put(Constant.ERROR_INFO, "用户名或验证码不正确");
         }
+        return resMap;
+    }
 
-        return modelAndView;
+//    private User creatUser (List<User> userList){
+//        User user = new User();
+//        user.setUserId(userList[]);
+//        return user;
+//    }
+    @RequestMapping(value = "goLogin")
+    public String login() {
+        return "login";
     }
 
     @RequestMapping(value = "home")

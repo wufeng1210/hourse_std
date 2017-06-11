@@ -7,12 +7,12 @@ import java.util.List;
  */
 public class Hourse {
     private String hourseId;
-    private int userId;
-    private String hourseAddr;
+    private String userId;
+    private String hourseAddr; // 房屋地址
     private String province;
     private String city;
     private String area;
-    private String residentialQuarters;
+    private String residentialQuarters; // 小区名称
     private int roomNum; // 房间数量
     private int toiletNum; // 卫生间数量
     private int hallNum; // 大厅数量
@@ -25,6 +25,8 @@ public class Hourse {
     private String brokerName;
     private int areaCovered;
     private int squarePrice; // 价格每平方
+    private String orientations; // 朝向
+    private String floor; // 楼层
     private String furniture; // 家具
     private String cabinet;
     private String state; // 房屋信息审核状态
@@ -147,11 +149,11 @@ public class Hourse {
         this.hourseId = hourseId;
     }
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -177,6 +179,22 @@ public class Hourse {
 
     public void setArea(String area) {
         this.area = area;
+    }
+
+    public String getOrientations() {
+        return orientations;
+    }
+
+    public void setOrientations(String orientations) {
+        this.orientations = orientations;
+    }
+
+    public String getFloor() {
+        return floor;
+    }
+
+    public void setFloor(String floor) {
+        this.floor = floor;
     }
 
     public String getResidentialQuarters() {

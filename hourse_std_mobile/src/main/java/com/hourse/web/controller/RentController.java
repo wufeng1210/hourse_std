@@ -2,7 +2,9 @@ package com.hourse.web.controller;
 
 import com.hourse.web.http.HttpPostHandle;
 import com.hourse.web.model.Hourse;
+import com.hourse.web.model.User;
 import com.hourse.web.service.IHourseService;
+import com.hourse.web.util.CookieUtil;
 import com.hourse.web.util.common.Constant;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
@@ -54,8 +56,20 @@ public class RentController {
     public Map<String, Object> getHourseInfo(HttpServletRequest request) {
         Map<String, Object> resMap = new HashMap<String, Object>();
         Hourse hourse = new Hourse();
+        User user = CookieUtil.getUserInfo(request);
+        if(user.getUserId() == null){
+            resMap.put(Constant.ERROR_NO, "-1");
+            resMap.put(Constant.ERROR_INFO, "用户未登录");
+            return resMap;
+        }
+        hourse.setUserId(user.getUserId());
         String lon = request.getParameter("lon");
         String lat = request.getParameter("lat");
+//        if(lon == null || lat == null){
+//            resMap.put(Constant.ERROR_NO, "-1");
+//            resMap.put(Constant.ERROR_INFO, "获取经纬度失败");
+//            return resMap;
+//        }
 //        String position = lon + "," + lat;
         String city = "";
         String province = "";
@@ -91,9 +105,14 @@ public class RentController {
      */
     @ResponseBody
     @RequestMapping("getHourseDetail")
-    public Map<String, Object> getHourseDetail(Hourse hourse) {
+    public Map<String, Object> getHourseDetail(Hourse hourse, HttpServletRequest request) {
         Map<String, Object> resMap = new HashMap<String, Object>();
-
+        User user = CookieUtil.getUserInfo(request);
+        if(user.getUserId() == null){
+            resMap.put(Constant.ERROR_NO, "-1");
+            resMap.put(Constant.ERROR_INFO, "用户未登录");
+            return resMap;
+        }
         try {
             List<Hourse> hourses = hourseService.getHourseDetail(hourse);
             resMap.put("hourseList", hourses);

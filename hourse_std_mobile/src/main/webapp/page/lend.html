@@ -28,12 +28,13 @@
                 </div>
               </div>
             </li>
-            <li>
+            <li class="item-sync">
               <div class="item-content">
                 <div class="item-inner">
-                  <div class="item-title label">地址</div>
+                  <div class="item-title label">小区名称</div>
                   <div class="item-input">
-                    <textarea name="cidAddr" id="cidAddr" placeholder="请输入房屋地址"></textarea>
+                    <input id="residentialQuarters" name="residentialQuarters" type="text" placeholder="请填写小区名称">
+                    <!-- <input id="value1" type="hidden" value="20,234,504" > -->
                   </div>
                 </div>
               </div>
@@ -41,7 +42,17 @@
             <li>
               <div class="item-content">
                 <div class="item-inner">
-                  <div class="item-title" style="overflow: visible;">联系地址</div>
+                  <div class="item-title label">详细地址</div>
+                  <div class="item-input">
+                    <textarea name="cidAddr" id="cidAddr" placeholder="请输入房屋详细地址"></textarea>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title" style="overflow: visible;">租房方式</div>
                   <div class="select-wrap">
                     <select id="lendType" name="lendType">
                       <option value="日租/短租">日租/短租</option>
@@ -62,8 +73,7 @@
                       <option value="2">2</option>
                       <option value="3">3</option>
                       <option value="4">4</option>
-                      <option value="5">6</option>
-                      <option value="7">7</option>
+                      <option value="5">5</option>
                     </select>
                   </div>
                   <div class="divider">室</div>
@@ -74,8 +84,7 @@
                       <option value="2">2</option>
                       <option value="3">3</option>
                       <option value="4">4</option>
-                      <option value="5">6</option>
-                      <option value="7">7</option>
+                      <option value="5">5</option>
                     </select>
                   </div>
                   <div class="divider">厅</div>
@@ -86,8 +95,7 @@
                       <option value="2">2</option>
                       <option value="3">3</option>
                       <option value="4">4</option>
-                      <option value="5">6</option>
-                      <option value="7">7</option>
+                      <option value="5">5</option>
                     </select>
                   </div>
                   <div class="divider">卫</div>
@@ -99,7 +107,7 @@
                 <div class="item-inner">
                   <div class="item-title label">楼层及朝向</div>
                   <div class="item-input">
-                    <input type="text" name="floor" placeholder="请输入楼层">
+                    <input type="text" name="floor" maxlength="3" placeholder="请输入楼层">
                   </div>
                   <div class="divider">楼</div>
                   <div class="item-input">
@@ -148,6 +156,8 @@
                   <div class="select-wrap">
                     <select id="deposit" name="rentingWay">
                       <option value="押一付一">押一付一</option>
+                      <option value="押一付二">押一付二</option>
+                      <option value="押一付三">押一付三</option>
                     </select>
                   </div>
                 </div>

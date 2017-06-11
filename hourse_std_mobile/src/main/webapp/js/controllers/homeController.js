@@ -15,8 +15,16 @@ define(['utils'], function (Utils) {
         handler: function () {
             mainView.loadPage("/map.do");
         }
+    },{
+        element: '.spe .code-list',
+        event: 'click',
+        handler: goRentDetail
     }];
-    
+    function goRentDetail() {
+        var hourseId = $$(this).data("hourseId");
+        mainView.loadPage("/rentDetail.do?hourseId="+hourseId);
+    }
+
     function  goHomeRent() {
         mainView.loadPage("/homeRent.do");
     }
