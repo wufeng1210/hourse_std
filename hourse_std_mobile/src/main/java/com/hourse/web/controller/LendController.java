@@ -51,6 +51,13 @@ public class LendController {
         return modelAndView;
     }
 
+    /**
+     * 添加房屋信息
+     * @param hourse
+     * @param imageInfo
+     * @param request
+     * @return
+     */
     @RequestMapping("addHourse")
     @ResponseBody
     public Map<String, Object> addHourseInfo(Hourse hourse, ImageInfo imageInfo,HttpServletRequest request){
@@ -76,6 +83,7 @@ public class LendController {
             }
             address = hourse.getProvince() + hourse.getCity() + hourse.getArea() + cidAddress;
             hourse.setHourseAddr(address);
+            hourse.setUserId(user.getUserId());
             HashMap<String, Object> p = new HashMap<String, Object>();
             p.put("address", address.trim());
             p.put("city", hourse.getCity());

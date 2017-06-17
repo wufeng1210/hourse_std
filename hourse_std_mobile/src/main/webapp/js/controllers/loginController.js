@@ -7,7 +7,6 @@ define(['utils'], function (Utils) {
     }];
 
     function submit() {
-        app.showIndicator();
         var userName = $$(".userName").val();
         if(!userName){
             app.alert("用户名不能为空");
@@ -18,6 +17,7 @@ define(['utils'], function (Utils) {
             app.alert("用户名不能为空");
             return;
         }
+        app.showIndicator();
         $$.ajax({
             url: '/login.do?v='+new Date().getTime(),
             type: 'POST',

@@ -98,6 +98,8 @@ public class RentController {
         }
         hourse.setProvince(province);
         hourse.setCity(city);
+        hourse.setLongitude(30.205181);
+        hourse.setLatitude(120.210487);
         List<Hourse> hourses = hourseService.getHourseInfo(hourse);
         resMap.put("hourseList", hourses);
         resMap.put(Constant.ERROR_NO, "0");
