@@ -18,6 +18,12 @@ define(['utils'], function (Utils) {
         handler: function () {
             mainView.loadPage("/collect.do");
         }
+    },{
+        element: '#notice',
+        event: 'click',
+        handler: function () {
+            mainView.loadPage("/notice.do");
+        }
     }];
 
 

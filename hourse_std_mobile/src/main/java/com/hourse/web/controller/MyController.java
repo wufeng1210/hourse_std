@@ -41,6 +41,12 @@ public class MyController {
         return modelAndView;
     }
 
+    @RequestMapping("notice")
+    public ModelAndView notice() {
+        ModelAndView modelAndView = new ModelAndView("notice");
+        return modelAndView;
+    }
+
     @RequestMapping("personInfo")
     public ModelAndView personInfo() {
         ModelAndView modelAndView = new ModelAndView("personal-data");

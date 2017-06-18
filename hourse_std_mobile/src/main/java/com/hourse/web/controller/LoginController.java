@@ -56,7 +56,7 @@ public class LoginController {
             resMap.put(Constant.ERROR_NO, "0");
         } else {
             resMap.put(Constant.ERROR_NO, -1);
-            resMap.put(Constant.ERROR_INFO, "用户名或验证码不正确");
+            resMap.put(Constant.ERROR_INFO, "用户名或密码不正确");
         }
         return resMap;
     }
