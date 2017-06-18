@@ -7,7 +7,8 @@ define(['utils'], function (Utils) {
     }];
 
 
-    function updateHourse() {
+    function updateHourse(event) {
+        event.preventDefault();
         var hourseId = $$(this).data("hourseId");
         var collect = "1";
         if($$("input[name=collect]")[0].checked){
@@ -26,8 +27,10 @@ define(['utils'], function (Utils) {
                 app.hideIndicator();
                 if (data.errorNo == "0") {
                     if(collect == '1'){
+                        $$("input[name=collect]")[0].checked=true;
                         app.alert("收藏成功");
                     }else {
+                        $$("input[name=collect]")[0].checked=false;
                         app.alert("取消收藏成功");
                     }
 
@@ -35,7 +38,7 @@ define(['utils'], function (Utils) {
                     app.alert(data.errorInfo);
                 }
             }
-        })
+        });
     }
 
 

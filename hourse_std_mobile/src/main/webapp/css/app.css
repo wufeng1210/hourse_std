@@ -1822,3 +1822,6 @@ html.with-statusbar-overlay body > .progressbar {
   text-align: center;
   margin: 5px 0px;
 }
+.mod-info-btn {
+  background: #4c9ce6;
+}

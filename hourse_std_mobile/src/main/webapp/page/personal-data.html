@@ -6,7 +6,11 @@
       </a>
     </div>
     <div class="center">个人中心</div>
-    <div class="right"></div>
+    <div class="right">
+      <a href="#" class="link icon-only open-panel" style="visibility: hidden;">
+        <i class="icon icon-bars"></i>
+      </a>
+    </div>
   </div>
 </div>
 
@@ -15,90 +19,46 @@
     <script type="text/template7" id="personal-data-tpl">
       <div class="list-block">
         <ul>
-          {{#unless staff_no}}
-            <li>
-              <div class="item-link item-content user_name_btn">
-                <div class="item-inner">
-                  <div class="item-media">姓名</div>
-                  <div class="item-title">{{#unless user_name}}--{{else}}{{user_name}}{{/unless}}</div>
-                </div>
-              </div>
-            </li>
-            {{else}}
-            <li class="item-content">
-              <div class="item-inner">
-                <div class="item-title">姓名</div>
-                <div class="item-after">{{#unless user_name}}--{{else}}{{user_name}}{{/unless}}</div>
-              </div>
-            </li>
-          {{/unless}}
           <li class="item-content">
             <div class="item-inner">
               <div class="item-title">账号</div>
-              <div class="item-after">{{#unless mobile_tel}}--{{else}}{{mobile_tel}}{{/unless}}</div>
+              <div class="item-after">{{userList[0].userName}}</div>
             </div>
           </li>
         </ul>
       </div>
       <div class="list-block">
         <ul>
-          <li>
+          <li data-type="name">
+            <div class="item-link item-content mobile_tel_btn">
+              <div class="item-inner">
+                <div class="item-media">姓名</div>
+                <div class="item-after">{{userList[0].name}}</div>
+              </div>
+            </div>
+          </li>
+          <li data-type="mobile">
             <div class="item-link item-content mobile_tel_btn">
               <div class="item-inner">
                 <div class="item-media">手机号码</div>
-                <div class="item-title">{{mobile_tel}}</div>
+                <div class="item-after">{{userList[0].mobile}}</div>
               </div>
             </div>
           </li>
-          {{#unless staff_no}}
-            <li>
-              <div class="item-link item-content e_mail_btn">
-                <div class="item-inner">
-                  <div class="item-media">邮箱地址</div>
-                  <div class="item-title">{{#unless e_mail}}--{{else}}{{e_mail}}{{/unless}}</div>
-                </div>
-              </div>
-            </li>
-            {{else}}
-            <li class="item-content">
+          <li data-type="qq">
+            <div class="item-link item-content mobile_tel_btn">
               <div class="item-inner">
-                <div class="item-title">邮箱地址</div>
-                <div class="item-after">{{#unless e_mail}}--{{else}}{{e_mail}}{{/unless}}</div>
+                <div class="item-media">QQ</div>
+                <div class="item-after">{{userList[0].qq}}</div>
               </div>
-            </li>
-          {{/unless}}
-          <li class="item-content">
-            <div class="item-inner">
-              <div class="item-title">联系地址</div>
-              <div class="item-after">{{#unless address}}--{{else}}{{address}}{{/unless}}</div>
             </div>
           </li>
-        </ul>
-      </div>
-      <div class="list-block">
-        <ul>
-          <li class="item-content">
-            <div class="item-inner">
-              <div class="item-title">CRM工号</div>
-              <div class="item-after">{{#unless staff_no}}--{{else}}{{staff_no}}{{/unless}}</div>
-            </div>
-          </li>
-          <li class="item-content">
-            <div class="item-inner">
-              <div class="item-title">所在营业部</div>
-              <div class="item-after">{{#unless branch_name.branch_name}}--{{else}}{{branch_name.branch_name}}{{/unless}}</div>
-            </div>
-          </li>
-          <li class="item-content">
-            <div class="item-inner">
-              <div class="item-title">合同起止时间</div>
-              <div class="item-after">{{effective}}</div>
-            </div>
-          </li>
-          <li class="item-content">
-            <div class="item-inner">
-              <div class="item-title">证书编号</div>
-              <div class="item-after">{{#unless profession_cert}}--{{else}}{{profession_cert}}{{/unless}}</div>
+          <li data-type="wechat">
+            <div class="item-link item-content mobile_tel_btn">
+              <div class="item-inner">
+                <div class="item-media">微信号</div>
+                <div class="item-after">{{userList[0].wechat}}</div>
+              </div>
             </div>
           </li>
         </ul>

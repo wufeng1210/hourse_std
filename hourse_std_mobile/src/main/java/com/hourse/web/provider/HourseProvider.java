@@ -87,7 +87,8 @@ public class HourseProvider {
         sql.append(" from " + TBL_ORDER);
         sql.append( " where 1=1 ");
         sql.append(" and status = 1");
-        sql.append(" and recommend = '1' and isLend  LIMIT 100");
+        sql.append(" and userId = #{userId}");
+        sql.append(" and recommend = '1' and isLend = 1  LIMIT 100");
 
         return sql.toString();
     }

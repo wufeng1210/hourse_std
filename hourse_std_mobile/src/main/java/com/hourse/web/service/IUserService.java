@@ -9,4 +9,6 @@ public interface IUserService {
     public List<User> getUserById(User user);
 
     public List<User> getUserByUserName(User user);
+
+    int updateUserInfo(User user);
 }

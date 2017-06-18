@@ -14,6 +14,42 @@ public class User {
     private String userDescription;
     private String deptName;
     private String agent;
+    private String mobile;  //用户手机号
+    private String name;  // 用户姓名
+    private String qq;  // 用户qq
+    private String wechat;  // 用户微信号
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getQq() {
+        return qq;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq;
+    }
+
+    public String getWechat() {
+        return wechat;
+    }
+
+    public void setWechat(String wechat) {
+        this.wechat = wechat;
+    }
 
     public String getUserId() {
         return userId;
