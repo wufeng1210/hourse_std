@@ -24,7 +24,7 @@ define([], function () {
 
         $$('#customerView').on('show', function () {
             window.mainView = customerView;
-             customerView.loadPage('/rent.do?v='+ new Date().getTime());
+             customerView.loadPage('/rent.do');
         });
 
         $$('#productView').on('show', function () {

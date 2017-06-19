@@ -5,6 +5,7 @@ import com.hourse.web.model.User;
 import com.hourse.web.service.IHourseService;
 import com.hourse.web.service.IUserService;
 import com.hourse.web.util.CookieUtil;
+import com.hourse.web.util.PropertiesUtils;
 import com.hourse.web.util.common.Constant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,6 +51,13 @@ public class MyController {
     @RequestMapping("personInfo")
     public ModelAndView personInfo() {
         ModelAndView modelAndView = new ModelAndView("personal-data");
+        return modelAndView;
+    }
+
+    @RequestMapping("noticeTip")
+    public ModelAndView noticeTip() {
+        ModelAndView modelAndView = new ModelAndView("notice-tip");
+        modelAndView.addObject("notice_tip", PropertiesUtils.get("notice.tip", ""));
         return modelAndView;
     }
 
@@ -117,7 +125,7 @@ public class MyController {
 
     /**
      * 修改房屋信息
-     * @param hourse
+     * @param user
      * @return
      */
     @ResponseBody

@@ -1825,3 +1825,28 @@ html.with-statusbar-overlay body > .progressbar {
 .mod-info-btn {
   background: #4c9ce6;
 }
+.notice-tip .page-content {
+  padding: 44px 15px 50px;
+  background-color: #fff;
+}
+.notice-tip .page-content p {
+  margin: .5em 0;
+  line-height: 1.5;
+  text-indent: 2em;
+  color: #333;
+}
+.notice-tip .page-content p .em {
+  color: #2d77e0;
+}
+.notice-tip a.button {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  border-radius: 0;
+}
+.notice-tip h3 {
+  text-align: center;
+  color: #40464d;
+}
