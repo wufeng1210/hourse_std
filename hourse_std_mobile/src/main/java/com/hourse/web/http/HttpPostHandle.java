@@ -1,9 +1,12 @@
 package com.hourse.web.http;
 
 import com.hourse.web.util.PropertiesUtils;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +24,12 @@ public class HttpPostHandle {
 	
 	public static final String BAIDU_MAP_URL_Direction = "/direction/v1"; 	//查询两地线路信息
 	public static final String BAIDU_MAP_URL_GEOCODER_V2 = "/geocoder/v2/";
+
+	public static final String GAODE_MAP_AK_WEB = PropertiesUtils.get("ak.gaodemap", "a2a37da746cae544a4992ac2467bdefa");
+	public static final String GAODE_MAP_SERVER = PropertiesUtils.get("server.gaodemap", "http://restapi.amap.com");
+
+	public static final String GAODE_MAP_URL_Direction = "/v3/geocode/regeo"; 	//查询两地线路信息
+	public static final String GAODE_MAP_URL_GEOCODER_V2 = "/v3/geocode/geo";
 
 	public static String ENCODING = "UTF8";
 
@@ -112,6 +121,72 @@ public class HttpPostHandle {
 	}
 
 	/**
+	 *
+	 * @param params
+	 * @return
+	 */
+	public static String httpGetAddressOfGaode(Map<String, Object> params){
+		params.put("key", GAODE_MAP_AK_WEB);
+		params.put("output", "json");
+
+		String url = GAODE_MAP_SERVER + GAODE_MAP_URL_Direction + "?" + formatRequest(params);
+		String rstString = null;
+		try {
+
+			HttpResult result = HttpHelper.get(url, ENCODING);
+			if (null != result) {
+				int statusCode = result.getStatuCode();
+				if (statusCode == 200) {
+					String responseStr = result.getHtml();
+					if (responseStr.indexOf("error_no") != -1) {
+						//							res = formatResponse(responseStr, type);
+					} else {
+						byte[] bytes = result.getResponse();
+						rstString = new String(bytes,ENCODING);
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rstString;
+	}
+
+	/**
+	 * 通过经纬度查地址信息
+	 *
+	 * @param params
+	 * @return
+	 */
+	public static String httpGetDirectionOfGaode(Map<String, Object> params){
+		params.put("key", GAODE_MAP_AK_WEB);
+		params.put("output", "json");
+
+		String url = GAODE_MAP_SERVER + GAODE_MAP_URL_GEOCODER_V2 + "?" + formatRequest(params);
+		String rstString = null;
+		try {
+
+			HttpResult result = HttpHelper.get(url, ENCODING);
+			if (null != result) {
+				int statusCode = result.getStatuCode();
+				if (statusCode == 200) {
+					String responseStr = result.getHtml();
+					if (responseStr.indexOf("error_no") != -1) {
+						//							res = formatResponse(responseStr, type);
+					} else {
+						byte[] bytes = result.getResponse();
+						rstString = new String(bytes,ENCODING);
+					}
+				}
+			}
+		} catch (Exception e) {
+			//	e.printStackTrace();
+			logger.error(">>>>>>百度解析失败>>>>>");
+		}
+		return rstString;
+	}
+
+	/**
 	 * 通过经纬度查地址信息
 	 * 或者通过地址查经纬度
 	 * @param params
@@ -151,5 +226,25 @@ public class HttpPostHandle {
 
 	@SuppressWarnings("unchecked")
 	public static void main(String[] a) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("location", "116.481488,39.990464");
+		System.out.println(httpGetAddressOfGaode(map));
+		String jsonStr = HttpPostHandle.httpGetAddressOfGaode(map);
+		JSONObject cityJson = JSONObject.fromObject(jsonStr);
+		JSONObject jsonObject = cityJson.optJSONObject("regeocode").optJSONObject("addressComponent");
+		String province = jsonObject.getString("province");
+		String city = jsonObject.getString("city");
+		String district = jsonObject.getString("district");
+		System.out.println(province);
+		System.out.println(city);
+		System.out.println(district);
+		map = new HashMap<String, Object>();
+		map.put("address", "浙江省杭州市滨江区启智街瑞丽中央花城25幢");
+		System.out.println(httpGetDirectionOfGaode(map));
+		 jsonStr = HttpPostHandle.httpGetDirectionOfGaode(map);
+		 cityJson = JSONObject.fromObject(jsonStr);
+		JSONArray jsonArray = cityJson.optJSONArray("geocodes");
+		String[] location = jsonArray.getJSONObject(0).getString("location").split(",");
+		System.out.println(location[0]+"--"+location[1]);
 	}
 }

@@ -55,7 +55,7 @@ define([], function () {
     function render(selector,data,type,str) {
         var template, templateStr, parent, compiledTemplate;
         if (!type) {
-            type = 'append';
+            type = 'html';
         }
         switch (type) {
             case 'append' : // 模板写在html页面时追加

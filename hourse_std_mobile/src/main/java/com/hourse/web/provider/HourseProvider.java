@@ -28,7 +28,7 @@ public class HourseProvider {
             sql.append("and t.city LIKE CONCAT('%',#{city},'%' )");
         }
         sql.append(" and status = 1");
-        sql.append(" GROUP BY distance DESC LIMIT 100");
+        sql.append(" LIMIT 100");
 
         return sql.toString();
     }
@@ -50,7 +50,7 @@ public class HourseProvider {
             sql.append("and t.city LIKE CONCAT('%',#{city},'%' )");
         }
         sql.append(" and status = 1");
-        sql.append(" ORDER BY distance DESC LIMIT 100");
+        sql.append(" group BY distance ORDER BY distance asc ");
 
         return sql.toString();
     }
@@ -84,11 +84,9 @@ public class HourseProvider {
      */
     public String queryHourseByisRentAndState(Hourse hourse){
         StringBuffer sql = new StringBuffer("select * " );
-        sql.append(" from " + TBL_ORDER);
-        sql.append( " where 1=1 ");
-        sql.append(" and status = 1");
-        sql.append(" and userId = #{userId}");
-        sql.append(" and recommend = '1' and isLend = 1  LIMIT 100");
+        sql.append(" from " + TBL_ORDER + "where ");
+
+        sql.append(SqlProviderUtil.provideConditionNotBlank(hourse));
 
         return sql.toString();
     }

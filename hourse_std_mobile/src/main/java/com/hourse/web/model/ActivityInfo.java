@@ -10,7 +10,7 @@ public class ActivityInfo {
     private String activityImagePath;
     private String activityImageUrl;
     private String target;
-    private String state;
+    private String status;
 
     public int getActivityId() {
         return activityId;
@@ -52,11 +52,11 @@ public class ActivityInfo {
         this.target = target;
     }
 
-    public String getState() {
-        return state;
+    public String getStatus() {
+        return status;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

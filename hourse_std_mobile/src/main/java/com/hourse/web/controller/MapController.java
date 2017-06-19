@@ -45,17 +45,18 @@ public class MapController {
         lat = "30.305123";
         String city = "";
         String province = "";
-        String position = "30.205181,120.210487";
+        String position = "120.210487,30.205181";
         try {
             HashMap<String, Object> p = new HashMap<String, Object>();
             p.put("location", position);
-            p.put("pois", "0");
-            String jsonStr = HttpPostHandle.httpGetAddress(p);
+            String jsonStr = HttpPostHandle.httpGetAddressOfGaode(p);
             logger.info(jsonStr);
             JSONObject cityJson = JSONObject.fromObject(jsonStr);
-            if (cityJson != null && 0 == cityJson.getInt("status")) {
-                province = cityJson.optJSONObject("result").getJSONObject("addressComponent").getString("province");
-                city = cityJson.optJSONObject("result").getJSONObject("addressComponent").getString("city");
+            if (cityJson != null && 1 == cityJson.getInt("status")) {
+                JSONObject jsonObject = cityJson.optJSONObject("regeocode").optJSONObject("addressComponent");
+                province = jsonObject.getString("province");
+                city = jsonObject.getString("city");
+//                String district = jsonObject.getString("district");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -65,8 +66,8 @@ public class MapController {
         }
         hourse.setProvince(province);
         hourse.setCity(city);
-        hourse.setLongitude(Double.parseDouble(lon));
-        hourse.setLatitude(Double.parseDouble(lat));
+        hourse.setLongitude(lon);
+        hourse.setLatitude(lat);
         List<Hourse> hourses = hourseService.getMapInfo(hourse);
         resMap.put("hourseList", hourses);
         resMap.put(Constant.ERROR_NO, "0");

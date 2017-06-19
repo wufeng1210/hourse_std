@@ -9,6 +9,7 @@ import com.hourse.web.service.IImageInfoService;
 import com.hourse.web.util.CookieUtil;
 import com.hourse.web.util.ImageBase64Util;
 import com.hourse.web.util.common.Constant;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.lang.StringEscapeUtils;
@@ -86,16 +87,14 @@ public class LendController {
             hourse.setUserId(user.getUserId());
             HashMap<String, Object> p = new HashMap<String, Object>();
             p.put("address", address.trim());
-            p.put("city", hourse.getCity());
-            p.put("pois", "0");
-            String jsonStr = HttpPostHandle.httpGetAddress(p);
+            String jsonStr = HttpPostHandle.httpGetDirectionOfGaode(p);
             logger.info(jsonStr);
             JSONObject cityJson = JSONObject.fromObject(jsonStr);
-            if (cityJson != null && 0 == cityJson.getInt("status")) {
-                double lng = cityJson.optJSONObject("result").getJSONObject("location").getDouble("lng");
-                double lat = cityJson.optJSONObject("result").getJSONObject("location").getDouble("lat");
-                hourse.setLongitude(new   BigDecimal(lng).setScale(7,   BigDecimal.ROUND_HALF_UP).doubleValue());
-                hourse.setLatitude(new   BigDecimal(lat).setScale(7,   BigDecimal.ROUND_HALF_UP).doubleValue());
+            if (cityJson != null && 1 == cityJson.getInt("status")) {
+                JSONArray jsonArray = cityJson.optJSONArray("geocodes");
+                String[] location = jsonArray.getJSONObject(0).getString("location").split(",");
+                hourse.setLongitude(String.valueOf(location[0]));
+                hourse.setLatitude(String.valueOf(location[1]));
             }else{
                 resMap.put(Constant.ERROR_NO, "-1");
                 resMap.put(Constant.ERROR_INFO, "地址解析失败");

@@ -49,7 +49,7 @@ public class ActivityController {
         Map<String, Object> resMap = new HashMap<String, Object>();
 
         try {
-            activityInfo.setState("1");
+            activityInfo.setStatus("1");
             List<ActivityInfo> activity = activityService.getActivityInfoByState(activityInfo);
             resMap.put("activity", activity);
             Hourse hourse = new Hourse();
@@ -60,7 +60,7 @@ public class ActivityController {
             lat = "30.305123";
             String city = "";
             String province = "";
-            String position = "30.205181,120.210487";
+            String position = "120.210487,30.205181";
             try {
                 HashMap<String, Object> p = new HashMap<String, Object>();
                 p.put("location", position);
@@ -68,9 +68,11 @@ public class ActivityController {
                 String jsonStr = HttpPostHandle.httpGetAddress(p);
                 logger.info(jsonStr);
                 JSONObject cityJson = JSONObject.fromObject(jsonStr);
-                if (cityJson != null && 0 == cityJson.getInt("status")) {
-                    province = cityJson.optJSONObject("result").getJSONObject("addressComponent").getString("province");
-                    city = cityJson.optJSONObject("result").getJSONObject("addressComponent").getString("city");
+                if (cityJson != null && 1 == cityJson.getInt("status")) {
+                    JSONObject jsonObject = cityJson.optJSONObject("regeocode").optJSONObject("addressComponent");
+                    province = jsonObject.getString("province");
+                    city = jsonObject.getString("city");
+//                String district = jsonObject.getString("district");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -80,8 +82,8 @@ public class ActivityController {
             }
             hourse.setProvince(province);
             hourse.setCity(city);
-            hourse.setLongitude(Double.parseDouble(lon));
-            hourse.setLatitude(Double.parseDouble(lat));
+            hourse.setLongitude(lon);
+            hourse.setLatitude(lat);
             List<Hourse> hourses = hourseService.getRecommendHourseInfo(hourse);
             resMap.put("hourseList", hourses);
             resMap.put(Constant.ERROR_NO, "0");

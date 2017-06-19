@@ -79,7 +79,7 @@ public class RentController {
 //        String position = lon + "," + lat;
         String city = "";
         String province = "";
-        String position = "30.205181,120.210487";
+        String position = "120.210487,30.205181";
         try {
             HashMap<String, Object> p = new HashMap<String, Object>();
             p.put("location", position);
@@ -87,9 +87,11 @@ public class RentController {
             String jsonStr = HttpPostHandle.httpGetAddress(p);
             logger.info(jsonStr);
             JSONObject cityJson = JSONObject.fromObject(jsonStr);
-            if (cityJson != null && 0 == cityJson.getInt("status")) {
-                province = cityJson.optJSONObject("result").getJSONObject("addressComponent").getString("province");
-                city = cityJson.optJSONObject("result").getJSONObject("addressComponent").getString("city");
+            if (cityJson != null && 1 == cityJson.getInt("status")) {
+                JSONObject jsonObject = cityJson.optJSONObject("regeocode").optJSONObject("addressComponent");
+                province = jsonObject.getString("province");
+                city = jsonObject.getString("city");
+//                String district = jsonObject.getString("district");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -98,8 +100,8 @@ public class RentController {
         }
         hourse.setProvince(province);
         hourse.setCity(city);
-        hourse.setLongitude(30.205181);
-        hourse.setLatitude(120.210487);
+        hourse.setLongitude("120.210487");
+        hourse.setLatitude("30.205181");
         List<Hourse> hourses = hourseService.getHourseInfo(hourse);
         resMap.put("hourseList", hourses);
         resMap.put(Constant.ERROR_NO, "0");

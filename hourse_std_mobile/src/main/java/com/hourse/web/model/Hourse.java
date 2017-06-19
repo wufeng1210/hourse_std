@@ -13,18 +13,18 @@ public class Hourse {
     private String city;
     private String area;
     private String residentialQuarters; // 小区名称
-    private int roomNum; // 房间数量
-    private int toiletNum; // 卫生间数量
-    private int hallNum; // 大厅数量
-    private int kitchenNum; // 厨房数量
-    private int monthly; // 月租
+    private String roomNum; // 房间数量
+    private String toiletNum; // 卫生间数量
+    private String hallNum; // 大厅数量
+    private String kitchenNum; // 厨房数量
+    private String monthly; // 月租
     private String parkingLot;
     private String rentingWay; // 租房方式
     private String brokerMobile;
     private String brokerCode;
     private String brokerName;
-    private int areaCovered;
-    private int squarePrice; // 价格每平方
+    private String areaCovered;
+    private String squarePrice; // 价格每平方
     private String orientations; // 朝向
     private String floor; // 楼层
     private String furniture; // 家具
@@ -88,15 +88,15 @@ public class Hourse {
 
     private List<ImageInfo> imageInfoList;
     private String distance;
-    private double longitude; // 房屋经度
-    private double latitude; //房屋纬度
+    private String longitude; // 房屋经度
+    private String latitude; //房屋纬度
     private String hourseNum;
 
-    public int getSquarePrice() {
+    public String getSquarePrice() {
         return squarePrice;
     }
 
-    public void setSquarePrice(int squarePrice) {
+    public void setSquarePrice(String squarePrice) {
         this.squarePrice = squarePrice;
     }
 
@@ -116,19 +116,19 @@ public class Hourse {
         this.distance = distance;
     }
 
-    public double getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 
-    public double getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 
@@ -214,43 +214,43 @@ public class Hourse {
         this.residentialQuarters = residentialQuarters;
     }
 
-    public int getRoomNum() {
+    public String getRoomNum() {
         return roomNum;
     }
 
-    public void setRoomNum(int roomNum) {
+    public void setRoomNum(String roomNum) {
         this.roomNum = roomNum;
     }
 
-    public int getToiletNum() {
+    public String getToiletNum() {
         return toiletNum;
     }
 
-    public void setToiletNum(int toiletNum) {
+    public void setToiletNum(String toiletNum) {
         this.toiletNum = toiletNum;
     }
 
-    public int getHallNum() {
+    public String getHallNum() {
         return hallNum;
     }
 
-    public void setHallNum(int hallNum) {
+    public void setHallNum(String hallNum) {
         this.hallNum = hallNum;
     }
 
-    public int getKitchenNum() {
+    public String getKitchenNum() {
         return kitchenNum;
     }
 
-    public void setKitchenNum(int kitchenNum) {
+    public void setKitchenNum(String kitchenNum) {
         this.kitchenNum = kitchenNum;
     }
 
-    public int getMonthly() {
+    public String getMonthly() {
         return monthly;
     }
 
-    public void setMonthly(int monthly) {
+    public void setMonthly(String monthly) {
         this.monthly = monthly;
     }
 
@@ -294,11 +294,11 @@ public class Hourse {
         this.brokerName = brokerName;
     }
 
-    public int getAreaCovered() {
+    public String getAreaCovered() {
         return areaCovered;
     }
 
-    public void setAreaCovered(int areaCovered) {
+    public void setAreaCovered(String areaCovered) {
         this.areaCovered = areaCovered;
     }
 

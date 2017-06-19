@@ -11,6 +11,6 @@ import java.util.List;
  */
 @Repository
 public interface ActivityMapper {
-    @Select("select * from activity_info where state = #{state}")
+    @Select("select * from activity_info where status = #{status}")
     List<ActivityInfo> getActivityInfo(ActivityInfo activityInfo);
 }
