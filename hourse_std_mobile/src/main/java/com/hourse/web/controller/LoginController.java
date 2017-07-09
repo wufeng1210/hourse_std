@@ -5,6 +5,7 @@ import com.hourse.web.service.IUserService;
 import com.hourse.web.util.CookieUtil;
 import com.hourse.web.util.PropertiesUtils;
 import com.hourse.web.util.common.Constant;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,9 @@ public class LoginController {
         if(userList.isEmpty()){
             user.setSecretKey("1");
             user.setUserType("1");
+            if(StringUtils.isEmpty(user.getUserPassWord())){
+                user.setUserPassWord("123456");
+            }
             int userNo = iUserService.interUserInfo(user);
             if(userNo == 0){
                 resMap.put(Constant.ERROR_NO, -1);

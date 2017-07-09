@@ -159,6 +159,45 @@ public class WeChatHttpPostUtil {
         return "";
     }
 
+    /**
+     * 将字节数组转换为十六进制字符串
+     *
+     * @param content
+     * @return
+     */
+    public static String byteToStr(String content) {
+        String strDigest = "";
+        try{
+            MessageDigest md = MessageDigest.getInstance("SHA-1");
+            // 对拼接后的字符串进行 sha1 加密
+            byte[] byteArray = md.digest(content.toString().getBytes());
+
+            for (int i = 0; i < byteArray.length; i++) {
+                strDigest += byteToHexStr(byteArray[i]);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return strDigest;
+    }
+
+    /**
+     * 将字节转换为十六进制字符串
+     *
+     * @param mByte
+     * @return
+     */
+    private static String byteToHexStr(byte mByte) {
+        char[] Digit = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A',
+                'B', 'C', 'D', 'E', 'F' };
+        char[] tempArr = new char[2];
+        tempArr[0] = Digit[(mByte >>> 4) & 0X0F];
+        tempArr[1] = Digit[mByte & 0X0F];
+        String s = new String(tempArr);
+        return s;
+    }
+
     public static void main(String[] args){
         //1、获取access_token
         String access_token = getAccessToken();

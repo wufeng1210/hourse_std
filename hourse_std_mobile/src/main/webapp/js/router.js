@@ -19,6 +19,9 @@ define([], function () {
         $$.ajax({
             url: '/getSignature.do',
             type: 'POST',
+            data:{
+              url:encodeURIComponent(location.href.split('#')[0])
+            },
             dataType: 'json',
             success: function (data) {
                 if(data.errorNo == "0"){
@@ -32,6 +35,9 @@ define([], function () {
                             'getLocation'
                         ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
                     });
+                    if(code){
+                        login();
+                    }
                 }else{
                     app.alert(data.errorInfo);
                 }
@@ -39,7 +45,7 @@ define([], function () {
         });
         //window.location.href= "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0fcaa7eb18ec769e&redirect_uri=http%3a%2f%2fadmin.jingtianwangluo.com%2findex%2f&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
         window.mainView = workbenchView;
-        mainView.loadPage('/goLogin.do');
+        // mainView.loadPage('/goLogin.do');
         $$('#workbenchView').on('show', function () {
             window.mainView = workbenchView;
             workbenchView.loadPage('/home.do');
@@ -62,6 +68,25 @@ define([], function () {
         window.mainView = window.workbenchView;//这个是当前公用view对象
     }
 
+    function login() {
+        $$.ajax({
+            url: '/login.do?v='+new Date().getTime(),
+            type: 'POST',
+            data: {
+                userName : code,
+                userPassWord : ""
+            },
+            dataType: 'json',
+            success: function (data) {
+                app.hideIndicator();
+                if(data.errorNo == "0"){
+                    mainView.loadPage("/home.do");
+                }else{
+                    app.alert(data.errorInfo);
+                }
+            }
+        });
+    }
     /**
      * Load (or reload) controller from js code (another controller) - call it's init function
      * @param  controllerName
