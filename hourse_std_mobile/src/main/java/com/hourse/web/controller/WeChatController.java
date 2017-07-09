@@ -3,6 +3,7 @@ package com.hourse.web.controller;
 import com.hourse.web.util.PropertiesUtils;
 import com.hourse.web.util.RedisClientUtil;
 import com.hourse.web.util.WeChatHttpPostUtil;
+import com.hourse.web.util.common.Constant;
 import freemarker.template.utility.StringUtil;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -52,6 +53,7 @@ public class WeChatController {
         resMap.put("timestamp", timestamp);
         resMap.put("nonceStr", nonceStr);
         resMap.put("signature",signature);
+        resMap.put(Constant.ERROR_NO, 0);
         return resMap;
     }
 }

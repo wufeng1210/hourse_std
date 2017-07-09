@@ -19,4 +19,13 @@ public class UserProvider {
         sql.append("userId=#{userId}");
         return sql.toString();
     }
+
+    /**
+     * 增加用户信息
+     * @param user
+     * @return
+     */
+    public String insert(User user) {
+        return SqlProviderUtil.provideInsertNotBlank(user, "user_info");
+    }
 }

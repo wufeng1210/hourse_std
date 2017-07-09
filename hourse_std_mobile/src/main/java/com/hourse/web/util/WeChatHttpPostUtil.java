@@ -5,6 +5,7 @@ import net.sf.json.JSONObject;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
@@ -14,6 +15,42 @@ import java.util.UUID;
  */
 public class WeChatHttpPostUtil {
 
+    /**
+     *
+     */
+
+    public static String getAuthId(){
+        String authId = "";
+        String url = PropertiesUtils.get("open.wechat.url", "https://open.weixin.qq.com");
+        if(!url.endsWith("/")){
+            url = url + "/";
+        }
+        String appId = PropertiesUtils.get("wechat.appId", "wx30914ca2b7ff409a");
+        url = url + "connect/oauth2/authorize?appid="+appId+"&response_type=code&scope=snsapi_base&state=STATE&connect_redirect=1#wechat_redirect&redirect_uri="+ URLEncoder.encode("http://www.jygozuba.com/");
+        try {
+            URL urlGet = new URL(url);
+            HttpURLConnection http = (HttpURLConnection) urlGet.openConnection();
+            http.setRequestMethod("GET"); // 必须是get方式请求
+            http.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
+            http.setDoOutput(true);
+            http.setDoInput(true);
+            System.setProperty("sun.net.client.defaultConnectTimeout", "30000");// 连接超时30秒
+            System.setProperty("sun.net.client.defaultReadTimeout", "30000"); // 读取超时30秒
+            http.connect();
+            InputStream is = http.getInputStream();
+            int size = is.available();
+            byte[] jsonBytes = new byte[size];
+            is.read(jsonBytes);
+            String message = new String(jsonBytes, "UTF-8");
+            JSONObject demoJson = JSONObject.fromObject(message);
+            System.out.println("JSON字符串："+demoJson);
+            authId = demoJson.getString("access_token");
+            is.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return authId;
+    }
     /**
      * 获取accesstoken
      * https://mp.weixin.qq.com/wiki/15/54ce45d8d30b6bf6758f68d2e95bc627.html
@@ -135,6 +172,7 @@ public class WeChatHttpPostUtil {
         String str = "jsapi_ticket="+jsapi_ticket+"&noncestr="+noncestr+"&timestamp="+timestamp+"&url="+url;
         //6、将字符串进行sha1加密
         String signature =SHA1(str);
+        signature = getAuthId();
         System.out.println("参数："+str+"\n签名："+signature);
     }
 }

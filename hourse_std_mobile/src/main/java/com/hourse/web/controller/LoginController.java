@@ -34,7 +34,9 @@ public class LoginController {
     @RequestMapping("index")
     public ModelAndView index(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView("index");
-//        modelAndView.addObject("securityName","1233");
+        String code = request.getParameter("code");
+        modelAndView.addObject("code", code);
+        logger.info(code);
         request.setAttribute("securityName","12212");
         return modelAndView;
     }
@@ -51,12 +53,24 @@ public class LoginController {
         Map<String, Object> resMap = new HashMap<String, Object>();
 
         List<User> userList =iUserService.getUserByUserName(user);
-        if(!userList.isEmpty()){
-            CookieUtil.setObjectCookie(response, userList.get(0), "hoursestd", -1, PropertiesUtils.get("domain"));
+        if(userList.isEmpty()){
+            user.setSecretKey("1");
+            user.setUserType("1");
+            int userNo = iUserService.interUserInfo(user);
+            if(userNo == 0){
+                resMap.put(Constant.ERROR_NO, -1);
+                resMap.put(Constant.ERROR_INFO, "添加用户失败");
+                return resMap;
+            }
+        }
+        List<User> userInfoList =iUserService.getUser(user);
+        if(!userInfoList.isEmpty()){
+            CookieUtil.setObjectCookie(response, userInfoList.get(0), "hoursestd", -1, PropertiesUtils.get("domain"));
             resMap.put(Constant.ERROR_NO, "0");
-        } else {
+        }else{
             resMap.put(Constant.ERROR_NO, -1);
             resMap.put(Constant.ERROR_INFO, "用户名或密码不正确");
+            return resMap;
         }
         return resMap;
     }

@@ -10,5 +10,10 @@ public interface IUserService {
 
     public List<User> getUserByUserName(User user);
 
+    public List<User> getUser(User user);
+
+
     int updateUserInfo(User user);
+
+    public int interUserInfo(User user);
 }

@@ -5,9 +5,18 @@ import org.slf4j.LoggerFactory;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 图片与BASE64编码互转工具类
@@ -92,26 +101,82 @@ public class ImageBase64Util {
 		if (imgStr == null)           // 图像数据为空
             return false;  
         BASE64Decoder decoder = new BASE64Decoder();  
-        try {  
-			// Base64解码
-            byte[] bytes = decoder.decodeBuffer(imgStr);  
-            for (int i = 0; i < bytes.length; ++i) {  
-				if (bytes[i] < 0) {// 调整异常数据
-                    bytes[i] += 256;  
-                }  
-            }  
-			// 生成jpeg图片
-            OutputStream out = new FileOutputStream(imgFilePath);  
-            out.write(bytes);  
-            out.flush();  
-            out.close();  
+        try {
+            // Base64解码
+            byte[] bytes = decoder.decodeBuffer(imgStr);
+            for (int i = 0; i < bytes.length; ++i) {
+                if (bytes[i] < 0) {// 调整异常数据
+                    bytes[i] += 256;
+                }
+            }
+            // 生成jpeg图片
+            OutputStream out = new FileOutputStream(imgFilePath);
+            ByteArrayInputStream stream = new ByteArrayInputStream(bytes);
+            BufferedImage sourceImage = ImageIO.read(stream);
+            double maxidcardsize = 1024*Double.parseDouble(PropertiesUtils.get("MAXIDCARDSIZE","500"));
+            Map<String ,Object> img_desc = img2base64(sourceImage);
+            Long image_file_length = (Long)img_desc.get("length");
+            String image_data = img_desc.get("base")+"";
+            while (image_file_length >= maxidcardsize){
+                sourceImage = CompressionImg(sourceImage, 1.2);
+                Map<String ,Object> img_map = img2base64(sourceImage);
+                image_data = img_map.get("base")+"";
+                image_file_length = (Long)img_map.get("length");
+                image_data = URLEncoder.encode(image_data, "UTF8");
+            }
+            bytes = decoder.decodeBuffer(image_data);
+            for (int i = 0; i < bytes.length; ++i) {
+                if (bytes[i] < 0) {// 调整异常数据
+                    bytes[i] += 256;
+                }
+            }
+            out.write(bytes);
+            out.flush();
+            out.close();
             return true;  
         } catch (Exception e) {  
 			logger.error("图片转换失败", e);
             return false;  
         }  
-    } 
-    
+    }
+    private static Map<String, Object> img2base64(BufferedImage bim) throws IOException {
+        Map<String, Object> result = new HashMap<String, Object>();
+        result.put("base", "");
+        result.put("length", 0);
+        try {
+            Date now = Calendar.getInstance().getTime();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyyddmmhhmmss");
+            String filePath = sdf.format(now);
+            filePath += (int) (Math.random() * 100000);
+            File imgDir = new File("\\templateImg");
+            if (!imgDir.exists()) {
+                imgDir.mkdir();
+            }
+            File file = new File("\\templateImg\\" + filePath + ".jpg");
+            ImageIO.write(bim, "jpg", file);
+            String base64 = ImageBase64Util.GetImageStr(file);
+			/*logger.info("压缩后文件大小------>" + file.length());
+			logger.info("压缩后base大小------>" + base64.length());*/
+            result.put("base", base64);
+            result.put("length", file.length());
+            file.delete();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+    /**
+     * 2015.10.12wuym 图片压缩
+     * @param proportion 按比例压缩后的图片尺寸
+     * */
+    private static BufferedImage CompressionImg(BufferedImage rotatedImage, double proportion){
+        int w = rotatedImage.getWidth();
+        int h = rotatedImage.getHeight();
+        Image img = rotatedImage.getScaledInstance(w,h,0);
+        BufferedImage bim = new BufferedImage((int)(w/proportion), (int)(h/proportion) , rotatedImage.getType());
+        bim.getGraphics().drawImage(img, 0, 0, (int)(w/proportion), (int)(h/proportion), null); // 绘制缩小后的图
+        return bim;
+    }
     public static String GetImageStr(byte[] data) {  
     	String res = "";
     	try{

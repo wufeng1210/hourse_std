@@ -38,14 +38,13 @@ public class MapController {
     public Map<String, Object> getHourseInfo(HttpServletRequest request) {
         Map<String, Object> resMap = new HashMap<String, Object>();
         Hourse hourse = new Hourse();
-        String lon = request.getParameter("lon");
-        String lat = request.getParameter("lat");
-//        String position = lon + "," + lat;
-        lon = "120.310423";
-        lat = "30.305123";
+        String lon = request.getParameter("longitude");
+        String lat = request.getParameter("latitude");
+        String position = lon + "," + lat;
+//        lon = "120.310423";
+//        lat = "30.305123";
         String city = "";
         String province = "";
-        String position = "120.210487,30.205181";
         try {
             HashMap<String, Object> p = new HashMap<String, Object>();
             p.put("location", position);

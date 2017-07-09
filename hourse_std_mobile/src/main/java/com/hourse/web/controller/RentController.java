@@ -69,17 +69,17 @@ public class RentController {
             return resMap;
         }
         hourse.setUserId(user.getUserId());
-        String lon = request.getParameter("lon");
-        String lat = request.getParameter("lat");
-//        if(lon == null || lat == null){
-//            resMap.put(Constant.ERROR_NO, "-1");
-//            resMap.put(Constant.ERROR_INFO, "获取经纬度失败");
-//            return resMap;
-//        }
-//        String position = lon + "," + lat;
+        String lon = request.getParameter("longitude");
+        String lat = request.getParameter("latitude");
+        if(lon == null || lat == null){
+            resMap.put(Constant.ERROR_NO, "-1");
+            resMap.put(Constant.ERROR_INFO, "获取经纬度失败");
+            return resMap;
+        }
+        String position = lon + "," + lat;
         String city = "";
         String province = "";
-        String position = "120.210487,30.205181";
+//        String position = "120.210487,30.205181";
         try {
             HashMap<String, Object> p = new HashMap<String, Object>();
             p.put("location", position);

@@ -27,7 +27,14 @@ public class UserServiceImpl implements IUserService {
         return  userMapper.getUserByUserName(user);
     }
 
+    public List<User> getUser(User user){
+        return userMapper.getUser(user);
+    }
     public int updateUserInfo(User user) {
         return userMapper.update(user);
+    }
+
+    public int interUserInfo(User user) {
+        return userMapper.insert(user);
     }
 }
