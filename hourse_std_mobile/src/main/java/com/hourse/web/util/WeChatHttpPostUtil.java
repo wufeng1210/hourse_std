@@ -1,6 +1,8 @@
 package com.hourse.web.util;
 
 import net.sf.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -15,6 +17,7 @@ import java.util.UUID;
  */
 public class WeChatHttpPostUtil {
 
+    private static Logger logger = LoggerFactory.getLogger(WeChatHttpPostUtil.class);
     /**
      *
      */
@@ -50,6 +53,84 @@ public class WeChatHttpPostUtil {
             e.printStackTrace();
         }
         return authId;
+    }
+
+    /**
+     * 获取OpenId
+     * https://mp.weixin.qq.com/wiki/15/54ce45d8d30b6bf6758f68d2e95bc627.html
+     * @return
+     */
+    public static String getOpenId(String code){
+        String value = "";
+        String url = PropertiesUtils.get("wechat.url", "https://api.weixin.qq.com");
+        if(!url.endsWith("/")){
+            url = url + "/";
+        }
+        String appId = PropertiesUtils.get("wechat.appId", "wx30914ca2b7ff409a");
+        String secret = PropertiesUtils.get("wechat.appsecret", "70b086f6135427cea308a392c66600e7"); ////第三方用户唯一凭证密钥，即appsecret
+
+        url = url + "sns/oauth2/access_token?appid="+appId+"&secret="+secret+"&code="+code+"&grant_type=authorization_code";
+        logger.info("url get openId>>"+url);
+        try {
+            URL urlGet = new URL(url);
+            HttpURLConnection http = (HttpURLConnection) urlGet.openConnection();
+            http.setRequestMethod("GET"); // 必须是get方式请求
+            http.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
+            http.setDoOutput(true);
+            http.setDoInput(true);
+            System.setProperty("sun.net.client.defaultConnectTimeout", "30000");// 连接超时30秒
+            System.setProperty("sun.net.client.defaultReadTimeout", "30000"); // 读取超时30秒
+            http.connect();
+            InputStream is = http.getInputStream();
+            int size = is.available();
+            byte[] jsonBytes = new byte[size];
+            is.read(jsonBytes);
+            String message = new String(jsonBytes, "UTF-8");
+            JSONObject demoJson = JSONObject.fromObject(message);
+            System.out.println("JSON字符串："+demoJson);
+            value = demoJson.getString("openid");
+            is.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return value;
+    }
+    //UnionID
+    /**
+     * 获取UnionID
+     * https://mp.weixin.qq.com/wiki/15/54ce45d8d30b6bf6758f68d2e95bc627.html
+     * @return
+     */
+    public static String getUnionID(String access_token, String openid){
+        String value = "";
+        String url = PropertiesUtils.get("wechat.url", "https://api.weixin.qq.com");
+        if(!url.endsWith("/")){
+            url = url + "/";
+        }
+        url = url + "cgi-bin/user/info?access_token="+access_token+"&openid="+openid+"&lang=zh_CN";
+        try {
+            URL urlGet = new URL(url);
+            HttpURLConnection http = (HttpURLConnection) urlGet.openConnection();
+            http.setRequestMethod("GET"); // 必须是get方式请求
+            http.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
+            http.setDoOutput(true);
+            http.setDoInput(true);
+            System.setProperty("sun.net.client.defaultConnectTimeout", "30000");// 连接超时30秒
+            System.setProperty("sun.net.client.defaultReadTimeout", "30000"); // 读取超时30秒
+            http.connect();
+            InputStream is = http.getInputStream();
+            int size = is.available();
+            byte[] jsonBytes = new byte[size];
+            is.read(jsonBytes);
+            String message = new String(jsonBytes, "UTF-8");
+            JSONObject demoJson = JSONObject.fromObject(message);
+            System.out.println("JSON字符串："+demoJson);
+            value = demoJson.getString("unionid");
+            is.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return value;
     }
     /**
      * 获取accesstoken

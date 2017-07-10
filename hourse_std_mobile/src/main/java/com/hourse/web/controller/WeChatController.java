@@ -40,12 +40,22 @@ public class WeChatController {
             accessToken = WeChatHttpPostUtil.getAccessToken();
             RedisClientUtil.set("accessToken", accessToken, 2*60*60);
         }
+        //GET https://api.weixin.qq.com/cgi-bin/user/info?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN
         // 2、根据access_token获取jsapi_ticket
         String jsapiTicket =  RedisClientUtil.get("jsapiTicket");
         if(StringUtils.isEmpty(jsapiTicket)){
             jsapiTicket = WeChatHttpPostUtil.getTicket(accessToken);
             RedisClientUtil.set("jsapiTicket", jsapiTicket, 2*60*60);
         }
+        String code = request.getParameter("code");
+        String redisCode = RedisClientUtil.get("code");
+        if(StringUtils.isEmpty(redisCode)){
+            RedisClientUtil.set("code", request.getParameter("code"), 5*60);
+        }
+        String openId = WeChatHttpPostUtil.getOpenId(code);
+
+//        String unionID = WeChatHttpPostUtil.getUnionID(accessToken, openId);
+        resMap.put("openId", openId);
         //3、时间戳和随机字符串
         String nonceStr = UUID.randomUUID().toString().replace("-", "").substring(0, 16);//随机字符串
         String timestamp = String.valueOf(System.currentTimeMillis() / 1000);//时间戳

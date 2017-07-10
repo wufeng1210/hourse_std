@@ -20,7 +20,8 @@ define([], function () {
             url: '/getSignature.do',
             type: 'POST',
             data:{
-              url:encodeURIComponent(location.href.split('#')[0])
+                url:encodeURIComponent(location.href.split('#')[0]),
+                code: code
             },
             dataType: 'json',
             success: function (data) {
@@ -35,8 +36,8 @@ define([], function () {
                             'getLocation'
                         ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
                     });
-                    if(code){
-                        login();
+                    if(data.openId){
+                        login(data.openId);
                     }
                 }else{
                     app.alert(data.errorInfo);
@@ -68,12 +69,12 @@ define([], function () {
         window.mainView = window.workbenchView;//这个是当前公用view对象
     }
 
-    function login() {
+    function login(userName) {
         $$.ajax({
             url: '/login.do?v='+new Date().getTime(),
             type: 'POST',
             data: {
-                userName : code,
+                userName : userName,
                 userPassWord : ""
             },
             dataType: 'json',

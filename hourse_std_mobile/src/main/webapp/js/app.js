@@ -9,8 +9,8 @@ require.config({
 		Framework7: {
 			exports: 'Framework7'
 		}
-	}/*,
-	urlArgs:"rnt=" + new Date().getTime()*/
+	},
+	urlArgs:"rnt=" + new Date().getTime()
 });
 
 require(['Framework7', 'router', 'utils'], function (Framework7, Router, Utils) {

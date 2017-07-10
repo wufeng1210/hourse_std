@@ -66,6 +66,8 @@ public class LoginController {
                 resMap.put(Constant.ERROR_INFO, "添加用户失败");
                 return resMap;
             }
+        }else {
+            user.setUserPassWord("123456");
         }
         List<User> userInfoList =iUserService.getUser(user);
         if(!userInfoList.isEmpty()){

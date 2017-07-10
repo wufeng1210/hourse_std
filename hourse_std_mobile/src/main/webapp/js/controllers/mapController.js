@@ -46,7 +46,7 @@ define(['utils'], function (Utils) {
                             position: [marker.longitude, marker.latitude],
                             offset: new AMap.Pixel(-12, -36),
                             draggable: false,
-                            content:'<div class="marker-route marker-marker-bus-from">'+marker.hourseNum+'</div>'
+                            content:'<div class="marker-route marker-marker-bus-from" data-residentialQuarters="'+marker.residentialQuarters+'">'+marker.hourseNum+'</div>'
                         });
                     });
                 }else {
