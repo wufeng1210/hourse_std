@@ -60,8 +60,9 @@ public class WeChatHttpPostUtil {
      * https://mp.weixin.qq.com/wiki/15/54ce45d8d30b6bf6758f68d2e95bc627.html
      * @return
      */
-    public static String getOpenId(String code){
+    public static JSONObject getOpenId(String refresh_token){
         String value = "";
+        JSONObject demoJson = new JSONObject();
         String url = PropertiesUtils.get("wechat.url", "https://api.weixin.qq.com");
         if(!url.endsWith("/")){
             url = url + "/";
@@ -69,7 +70,7 @@ public class WeChatHttpPostUtil {
         String appId = PropertiesUtils.get("wechat.appId", "wx30914ca2b7ff409a");
         String secret = PropertiesUtils.get("wechat.appsecret", "70b086f6135427cea308a392c66600e7"); ////第三方用户唯一凭证密钥，即appsecret
 
-        url = url + "sns/oauth2/access_token?appid="+appId+"&secret="+secret+"&code="+code+"&grant_type=authorization_code";
+        url = url + "sns/oauth2/refresh_token?appid="+appId+"&grant_type=refresh_token&refresh_token="+refresh_token;
         logger.info("url get openId>>"+url);
         try {
             URL urlGet = new URL(url);
@@ -86,14 +87,13 @@ public class WeChatHttpPostUtil {
             byte[] jsonBytes = new byte[size];
             is.read(jsonBytes);
             String message = new String(jsonBytes, "UTF-8");
-            JSONObject demoJson = JSONObject.fromObject(message);
+            demoJson = JSONObject.fromObject(message);
             System.out.println("JSON字符串："+demoJson);
-            value = demoJson.getString("openid");
             is.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return value;
+        return demoJson;
     }
     //UnionID
     /**
@@ -101,13 +101,14 @@ public class WeChatHttpPostUtil {
      * https://mp.weixin.qq.com/wiki/15/54ce45d8d30b6bf6758f68d2e95bc627.html
      * @return
      */
-    public static String getUnionID(String access_token, String openid){
+    public static JSONObject getUserInfo(String access_token, String openid){
+        JSONObject demoJson = new JSONObject();
         String value = "";
         String url = PropertiesUtils.get("wechat.url", "https://api.weixin.qq.com");
         if(!url.endsWith("/")){
             url = url + "/";
         }
-        url = url + "cgi-bin/user/info?access_token="+access_token+"&openid="+openid+"&lang=zh_CN";
+        url = url + "sns/userinfo?access_token="+access_token+"&openid="+openid+"&lang=zh_CN";
         try {
             URL urlGet = new URL(url);
             HttpURLConnection http = (HttpURLConnection) urlGet.openConnection();
@@ -123,30 +124,30 @@ public class WeChatHttpPostUtil {
             byte[] jsonBytes = new byte[size];
             is.read(jsonBytes);
             String message = new String(jsonBytes, "UTF-8");
-            JSONObject demoJson = JSONObject.fromObject(message);
+            demoJson = JSONObject.fromObject(message);
             System.out.println("JSON字符串："+demoJson);
-            value = demoJson.getString("unionid");
             is.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return value;
+        return demoJson;
     }
     /**
      * 获取accesstoken
      * https://mp.weixin.qq.com/wiki/15/54ce45d8d30b6bf6758f68d2e95bc627.html
      * @return
      */
-    public static String getAccessToken(){
+    public static JSONObject getAccessToken(String code){
         String access_token = "";
         String url = PropertiesUtils.get("wechat.url", "https://api.weixin.qq.com");
         if(!url.endsWith("/")){
             url = url + "/";
         }
+        JSONObject demoJson = new JSONObject();
         String grant_type = "client_credential";
         String appId = PropertiesUtils.get("wechat.appId", "wx30914ca2b7ff409a");
         String secret = PropertiesUtils.get("wechat.appsecret", "70b086f6135427cea308a392c66600e7"); ////第三方用户唯一凭证密钥，即appsecret
-        url = url + "cgi-bin/token?grant_type="+grant_type+"&appid="+appId+"&secret="+secret;
+        url = url + "sns/oauth2/access_token?appid="+appId+"&secret="+secret+"&code="+code+"&grant_type=authorization_code ";
         try {
             URL urlGet = new URL(url);
             HttpURLConnection http = (HttpURLConnection) urlGet.openConnection();
@@ -162,14 +163,14 @@ public class WeChatHttpPostUtil {
             byte[] jsonBytes = new byte[size];
             is.read(jsonBytes);
             String message = new String(jsonBytes, "UTF-8");
-            JSONObject demoJson = JSONObject.fromObject(message);
+            demoJson = JSONObject.fromObject(message);
             System.out.println("JSON字符串："+demoJson);
             access_token = demoJson.getString("access_token");
             is.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return access_token;
+        return demoJson;
     }
 
 
@@ -281,7 +282,8 @@ public class WeChatHttpPostUtil {
 
     public static void main(String[] args){
         //1、获取access_token
-        String access_token = getAccessToken();
+        JSONObject jsonObject = getAccessToken("");
+        String access_token = jsonObject.getString("access_token");
         // 获取ticket
         String jsapi_ticket = getTicket(access_token);
         //3、时间戳和随机字符串

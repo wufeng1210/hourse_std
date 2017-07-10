@@ -4,6 +4,7 @@ import com.hourse.web.model.User;
 import com.hourse.web.service.IUserService;
 import com.hourse.web.util.CookieUtil;
 import com.hourse.web.util.PropertiesUtils;
+import com.hourse.web.util.RedisClientUtil;
 import com.hourse.web.util.common.Constant;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -35,9 +36,12 @@ public class LoginController {
     @RequestMapping("index")
     public ModelAndView index(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView("index");
-        String code = request.getParameter("code");
-        modelAndView.addObject("code", code);
-        logger.info(code);
+        String redisCode = RedisClientUtil.get("code");
+        if(StringUtils.isEmpty(redisCode)){
+            redisCode = request.getParameter("code");
+        }
+        modelAndView.addObject("code", redisCode);
+        logger.info("redisCode><><><><"+redisCode);
         request.setAttribute("securityName","12212");
         return modelAndView;
     }

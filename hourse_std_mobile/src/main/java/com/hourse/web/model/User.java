@@ -18,6 +18,15 @@ public class User {
     private String name;  // 用户姓名
     private String qq;  // 用户qq
     private String wechat;  // 用户微信号
+    private String nickName; // 昵称
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
 
     public String getMobile() {
         return mobile;
