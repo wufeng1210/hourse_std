@@ -71,7 +71,7 @@ define(['utils'], function (Utils) {
                         $$(document).on("click", ".marker-route", function () {
                             console.info($$(this).attr("residentialQuarters"));
                             var residentialQuarters = $$(this).attr("residentialQuarters");
-                            mainView.loadPage("homeRent.do?residentialQuarters="+residentialQuarters);
+                            mainView.loadPage("homeRent.do?residentialQuarters="+residentialQuarters+"&isLend=0");
                         })
                     });
                 }else {

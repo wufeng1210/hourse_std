@@ -17,7 +17,9 @@ define(['utils'], function (Utils) {
             success: function (data) {
                 app.hideIndicator();
                 if(data.errorNo == "0"){
-                    app.alert("添加成功");
+                    app.alert("添加成功", function () {
+                        mainView.loadPage("/myRent.do")
+                    });
                 }else{
                     app.alert(data.errorInfo);
                 }

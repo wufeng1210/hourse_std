@@ -27,6 +27,12 @@ public class HourseProvider {
         if (StringUtils.hasText(hourse.getCity())) {
             sql.append("and t.city LIKE CONCAT('%',#{city},'%' )");
         }
+        if (StringUtils.hasText(hourse.getResidentialQuarters())) {
+            sql.append("and t.residentialQuarters LIKE CONCAT('%',#{residentialQuarters},'%' )");
+        }
+        if (StringUtils.hasText(hourse.getIsLend())) {
+            sql.append("and t.isLend = #{isLend}");
+        }
         sql.append(" and status = 1");
         sql.append(" LIMIT 100");
 

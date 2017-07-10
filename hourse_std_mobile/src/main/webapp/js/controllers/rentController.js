@@ -14,8 +14,12 @@ define(['utils'], function (Utils) {
 
     function init(query) {
         var residentialQuarters = "";
+        var isLend = "";
         if(query.residentialQuarters){
             residentialQuarters = query.residentialQuarters;
+        }
+        if(query.isLend){
+            isLend = "0";
         }
         wx.getLocation({
             type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
@@ -24,12 +28,12 @@ define(['utils'], function (Utils) {
                 var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
                 // var speed = res.speed; // 速度，以米/每秒计
                 // var accuracy = res.accuracy; // 位置精度
-                getHourseInfo(latitude, longitude, residentialQuarters);
+                getHourseInfo(latitude, longitude, residentialQuarters,isLend);
             }
         });
 
     }
-    function getHourseInfo(latitude, longitude, residentialQuarters) {
+    function getHourseInfo(latitude, longitude, residentialQuarters, isLend) {
         app.showIndicator();
         $$.ajax({
             url: '/getHourseInfo.do',
@@ -37,7 +41,8 @@ define(['utils'], function (Utils) {
             data: {
                 longitude: longitude,
                 latitude : latitude,
-                residentialQuarters: residentialQuarters
+                residentialQuarters: residentialQuarters,
+                isLend : isLend
             },
             dataType: 'json',
             success: function (data) {

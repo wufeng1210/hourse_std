@@ -5,6 +5,7 @@ import com.hourse.web.model.Hourse;
 import com.hourse.web.model.User;
 import com.hourse.web.service.IHourseService;
 import com.hourse.web.util.CookieUtil;
+import com.hourse.web.util.PropertiesUtils;
 import com.hourse.web.util.common.Constant;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
@@ -129,6 +130,7 @@ public class RentController {
         hourse.setUserId(user.getUserId());
         try {
             List<Hourse> hourses = hourseService.getHourseDetail(hourse);
+            resMap.put("serviceCall", PropertiesUtils.get("serviceCall", ""));
             resMap.put("hourseList", hourses);
             resMap.put(Constant.ERROR_NO, "0");
         } catch (Exception e) {

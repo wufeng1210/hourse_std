@@ -239,7 +239,7 @@ public class HttpPostHandle {
 		System.out.println(city);
 		System.out.println(district);
 		map = new HashMap<String, Object>();
-		map.put("address", "浙江省杭州市滨江区启智街瑞丽中央花城25幢");
+		map.put("address", "浙江省杭州市萧山区城厢街道萧西路同和公寓2幢一单元501");
 		System.out.println(httpGetDirectionOfGaode(map));
 		 jsonStr = HttpPostHandle.httpGetDirectionOfGaode(map);
 		 cityJson = JSONObject.fromObject(jsonStr);
