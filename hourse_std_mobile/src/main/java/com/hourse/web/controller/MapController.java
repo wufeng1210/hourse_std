@@ -40,6 +40,12 @@ public class MapController {
         Hourse hourse = new Hourse();
         String lon = request.getParameter("longitude");
         String lat = request.getParameter("latitude");
+        logger.info("用户经纬度："+lon + "=="+ lat);
+        if(lon == null || lat == null){
+            resMap.put(Constant.ERROR_NO, "-1");
+            resMap.put(Constant.ERROR_INFO, "获取经纬度失败");
+            return resMap;
+        }
         String position = lon + "," + lat;
 //        lon = "120.310423";
 //        lat = "30.305123";

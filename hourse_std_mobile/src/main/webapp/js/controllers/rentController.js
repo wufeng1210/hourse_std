@@ -13,11 +13,6 @@ define(['utils'], function (Utils) {
 
 
     function init() {
-        getHourseInfo();
-    }
-    var latitude;
-    var longitude;
-    function getHourseInfo() {
         wx.getLocation({
             type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
             success: function (res) {
@@ -25,8 +20,12 @@ define(['utils'], function (Utils) {
                 longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
                 // var speed = res.speed; // 速度，以米/每秒计
                 // var accuracy = res.accuracy; // 位置精度
+                getHourseInfo(latitude, longitude);
             }
         });
+
+    }
+    function getHourseInfo(latitude, longitude) {
         app.showIndicator();
         $$.ajax({
             url: '/getHourseInfo.do',
@@ -48,6 +47,7 @@ define(['utils'], function (Utils) {
             }
         });
     }
+
 
     return {
         init: init

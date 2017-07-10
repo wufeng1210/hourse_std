@@ -71,6 +71,7 @@ public class RentController {
         hourse.setUserId(user.getUserId());
         String lon = request.getParameter("longitude");
         String lat = request.getParameter("latitude");
+        logger.info("用户经纬度："+lon + "=="+ lat);
         if(lon == null || lat == null){
             resMap.put(Constant.ERROR_NO, "-1");
             resMap.put(Constant.ERROR_INFO, "获取经纬度失败");

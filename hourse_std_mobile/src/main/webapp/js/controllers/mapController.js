@@ -6,21 +6,37 @@ define(['utils'], function (Utils) {
 
 
 
-    var latitude;
-    var longitude;
     function init() {
         // Utils.bindEvents(bindings);
         //创建地图
         wx.getLocation({
             type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
             success: function (res) {
-                latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
-                longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+               var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+               var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
                 // var speed = res.speed; // 速度，以米/每秒计
                 // var accuracy = res.accuracy; // 位置精度
+                // 数据
+                getMapInfo(latitude, longitude);
             }
         });
-        // 数据
+
+        /*var markers = [{
+            icon: 'http://webapi.amap.com/theme/v1.3/markers/n/mark_b1.png',
+            position: [120.2104870, 30.2051810],
+            content: '22'
+        }, {
+            icon: 'http://webapi.amap.com/theme/v1.3/markers/n/mark_b2.png',
+            position: [120.2204870, 30.2251810],
+            content: '22'
+        }, {
+            icon: 'http://webapi.amap.com/theme/v1.3/markers/n/mark_b3.png',
+            position: [120.2304870, 30.2351810],
+            content: '22'
+        }];*/
+    }
+
+    function getMapInfo(latitude, longitude) {
         $$.ajax({
             url: '/getMapInfo.do',
             type: 'POST',
@@ -55,21 +71,6 @@ define(['utils'], function (Utils) {
 
             }
         });
-        /*var markers = [{
-            icon: 'http://webapi.amap.com/theme/v1.3/markers/n/mark_b1.png',
-            position: [120.2104870, 30.2051810],
-            content: '22'
-        }, {
-            icon: 'http://webapi.amap.com/theme/v1.3/markers/n/mark_b2.png',
-            position: [120.2204870, 30.2251810],
-            content: '22'
-        }, {
-            icon: 'http://webapi.amap.com/theme/v1.3/markers/n/mark_b3.png',
-            position: [120.2304870, 30.2351810],
-            content: '22'
-        }];*/
-
-
     }
 
 
