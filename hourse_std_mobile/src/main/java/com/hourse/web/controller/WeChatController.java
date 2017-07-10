@@ -37,17 +37,34 @@ public class WeChatController {
         logger.info("url>>>"+url);
         Map<String, Object> resMap = new HashMap<String, Object>() ;
         try {
-            // 1、获取access_token
-            String accessToken = RedisClientUtil.get("accessToken");
+            // 1、获取授权access_token
+            String authAccessToken = RedisClientUtil.get("authAccessToken");
             String refresh_token = RedisClientUtil.get("refresh_token");
-            logger.info("accessToken>>>"+accessToken);
+            logger.info("authAccessToken>>>"+authAccessToken);
             logger.info("refresh_token>>>"+refresh_token);
-            if(StringUtils.isEmpty(accessToken) || StringUtils.isEmpty(refresh_token)){
-                JSONObject jsonObject= WeChatHttpPostUtil.getAccessToken(code);
-                accessToken = jsonObject.getString("access_token");
+//            if(StringUtils.isEmpty(authAccessToken) || StringUtils.isEmpty(refresh_token)){
+                JSONObject jsonObject= WeChatHttpPostUtil.getAuthAccessToken(code);
+                authAccessToken = jsonObject.getString("access_token");
                 refresh_token = jsonObject.getString("refresh_token");
-                RedisClientUtil.set("accessToken", accessToken, 2*60*60);
+                RedisClientUtil.set("authAccessToken", authAccessToken, 2*60*60);
                 RedisClientUtil.set("refresh_token", refresh_token, 30*24*60*60);
+//            }
+
+            logger.info("code>>>>"+code);
+            String redisCode = RedisClientUtil.get("code");
+            logger.info("redisCode>>>>"+redisCode);
+            jsonObject = WeChatHttpPostUtil.getOpenId(refresh_token);
+            String openId = jsonObject.getString("openid");
+            resMap.put("openId", openId);
+            JSONObject userInfoJsonObject= WeChatHttpPostUtil.getUserInfo(authAccessToken, openId);
+            String nickname = userInfoJsonObject.getString("nickname");
+            resMap.put("nickName", nickname);
+            // 1、获取普通access_token
+            String accessToken = RedisClientUtil.get("accessToken");
+            logger.info("accessToken>>>"+accessToken);
+            if(StringUtils.isEmpty(accessToken)){
+                accessToken = WeChatHttpPostUtil.getAccessToken();
+                RedisClientUtil.set("accessToken", accessToken, 2*60*60);
             }
             //GET https://api.weixin.qq.com/cgi-bin/user/info?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN
             // 2、根据access_token获取jsapi_ticket
@@ -56,16 +73,6 @@ public class WeChatController {
                 jsapiTicket = WeChatHttpPostUtil.getTicket(accessToken);
                 RedisClientUtil.set("jsapiTicket", jsapiTicket, 2*60*60);
             }
-
-            logger.info("code>>>>"+code);
-            String redisCode = RedisClientUtil.get("code");
-            logger.info("redisCode>>>>"+redisCode);
-            JSONObject jsonObject = WeChatHttpPostUtil.getOpenId(refresh_token);
-            String openId = jsonObject.getString("openid");
-            resMap.put("openId", openId);
-            JSONObject userInfoJsonObject= WeChatHttpPostUtil.getUserInfo(accessToken, openId);
-            String nickname = userInfoJsonObject.getString("nickname");
-            resMap.put("nickName", nickname);
             //3、时间戳和随机字符串
             String nonceStr = UUID.randomUUID().toString().replace("-", "").substring(0, 16);//随机字符串
             String timestamp = String.valueOf(System.currentTimeMillis() / 1000);//时间戳

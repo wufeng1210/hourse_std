@@ -36,10 +36,7 @@ public class LoginController {
     @RequestMapping("index")
     public ModelAndView index(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView("index");
-        String redisCode = RedisClientUtil.get("code");
-        if(StringUtils.isEmpty(redisCode)){
-            redisCode = request.getParameter("code");
-        }
+        String redisCode =  request.getParameter("code");
         modelAndView.addObject("code", redisCode);
         logger.info("redisCode><><><><"+redisCode);
         request.setAttribute("securityName","12212");

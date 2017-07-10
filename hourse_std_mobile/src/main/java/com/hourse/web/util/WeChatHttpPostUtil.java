@@ -132,12 +132,52 @@ public class WeChatHttpPostUtil {
         }
         return demoJson;
     }
+
     /**
      * 获取accesstoken
      * https://mp.weixin.qq.com/wiki/15/54ce45d8d30b6bf6758f68d2e95bc627.html
      * @return
      */
-    public static JSONObject getAccessToken(String code){
+    public static String getAccessToken(){
+        String access_token = "";
+        String url = PropertiesUtils.get("wechat.url", "https://api.weixin.qq.com");
+        if(!url.endsWith("/")){
+            url = url + "/";
+        }
+        String grant_type = "client_credential";
+        String appId = PropertiesUtils.get("wechat.appId", "wx30914ca2b7ff409a");
+        String secret = PropertiesUtils.get("wechat.appsecret", "70b086f6135427cea308a392c66600e7"); ////第三方用户唯一凭证密钥，即appsecret
+        url = url + "cgi-bin/token?grant_type="+grant_type+"&appid="+appId+"&secret="+secret;
+        try {
+            URL urlGet = new URL(url);
+            HttpURLConnection http = (HttpURLConnection) urlGet.openConnection();
+            http.setRequestMethod("GET"); // 必须是get方式请求
+            http.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
+            http.setDoOutput(true);
+            http.setDoInput(true);
+            System.setProperty("sun.net.client.defaultConnectTimeout", "30000");// 连接超时30秒
+            System.setProperty("sun.net.client.defaultReadTimeout", "30000"); // 读取超时30秒
+            http.connect();
+            InputStream is = http.getInputStream();
+            int size = is.available();
+            byte[] jsonBytes = new byte[size];
+            is.read(jsonBytes);
+            String message = new String(jsonBytes, "UTF-8");
+            JSONObject demoJson = JSONObject.fromObject(message);
+            logger.info("JSON字符串："+demoJson);
+            access_token = demoJson.getString("access_token");
+            is.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return access_token;
+    }
+    /**
+     * 获取accesstoken
+     * https://mp.weixin.qq.com/wiki/15/54ce45d8d30b6bf6758f68d2e95bc627.html
+     * @return
+     */
+    public static JSONObject getAuthAccessToken(String code){
         String access_token = "";
         String url = PropertiesUtils.get("wechat.url", "https://api.weixin.qq.com");
         if(!url.endsWith("/")){
@@ -164,8 +204,7 @@ public class WeChatHttpPostUtil {
             is.read(jsonBytes);
             String message = new String(jsonBytes, "UTF-8");
             demoJson = JSONObject.fromObject(message);
-            System.out.println("JSON字符串："+demoJson);
-            access_token = demoJson.getString("access_token");
+            logger.info("JSON字符串："+demoJson);
             is.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -200,7 +239,7 @@ public class WeChatHttpPostUtil {
             is.read(jsonBytes);
             String message = new String(jsonBytes, "UTF-8");
             JSONObject demoJson = JSONObject.fromObject(message);
-            System.out.println("JSON字符串："+demoJson);
+            logger.info("JSON字符串："+demoJson);
             ticket = demoJson.getString("ticket");
             is.close();
         } catch (Exception e) {
@@ -282,8 +321,7 @@ public class WeChatHttpPostUtil {
 
     public static void main(String[] args){
         //1、获取access_token
-        JSONObject jsonObject = getAccessToken("");
-        String access_token = jsonObject.getString("access_token");
+        String access_token = getAccessToken();
         // 获取ticket
         String jsapi_ticket = getTicket(access_token);
         //3、时间戳和随机字符串

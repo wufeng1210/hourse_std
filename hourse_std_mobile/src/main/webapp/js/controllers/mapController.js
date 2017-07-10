@@ -48,9 +48,13 @@ define(['utils'], function (Utils) {
             success: function (data) {
                 app.hideIndicator();
                 if(data.errorNo == "0"){
+                    var arr = new Array();
+                    arr[0] = longitude;
+                    arr[1] = latitude;
+                    console.info(arr);
                     var map = new AMap.Map("container", {
                         resizeEnable: true,
-                        center: [120.2104870, 30.2051810],//地图中心点
+                        center: [longitude, latitude],//地图中心点
                         zoom: 15 //地图显示的缩放级别
                     });
                     var markers = data.hourseList;
@@ -62,8 +66,13 @@ define(['utils'], function (Utils) {
                             position: [marker.longitude, marker.latitude],
                             offset: new AMap.Pixel(-12, -36),
                             draggable: false,
-                            content:'<div class="marker-route marker-marker-bus-from" data-residentialQuarters="'+marker.residentialQuarters+'">'+marker.hourseNum+'</div>'
+                            content:'<div class="marker-route marker-marker-bus-from" residentialQuarters="'+marker.residentialQuarters+'">'+marker.hourseNum+'</div>'
                         });
+                        $$(document).on("click", ".marker-route", function () {
+                            console.info($$(this).attr("residentialQuarters"));
+                            var residentialQuarters = $$(this).attr("residentialQuarters");
+                            mainView.loadPage("homeRent.do?residentialQuarters="+residentialQuarters);
+                        })
                     });
                 }else {
                     app.alert(data.errorInfo);

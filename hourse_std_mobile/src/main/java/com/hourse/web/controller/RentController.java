@@ -71,6 +71,7 @@ public class RentController {
         hourse.setUserId(user.getUserId());
         String lon = request.getParameter("longitude");
         String lat = request.getParameter("latitude");
+        String residentialQuarters = request.getParameter("residentialQuarters");
         logger.info("用户经纬度："+lon + "=="+ lat);
         if(lon == null || lat == null){
             resMap.put(Constant.ERROR_NO, "-1");
@@ -101,6 +102,7 @@ public class RentController {
         }
         hourse.setProvince(province);
         hourse.setCity(city);
+        hourse.setResidentialQuarters(residentialQuarters);
         hourse.setLongitude("120.210487");
         hourse.setLatitude("30.205181");
         List<Hourse> hourses = hourseService.getHourseInfo(hourse);
