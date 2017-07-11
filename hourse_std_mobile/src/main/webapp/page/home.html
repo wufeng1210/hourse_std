@@ -9,12 +9,12 @@
 	<!-- index page start-->
 	<div data-page="home" class="page page-main" id="homeContent">
 		<script type="text/template" id="homeTemplate">
-		<form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init">
+		<!--<form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init">
 			<div class="searchbar-input">
 				<input type="search" placeholder="搜索"><a href="#" class="searchbar-clear"></a>
 			</div>
 			<a href="#" class="searchbar-cancel">取消</a>
-		</form>
+		</form>-->
 		<div class="page-content ">
 			<div class="swiper-container swiper">
 				<div class="swiper-pagination"></div>
@@ -56,9 +56,9 @@
 						<div class="right">
 							<div class="up">{{description}}</div>
 							<div class="info_hourse">
-								<div class="center">{{residentialQuarters}} {{area}}</div>
+								<div class="center"><span>{{residentialQuarters}} {{area}}</span><span class="monthly">月租：{{monthly}}元</span></div>
 							</div>
-								<div class="center">{{roomNum}}室{{hallNum}}厅 {{areaCovered}}平方 {{orientations}}</div>
+							<div class="center">{{roomNum}}室{{hallNum}}厅 {{areaCovered}}平方 {{orientations}}</div>
 						</div>
 							<!--<div class="down">
 								<div class="promote" opt="promote">精品</div>

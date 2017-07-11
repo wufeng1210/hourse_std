@@ -29,7 +29,7 @@ public class Hourse {
     private String floor; // 楼层
     private String furniture; // 家具
     private String cabinet;
-    private String state; // 房屋信息审核状态
+    private String status; // 房屋信息审核状态
     private String description; // 房屋简介
     private String isLend; // 是否已出租
     private String traffic; // 交通
@@ -37,6 +37,14 @@ public class Hourse {
     private String fixtureType; //装修方式
     private String limitType; // 限制方式（限制男生还是女生还是不限制）
     private String collect; // 是否收藏
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getCollect() {
         return collect;
@@ -324,14 +332,6 @@ public class Hourse {
 
     public void setCabinet(String cabinet) {
         this.cabinet = cabinet;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
     }
 
     public String getDescription() {

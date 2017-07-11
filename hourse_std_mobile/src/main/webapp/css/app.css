@@ -1487,6 +1487,9 @@ html.with-statusbar-overlay body > .progressbar {
   color: #999;
   margin: 2px 0 10px 0;
 }
+.monthly {
+  margin-left: 10px;
+}
 .page-main .center {
   position:relative;
 }
@@ -1849,4 +1852,12 @@ html.with-statusbar-overlay body > .progressbar {
 .notice-tip h3 {
   text-align: center;
   color: #40464d;
+}
+#rentContent a .auditing:after {
+  content: "已审核";
+  position: absolute;
+  color: #fff;
+  font-size: 14px;
+  left: 22px;
+  bottom: 0;
 }

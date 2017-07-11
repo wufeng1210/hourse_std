@@ -25,8 +25,13 @@
                         <img class="left" src="{{imageInfoList[0].imageUrl}}">
                         <div class="right">
                             <div class="up">{{description}}</div>
-                            <div class="center">{{roomNum}}室{{hallNum}}厅{{toiletNum}}卫 {{areaCovered}}平方</div>
+                            <div class="center">
+                                <span>{{roomNum}}室{{hallNum}}厅{{toiletNum}}卫 {{areaCovered}}平方</span>
+                                <span class="monthly">月租：{{monthly}}元</span>
+                            </div>
                             <div class="center">{{area}} {{residentialQuarters}}</div>
+                            {{#js_compare "this.status == 1"}}<div class="center">状态：审核通过</div>{{/js_compare}}
+                            {{#js_compare "this.status == 0"}}<div class="center">状态：审核中</div>{{/js_compare}}
                         </div>
                     </a>
                     {{/if}}
