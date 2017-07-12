@@ -4,6 +4,7 @@ import com.hourse.web.util.PropertiesUtils;
 import com.hourse.web.util.RedisClientUtil;
 import com.hourse.web.util.WeChatHttpPostUtil;
 import com.hourse.web.util.common.Constant;
+import freemarker.template.Configuration;
 import freemarker.template.utility.StringUtil;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
@@ -42,13 +43,21 @@ public class WeChatController {
             String refresh_token = RedisClientUtil.get("refresh_token");
             logger.info("authAccessToken>>>"+authAccessToken);
             logger.info("refresh_token>>>"+refresh_token);
-//            if(StringUtils.isEmpty(authAccessToken) || StringUtils.isEmpty(refresh_token)){
-                JSONObject jsonObject= WeChatHttpPostUtil.getAuthAccessToken(code);
-                authAccessToken = jsonObject.getString("access_token");
-                refresh_token = jsonObject.getString("refresh_token");
-                RedisClientUtil.set("authAccessToken", authAccessToken, 2*60*60);
-                RedisClientUtil.set("refresh_token", refresh_token, 30*24*60*60);
-//            }
+
+            JSONObject jsonObject= WeChatHttpPostUtil.getAuthAccessToken(code);
+
+            if(jsonObject.get("errcode") != null && StringUtils.isNotEmpty(jsonObject.getString("errcode"))){
+                String errorcode = jsonObject.getString("errcode");  // 40163：code被使用了
+                String errmsg = jsonObject.getString("errmsg");
+                resMap.put(Constant.ERROR_NO, errorcode);
+                resMap.put(Constant.ERROR_INFO, errmsg);
+                resMap.put("url", PropertiesUtils.get("oos.webaddr"));
+                return resMap;
+            }
+            authAccessToken = jsonObject.getString("access_token");
+            refresh_token = jsonObject.getString("refresh_token");
+            RedisClientUtil.set("authAccessToken", authAccessToken, 2*60*60);
+            RedisClientUtil.set("refresh_token", refresh_token, 30*24*60*60);
 
             logger.info("code>>>>"+code);
             String redisCode = RedisClientUtil.get("code");
