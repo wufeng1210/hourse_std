@@ -1,10 +1,13 @@
 package com.hourse.web.controller;
 
 import com.hourse.web.http.HttpPostHandle;
+import com.hourse.web.model.CollectInfo;
 import com.hourse.web.model.Hourse;
 import com.hourse.web.model.User;
+import com.hourse.web.service.ICollectInfoService;
 import com.hourse.web.service.IHourseService;
 import com.hourse.web.util.CookieUtil;
+import com.hourse.web.util.DateUtil;
 import com.hourse.web.util.PropertiesUtils;
 import com.hourse.web.util.common.Constant;
 import net.sf.json.JSONObject;
@@ -28,6 +31,8 @@ public class RentController {
     private static Logger logger = LoggerFactory.getLogger(RentController.class);
     @Autowired
     private IHourseService hourseService;
+    @Autowired
+    private ICollectInfoService collectInfoService;
 
     @RequestMapping("rent")
     public ModelAndView rent() {
@@ -130,8 +135,24 @@ public class RentController {
         hourse.setUserId(user.getUserId());
         try {
             List<Hourse> hourses = hourseService.getHourseDetail(hourse);
+            CollectInfo collectInfo = new CollectInfo();
+            collectInfo.setUserId(user.getUserId());
+            collectInfo.setHourseId(hourse.getHourseId());
+            collectInfo.setCollectTime(DateUtil.getCurrentTime(DateUtil.DATE_TIME_FORMAT));
+            List<CollectInfo> collectInfoList = collectInfoService.getCollectInfo(collectInfo);
+            if(collectInfoList.isEmpty()){
+                collectInfo.setIsCollect("0");
+                int collectId = collectInfoService.insertCollectInfo(collectInfo);
+                if(collectId == 0){
+                    resMap.put(Constant.ERROR_NO, "-1");
+                    resMap.put(Constant.ERROR_INFO, "添加收藏数据失败");
+                    return resMap;
+                }
+                collectInfoList.add(collectInfo);
+            }
             resMap.put("serviceCall", PropertiesUtils.get("serviceCall", ""));
             resMap.put("hourseList", hourses);
+            resMap.put("collectInfoList", collectInfoList);
             resMap.put(Constant.ERROR_NO, "0");
         } catch (Exception e) {
             e.printStackTrace();
@@ -157,6 +178,7 @@ public class RentController {
             return resMap;
         }
         hourse.setUserId(user.getUserId());
+
         try {
             List<Hourse> hourses = hourseService.getCollectHourse(hourse);
             resMap.put("hourseList", hourses);

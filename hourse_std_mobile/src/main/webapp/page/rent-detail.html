@@ -81,8 +81,8 @@
                               <div class="item-title" >已收藏</div>
                               <div class="item-after">
                                   <div class="item-input">
-                                      <label class="label-switch" data-hourseId="{{hourseList[0].hourseId}}">
-                                          <input type="checkbox" name="collect" {{#js_compare "this.hourseList[0].collect == '1'"}}checked{{/js_compare}}>
+                                      <label class="label-switch" data-collectId="{{collectInfoList[0].collectId}}">
+                                          <input type="checkbox" name="collect" {{#js_compare "this.collectInfoList[0].isCollect == '1'"}}checked{{/js_compare}}>
                                           <div class="checkbox"></div>
                                       </label>
                                   </div>

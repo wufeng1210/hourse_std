@@ -13,6 +13,38 @@ define([], function () {
                 $$('.toolbar').show();
             }
         });
+        var wechatLogin = "1";
+        if(wechatLogin == "0"){
+            mainView.loadPage('/goLogin.do');
+        }else{
+            getSignature();
+        }
+        //window.location.href= "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0fcaa7eb18ec769e&redirect_uri=http%3a%2f%2fadmin.jingtianwangluo.com%2findex%2f&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
+        window.mainView = workbenchView;
+
+        $$('#workbenchView').on('show', function () {
+            window.mainView = workbenchView;
+            workbenchView.loadPage('/home.do');
+        });
+
+        $$('#customerView').on('show', function () {
+            window.mainView = customerView;
+             customerView.loadPage('/rent.do');
+        });
+
+        $$('#productView').on('show', function () {
+            window.mainView = productView;
+            productView.loadPage('/lend.do');
+        });
+
+        $$('#myView').on('show', function () {
+            window.mainView = myView;
+            myView.loadPage('/my.do');
+        });
+        window.mainView = window.workbenchView;//这个是当前公用view对象
+    }
+
+    function getSignature() {
         if(!code){
             window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0fcaa7eb18ec769e&redirect_uri=http%3A%2F%2Fwww.jygozuba.com%2F&response_type=code&scope=snsapi_userinfo&state=STATE&connect_redirect=1#wechat_redirect";
         }else{
@@ -39,38 +71,12 @@ define([], function () {
                         if(data.openId){
                             login(data);
                         }
-                    } else if (data.errorNo == "40163"){
+                    } else {
                         window.location.href = data.url;
-                    }else{
-                        app.alert(data.errorInfo);
                     }
                 }
             });
         }
-
-        //window.location.href= "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0fcaa7eb18ec769e&redirect_uri=http%3a%2f%2fadmin.jingtianwangluo.com%2findex%2f&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
-        window.mainView = workbenchView;
-        // mainView.loadPage('/goLogin.do');
-        $$('#workbenchView').on('show', function () {
-            window.mainView = workbenchView;
-            workbenchView.loadPage('/home.do');
-        });
-
-        $$('#customerView').on('show', function () {
-            window.mainView = customerView;
-             customerView.loadPage('/rent.do');
-        });
-
-        $$('#productView').on('show', function () {
-            window.mainView = productView;
-            productView.loadPage('/lend.do');
-        });
-
-        $$('#myView').on('show', function () {
-            window.mainView = myView;
-            myView.loadPage('/my.do');
-        });
-        window.mainView = window.workbenchView;//这个是当前公用view对象
     }
 
     function login(json) {

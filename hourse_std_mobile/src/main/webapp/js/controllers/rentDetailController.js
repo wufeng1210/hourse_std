@@ -3,23 +3,23 @@ define(['utils'], function (Utils) {
     var bindings = [{
         element: '.label-switch',
         event: 'click',
-        handler: updateHourse
+        handler: updateCollect
     }];
 
 
-    function updateHourse(event) {
+    function updateCollect(event) {
         event.preventDefault();
-        var hourseId = $$(this).data("hourseId");
+        var collectId = $$(this).data("collectId");
         var collect = "1";
         if($$("input[name=collect]")[0].checked){
             collect = "0";
         }
         app.showIndicator();
         $$.ajax({
-            url: '/updateHourse.do?v='+new Date().getTime(),
+            url: '/updateCollect.do?v='+new Date().getTime(),
             data: {
-                hourseId: hourseId,
-                collect : collect
+                collectId: collectId,
+                IsCollect : collect
             },
             type: 'POST',
             dataType: 'json',
