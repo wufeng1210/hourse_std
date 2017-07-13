@@ -1584,9 +1584,6 @@ html.with-statusbar-overlay body > .progressbar {
 ,#room{
   direction: rtl;
 }
-.rent .code-list:nth-child(2) {
-  margin-top: 20px;
-}
 .rent .code-list:last-child {
   margin-bottom: 20px;
 }
@@ -1852,12 +1849,4 @@ html.with-statusbar-overlay body > .progressbar {
 .notice-tip h3 {
   text-align: center;
   color: #40464d;
-}
-#rentContent a .auditing:after {
-  content: "已审核";
-  position: absolute;
-  color: #fff;
-  font-size: 14px;
-  left: 22px;
-  bottom: 0;
 }

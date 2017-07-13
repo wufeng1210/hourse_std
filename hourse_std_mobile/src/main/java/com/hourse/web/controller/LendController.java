@@ -7,13 +7,10 @@ import com.hourse.web.model.User;
 import com.hourse.web.service.IHourseService;
 import com.hourse.web.service.IImageInfoService;
 import com.hourse.web.util.CookieUtil;
-import com.hourse.web.util.ImageBase64Util;
 import com.hourse.web.util.common.Constant;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-import org.apache.commons.collections.map.HashedMap;
-import org.apache.commons.lang.StringEscapeUtils;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.math.BigDecimal;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -73,7 +66,11 @@ public class LendController {
             String address = request.getParameter("address");
             String cidAddress = request.getParameter("cidAddr");
             String imageBases = request.getParameter("imageBases");
-
+            if(StringUtils.isEmpty(imageBases) || imageBases.split(",").length == 0){
+                    resMap.put(Constant.ERROR_NO, "-1");
+                    resMap.put(Constant.ERROR_INFO, "图片不能为空，请上传图片");
+                    return resMap;
+            }
             String[] addressArr = address.split(",");
             hourse.setProvince(addressArr[0]);
             hourse.setCity(addressArr[1]);
