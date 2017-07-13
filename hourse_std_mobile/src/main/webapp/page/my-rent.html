@@ -32,6 +32,8 @@
                             <div class="center">{{area}} {{residentialQuarters}}</div>
                             {{#js_compare "this.status == 1"}}<div class="center">状态：审核通过</div>{{/js_compare}}
                             {{#js_compare "this.status == 0"}}<div class="center">状态：审核中</div>{{/js_compare}}
+                            {{#js_compare "this.isLend == 1"}}<div class="center">状态：已出租</div>{{/js_compare}}
+                            {{#js_compare "this.isLend == 0"}}<div class="center">状态：未出租</div>{{/js_compare}}
                         </div>
                     </a>
                     {{/if}}

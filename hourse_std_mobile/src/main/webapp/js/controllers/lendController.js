@@ -49,8 +49,13 @@ define(['utils'], function (Utils) {
         $$(document).on("change", "input[type=file]", function(){
             lrz(this.files[0])
                 .then(function(result){
+                    var imgArr = $$("input[name=imageBases]").val().split(",");
 
                     var img_info = result.base64.split(',');
+                    if(imgArr.length == 4){
+                        app.alert("图片上传限制最多三张,至少一张");
+                        return;
+                    }
                     $$("input[name=imageBases]").val(encodeURIComponent(img_info[1])+","+ $$("input[name=imageBases]").val());
                     $$(".upload").prepend("<img src='"+result.base64+"'  style='width: 40%'>");
                 })

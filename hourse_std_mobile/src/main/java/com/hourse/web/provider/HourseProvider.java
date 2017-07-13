@@ -32,8 +32,10 @@ public class HourseProvider {
         }
         if (StringUtils.hasText(hourse.getIsLend())) {
             sql.append("and t.isLend = #{isLend}");
+        } else {
+            sql.append("and t.isLend = 0");
         }
-        sql.append(" and status = 1");
+        sql.append(" and status = 1 ");
         sql.append(" LIMIT 100");
 
         return sql.toString();
@@ -77,8 +79,10 @@ public class HourseProvider {
         if (StringUtils.hasText(hourse.getCity())) {
             sql.append("and t.city LIKE CONCAT('%',#{city},'%' )");
         }
-        sql.append(" and status = 1");
-        sql.append(" and recommend = '1' ORDER BY distance DESC LIMIT 100");
+//        if (StringUtils.hasText(hourse.getIsLend())) {
+//            sql.append("and t.isLend = #{isLend}");
+//        }
+        sql.append(" and status = 1 and recommend = '1' ORDER BY distance DESC LIMIT 100 ");
 
         return sql.toString();
     }

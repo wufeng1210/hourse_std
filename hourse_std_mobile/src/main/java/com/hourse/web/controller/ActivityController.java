@@ -53,14 +53,14 @@ public class ActivityController {
             List<ActivityInfo> activity = activityService.getActivityInfoByState(activityInfo);
             resMap.put("activity", activity);
             Hourse hourse = new Hourse();
-            String lon = request.getParameter("lon");
-            String lat = request.getParameter("lat");
-//        String position = lon + "," + lat;
-            lon = "120.310423";
-            lat = "30.305123";
+            String lon = request.getParameter("longitude");
+            String lat = request.getParameter("latitude");
+            String position = lon + "," + lat;
+//            lon = "120.310423";
+//            lat = "30.305123";
             String city = "";
             String province = "";
-            String position = "120.210487,30.205181";
+//            String position = "120.210487,30.205181";
             try {
                 HashMap<String, Object> p = new HashMap<String, Object>();
                 p.put("location", position);
@@ -84,6 +84,7 @@ public class ActivityController {
             hourse.setCity(city);
             hourse.setLongitude(lon);
             hourse.setLatitude(lat);
+            hourse.setIsLend("0");
             List<Hourse> hourses = hourseService.getRecommendHourseInfo(hourse);
             resMap.put("hourseList", hourses);
             resMap.put(Constant.ERROR_NO, "0");
