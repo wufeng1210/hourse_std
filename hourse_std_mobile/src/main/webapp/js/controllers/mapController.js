@@ -16,6 +16,7 @@ define(['utils'], function (Utils) {
                var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
                 // var speed = res.speed; // 速度，以米/每秒计
                 // var accuracy = res.accuracy; // 位置精度
+
                 // 数据
                 getMapInfo(latitude, longitude);
             }
@@ -57,6 +58,11 @@ define(['utils'], function (Utils) {
                         center: [longitude, latitude],//地图中心点
                         zoom: 15 //地图显示的缩放级别
                     });
+                    var marker = new AMap.Marker({
+                        position: [longitude, latitude],
+                        content:'<div class="my-position"><img src="../img/my-position.png" style="width: 30px"></div>'
+                    });
+                    marker.setMap(map);
                     var markers = data.hourseList;
                     // 添加一些分布不均的点到地图上,地图上添加三个点标记，作为参照
                     markers.forEach(function(marker) {

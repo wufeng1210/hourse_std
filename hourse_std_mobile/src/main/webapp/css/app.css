@@ -1687,6 +1687,13 @@ html.with-statusbar-overlay body > .progressbar {
   cursor: pointer;
   text-align: center;
 }
+.amap-marker .my-position {
+  position: absolute;
+  width: 20px;
+  height: 17px;
+  cursor: pointer;
+  text-align: right;
+}
 .amap-marker .marker-marker-bus-from {
   background-position: -333px -62px;
 }
