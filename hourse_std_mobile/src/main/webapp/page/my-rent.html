@@ -21,6 +21,7 @@
                 <script type="type/template" id="rentTemplate">
                     {{#each hourseList}}
                     {{#if imageInfoList[0]}}
+                    {{#js_compare "this.status != 3"}}
                     <a class="code-list">
                         <img class="left" src="{{imageInfoList[0].imageUrl}}">
                         <div class="right">
@@ -36,6 +37,7 @@
                             {{#js_compare "this.isLend == 0"}}<div class="center">状态：未出租</div>{{/js_compare}}
                         </div>
                     </a>
+                    {{/js_compare}}
                     {{/if}}
                     {{/each}}
                 </script>

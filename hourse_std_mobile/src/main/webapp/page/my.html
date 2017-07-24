@@ -13,6 +13,7 @@
 
 <div class="pages toolbar-through navbar-through">
   <div data-page="my" class="page page-my">
+    <input type="hidden" id="suggest" value="${suggest!''}">
     <div class="page-content" id="rentContent">
       <div class="head">
         <div class="list-block">
@@ -65,8 +66,8 @@
               </div>
             </a>
           </li>
-          <li>
-            <a href="#" class="item-link item-content flag_login" opt="my-client-ranking" id="noticeTip">
+          <li id="noticeTip" style="display: none;">
+            <a href="#" class="item-link item-content flag_login" opt="my-client-ranking">
               <div class="item-inner">
                 <div class="item-media"><img src="../img/complaint.png"></div>
                 <div class="item-title">投诉与建议</div>

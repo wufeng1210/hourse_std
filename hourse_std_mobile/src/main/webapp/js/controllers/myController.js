@@ -37,6 +37,10 @@ define(['utils'], function (Utils) {
 
     function init() {
         Utils.bindEvents(bindings);
+        var suggest = $$("#suggest").val();
+        if(suggest == "1"){
+            $$("#noticeTip").show();
+        }
     }
 
 

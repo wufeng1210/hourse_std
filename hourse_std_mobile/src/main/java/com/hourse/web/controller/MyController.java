@@ -33,6 +33,7 @@ public class MyController {
     @RequestMapping("my")
     public ModelAndView my() {
         ModelAndView modelAndView = new ModelAndView("my");
+        modelAndView.addObject("suggest", PropertiesUtils.get("show.suggest", "0"));
         return modelAndView;
     }
 
