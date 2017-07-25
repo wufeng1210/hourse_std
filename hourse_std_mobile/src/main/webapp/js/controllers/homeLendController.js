@@ -29,20 +29,20 @@ define(['utils'], function (Utils) {
                     onClick: function () {
                         $$(_this).parent().remove();
                         var image_base = "";
-                        $$(".front").each(function () {
+                        $$("#workbenchView .front").each(function () {
                             var this_image_base = $$(this).data("image_base");
                             var img_info = this_image_base.split(',');
                             image_base = encodeURIComponent(img_info[1]) + "," + image_base;
                         });
 
-                        $$("input[name=imageBases]").val(image_base);
+                        $$("#workbenchView .image_base").val(image_base);
                     }
                 }
             ]
         });
     }
     function submit() {
-        var param = app.formToJSON("#hourseForm");
+        var param = app.formToJSON("#workbenchView #hourseForm");
         app.showIndicator();
         $$.ajax({
             url: '/addHourse.do',
@@ -81,10 +81,10 @@ define(['utils'], function (Utils) {
         });
 
         Utils.bindEvents(bindings);
-        $$(document).find("homeLendContent").on("change", "input[type=file]", function(){
+        $$(document).find("#homeLendContent").on("change", "input[type=file]", function(){
             lrz(this.files[0])
                 .then(function(result){
-                    var imgArr = $$(".image_base").val().split(",");
+                    var imgArr = $$("#workbenchView .image_base").val().split(",");
 
                     var img_info = result.base64.split(',');
                     if(imgArr.length == 4){
@@ -99,13 +99,14 @@ define(['utils'], function (Utils) {
     }
 
     function addImage(imageBase) {
-        if($$(".images").eq($$(".images").length-1).find(".image").length == 2){
-            var dl = document.getElementById("images");
+        if($$("#workbenchView .images").eq($$("#workbenchView .images").length-1).find("#workbenchView .image").length == 2){
+            // var dl = document.getElementById("workbenchView").getElementById("images");
+            var dl = $$("#workbenchView #home_images")[0];
             dl.insertAdjacentHTML("afterend", "<div class='images'></div>");
         }
-        Utils.render("#imagesList", {imageBase:imageBase}, "append",$$(".images").eq($$(".images").length-1));
+        Utils.render("#imagesList", {imageBase:imageBase}, "append",$$("#workbenchView .images").eq($$("#workbenchView .images").length-1));
         var img_info = imageBase.split(',');
-        $$(".image_base").val(encodeURIComponent(img_info[1])+","+ $$(".image_base").val());
+        $$("#workbenchView .image_base").val(encodeURIComponent(img_info[1])+","+ $$("#workbenchView .image_base").val());
     }
 
     return {

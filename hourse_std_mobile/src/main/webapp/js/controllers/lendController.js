@@ -84,7 +84,7 @@ define(['utils'], function (Utils) {
         $$(document).find("#lendContent").on("change", "input[type=file]", function(){
             lrz(this.files[0])
                 .then(function(result){
-                    var imgArr = $$(".image_base").val().split(",");
+                    var imgArr = $$("#productView .image_base").val().split(",");
 
                     var img_info = result.base64.split(',');
                     if(imgArr.length == 4){
@@ -99,13 +99,14 @@ define(['utils'], function (Utils) {
     }
 
     function addImage(imageBase) {
-        if($$(".images").eq($$(".images").length-1).find(".image").length == 2){
-            var dl = document.getElementById("images");
+        if($$("#productView .images").eq($$("#productView .images").length-1).find("#productView .image").length == 2){
+            // var dl = document.getElementById("productView ").getElementById("images");
+            var dl = $$("#productView #images")[0];
             dl.insertAdjacentHTML("afterend", "<div class='images'></div>");
         }
-        Utils.render("#imagesList", {imageBase:imageBase}, "append",$$(".images").eq($$(".images").length-1));
+        Utils.render("#imagesList", {imageBase:imageBase}, "append",$$("#productView .images").eq($$("#productView .images").length-1));
         var img_info = imageBase.split(',');
-        $$(".image_base").val(encodeURIComponent(img_info[1])+","+ $$(".image_base").val());
+        $$("#productView .image_base").val(encodeURIComponent(img_info[1])+","+ $$("#productView .image_base").val());
     }
 
     return {
