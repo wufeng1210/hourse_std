@@ -1711,6 +1711,7 @@ html.with-statusbar-overlay body > .progressbar {
   display: inline-block;
   overflow: hidden;
   margin-top: 10px;
+  margin-left: 10px;
 }
 .page-my .list-block:last-child {
   margin: 12px auto;
