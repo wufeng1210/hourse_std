@@ -57,7 +57,7 @@ public class HourseProvider {
         if (StringUtils.hasText(hourse.getCity())) {
             sql.append("and t.city LIKE CONCAT('%',#{city},'%' )");
         }
-        sql.append(" and status = 1");
+        sql.append(" and status = 1 and isLend != 1");
         sql.append(" group BY distance ORDER BY distance asc ");
 
         return sql.toString();
