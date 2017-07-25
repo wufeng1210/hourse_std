@@ -5,7 +5,7 @@ define(['utils'], function (Utils) {
         event: 'click',
         handler: submit
     },{
-        element: '#lendContent',
+        element: '#homeLendContent',
         target: '.delete',
         event: 'click',
         handler: deleteImage
@@ -81,7 +81,7 @@ define(['utils'], function (Utils) {
         });
 
         Utils.bindEvents(bindings);
-        $$(document).find("#lendContent").on("change", "input[type=file]", function(){
+        $$(document).find("homeLendContent").on("change", "input[type=file]", function(){
             lrz(this.files[0])
                 .then(function(result){
                     var imgArr = $$(".image_base").val().split(",");

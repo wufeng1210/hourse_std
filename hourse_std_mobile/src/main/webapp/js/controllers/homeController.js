@@ -7,7 +7,7 @@ define(['utils'], function (Utils) {
         element: '#lend',
         event: 'click',
         handler: function () {
-            mainView.loadPage("/homeLend.do");
+            mainView.loadPage("/homeLend.do?v="+new Date().getTime());
         }
     },{
         element: '#map',

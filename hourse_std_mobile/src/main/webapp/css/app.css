@@ -1536,17 +1536,17 @@ html.with-statusbar-overlay body > .progressbar {
 .page-main .code-list .active .promote {
   display: none;
 }
-#lendContent input[type="text"],
-#lendContent input[type="tel"],
-#lendContent textarea,
-#lendContent .item-after {
+.lendContent input[type="text"],
+.lendContent input[type="tel"],
+.lendContent textarea,
+.lendContent .item-after {
   text-align: right;
   color: #40464d;
 }
-#lendContent .item-title {
+.lendContent .item-title {
   color: #999;
 }
-#lendContent .item-input {
+.lendContent .item-input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1557,20 +1557,20 @@ html.with-statusbar-overlay body > .progressbar {
   -ms-flex-align: center;
   align-items: center;
 }
-#lendContent .item-input .mark {
+.lendContent .item-input .mark {
   padding: 0 10px;
   text-align: center;
 }
-#lendContent input.select-date {
+.lendContent input.select-date {
   padding: 0;
   width: 80px;
   text-align: center;
 }
-#lendContent .divider {
+.lendContent .divider {
   padding-left: 5px;
   white-space:nowrap;
 }
-#lendContent .select-wrap {
+.lendContent .select-wrap {
   max-width: 40%;
 }
 #lendType,#room,#office,#toilet{
@@ -1697,7 +1697,7 @@ html.with-statusbar-overlay body > .progressbar {
 .amap-marker .marker-marker-bus-from {
   background-position: -333px -62px;
 }
-#lendContent input[type="file"] {
+.lendContent input[type="file"] {
   position: absolute;
   left: 0;
   top: 0;
@@ -1706,7 +1706,7 @@ html.with-statusbar-overlay body > .progressbar {
   width: 100%;
   opacity: 0;
 }
-#lendContent .upload {
+.lendContent .upload {
   position: relative;
   display: inline-block;
   overflow: hidden;
