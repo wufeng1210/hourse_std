@@ -4,8 +4,43 @@ define(['utils'], function (Utils) {
         element: '.lend-next-button',
         event: 'click',
         handler: submit
+    },{
+        element: '#lendContent',
+        target: '.delete',
+        event: 'click',
+        handler: deleteImage
     }];
 
+    function deleteImage() {
+        console.info("122");
+        var _this = this;
+        app.modal({
+            title: '温馨提示',
+            text: "是否删除此图片？",
+            buttons: [
+                {
+                    text: '否',
+                    onClick: function () {
+                        app.closeModal();
+                    }
+                },
+                {
+                    text: '是',
+                    onClick: function () {
+                        $$(_this).parent().remove();
+                        var image_base = "";
+                        $$(".front").each(function () {
+                            var this_image_base = $$(this).data("image_base");
+                            var img_info = this_image_base.split(',');
+                            image_base = encodeURIComponent(img_info[1]) + "," + image_base;
+                        });
+
+                        $$("input[name=imageBases]").val(image_base);
+                    }
+                }
+            ]
+        });
+    }
     function submit() {
         var param = app.formToJSON("#hourseForm");
         app.showIndicator();
@@ -56,11 +91,23 @@ define(['utils'], function (Utils) {
                         app.alert("图片上传限制最多三张,至少一张");
                         return;
                     }
-                    $$("input[name=imageBases]").val(encodeURIComponent(img_info[1])+","+ $$("input[name=imageBases]").val());
-                    $$(".upload").prepend("<img src='"+result.base64+"'  style='width: 40%'>");
+                    // $$("input[name=imageBases]").val(encodeURIComponent(img_info[1])+","+ $$("input[name=imageBases]").val());
+                    // $$(".upload").prepend("<img src='"+result.base64+"'  style='width: 40%'>");
+                    addImage(result.base64);
                 })
         })
     }
+
+    function addImage(imageBase) {
+        if($$(".images").eq($$(".images").length-1).find(".image").length == 2){
+            var dl = document.getElementById("images");
+            dl.insertAdjacentHTML("afterend", "<div class='images'></div>");
+        }
+        Utils.render("#imagesList", {imageBase:imageBase}, "append",$$(".images").eq($$(".images").length-1));
+        var img_info = imageBase.split(',');
+        $$("input[name=imageBases]").val(encodeURIComponent(img_info[1])+","+ $$("input[name=imageBases]").val());
+    }
+
     return {
         init: init
     };

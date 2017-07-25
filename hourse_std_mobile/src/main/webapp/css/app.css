@@ -698,7 +698,7 @@ button {
 }
 .button {
   height: 78px;
-  background: #b61328;
+  background: #007aff;
   color: #fff !important;
   font-size: 0.325rem;
   line-height: 78px;
@@ -1710,6 +1710,7 @@ html.with-statusbar-overlay body > .progressbar {
   position: relative;
   display: inline-block;
   overflow: hidden;
+  margin-top: 10px;
 }
 .page-my .list-block:last-child {
   margin: 12px auto;
@@ -1856,4 +1857,27 @@ html.with-statusbar-overlay body > .progressbar {
 .notice-tip h3 {
   text-align: center;
   color: #40464d;
+}
+.images {
+  display: flex;
+}
+.image {
+  text-align: center;
+  float: left;
+  margin-top: 10px;
+  margin-left: 6px;
+}
+.image .front {
+  width: 150px;
+  height: 100px;
+}
+.delete {
+  margin-top: 10px;
+  width: 120px;
+  height: 30px;
+  vertical-align: middle;
+  line-height: 20px;
+  border: 1px solid #007aff;
+  background-color: #fff;
+  border-radius: 5px;
 }

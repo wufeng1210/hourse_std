@@ -6,9 +6,13 @@ define([], function () {
    */
   function bindEvents(bindings) {
     if ($$.isArray(bindings) && bindings.length > 0) {
-      for (var i in bindings) {
-        $$(bindings[i].element).on(bindings[i].event, bindings[i].handler);
-      }
+        bindings.forEach(function (binding) {
+            if (binding.target) { // Live binding
+                $$(binding.element).on(binding.event, binding.target, binding.handler);
+            } else {
+                $$(binding.element).on(binding.event, binding.handler);
+            }
+        });
     }
   }
 
@@ -52,7 +56,7 @@ define([], function () {
     document.body.style.height = windowHeight + 'px';
   }
 
-    function render(selector,data,type,str) {
+    function render(selector,data,type,lastselector,str) {
         var template, templateStr, parent, compiledTemplate;
         if (!type) {
             type = 'html';
@@ -63,7 +67,11 @@ define([], function () {
                 templateStr = template.html();
                 parent = template.parent();
                 compiledTemplate = Template7.compile(templateStr);
-                parent.append(compiledTemplate(data));
+                if(lastselector){
+                    $$(lastselector).append(compiledTemplate(data));
+                }else{
+                    parent.append(compiledTemplate(data));
+                }
                 break;
             case 'replace': // 替换
                 compiledTemplate = Template7.compile(str);
