@@ -82,7 +82,7 @@ public class HourseProvider {
 //        if (StringUtils.hasText(hourse.getIsLend())) {
 //            sql.append("and t.isLend = #{isLend}");
 //        }
-        sql.append(" and status = 1 and recommend = '1' ORDER BY distance DESC LIMIT 100 ");
+        sql.append(" and status = 1 and recommend = '1' and t.isLend = 0 ORDER BY distance DESC LIMIT 100 ");
 
         return sql.toString();
     }
