@@ -32,6 +32,20 @@
               <div class="center">{{area}} {{residentialQuarters}}</div>
             </div>
           </a>
+          {{else}}
+
+          <a class="code-list" data-hourseId="{{hourseId}}">
+            <img class="left" src="../img/no_pic.jpg">
+            <div class="right">
+              <div class="up">{{description}}</div>
+              <div class="center">
+                <span>{{roomNum}}室{{hallNum}}厅{{toiletNum}}卫 {{areaCovered}}平方</span>
+                <span class="monthly">月租：{{monthly}}元</span>
+              </div>
+              <div class="center">{{area}} {{residentialQuarters}}</div>
+            </div>
+          </a>
+
           {{/if}}
           {{/each}}
         </script>

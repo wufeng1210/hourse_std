@@ -38,6 +38,24 @@
                         </div>
                     </a>
                     {{/js_compare}}
+                    {{else}}
+                    {{#js_compare "this.status != 3"}}
+                    <a class="code-list">
+                        <img class="left" src="../img/no_pic.jpg">
+                        <div class="right">
+                            <div class="up">{{description}}</div>
+                            <div class="center">
+                                <span>{{roomNum}}室{{hallNum}}厅{{toiletNum}}卫 {{areaCovered}}平方</span>
+                                <span class="monthly">月租：{{monthly}}元</span>
+                            </div>
+                            <div class="center">{{area}} {{residentialQuarters}}</div>
+                            {{#js_compare "this.status == 1"}}<div class="center">状态：审核通过</div>{{/js_compare}}
+                            {{#js_compare "this.status == 0"}}<div class="center">状态：审核中</div>{{/js_compare}}
+                            {{#js_compare "this.isLend == 1"}}<div class="center">状态：已出租</div>{{/js_compare}}
+                            {{#js_compare "this.isLend == 0"}}<div class="center">状态：未出租</div>{{/js_compare}}
+                        </div>
+                    </a>
+                    {{/js_compare}}
                     {{/if}}
                     {{/each}}
                 </script>

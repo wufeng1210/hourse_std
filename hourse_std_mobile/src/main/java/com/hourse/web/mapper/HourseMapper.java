@@ -15,6 +15,11 @@ public interface HourseMapper {
     @Select("select * from hourse_info where hourseId = #{hourseId}")
     List<Hourse> getHourseDetail(Hourse hourse);
 
+    /**
+     * 获取用户收藏的数据
+     * @param hourse
+     * @return
+     */
     @Select("select * from hourse_info t, collect_info c where t.hourseId = c.hourseId and c.userId = #{userId} and c.isCollect = 1")
     List<Hourse> getCollectHourse(Hourse hourse);
 

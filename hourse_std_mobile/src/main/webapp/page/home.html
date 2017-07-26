@@ -65,6 +65,21 @@
 								<div class="share" opt="share">满五唯一</div>
 							</div>-->
 					</a>
+					{{else}}
+					<a class="code-list" data-hourseId="{{hourseId}}">
+						<img class="left" src="../img/no_pic.jpg">
+						<div class="right">
+							<div class="up">{{description}}</div>
+							<div class="info_hourse">
+								<div class="center"><span>{{residentialQuarters}} {{area}}</span><span class="monthly">月租：{{monthly}}元</span></div>
+							</div>
+							<div class="center">{{roomNum}}室{{hallNum}}厅 {{areaCovered}}平方 {{orientations}}</div>
+						</div>
+						<!--<div class="down">
+                            <div class="promote" opt="promote">精品</div>
+                            <div class="share" opt="share">满五唯一</div>
+                        </div>-->
+					</a>
 					{{/if}}
 					{{/each}}
 				</div>
