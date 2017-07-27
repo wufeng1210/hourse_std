@@ -16,10 +16,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import sun.misc.BASE64Encoder;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -108,6 +112,20 @@ public class LendController {
             resMap.put(Constant.ERROR_NO, "-1");
             resMap.put(Constant.ERROR_INFO, "程序异常");
         }
+        return resMap;
+    }
+
+    @ResponseBody
+    @RequestMapping("upload")
+    public Map<String, Object> uploadImage(HttpServletRequest request, @RequestParam MultipartFile myFiles){
+        Map<String, Object> resMap = new HashMap<String, Object>();
+        try {
+            logger.info(myFiles.getOriginalFilename());
+            logger.info("上传成功");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         return resMap;
     }
 

@@ -10,7 +10,7 @@ define(['utils'], function (Utils) {
         var request = new XMLHttpRequest();
         request.open("POST", "/upload.do");
         var form = new FormData(); // FormData 对象
-        var fileObj = document.getElementById("uploadImage").files[0];
+        var fileObj = document.getElementById("svideouploadfile1").files[0];
         console.info(fileObj);
         // request.setRequestHeader("Content-Type", "multipart/form-data");
         form.append("myFiles", fileObj); // 文件对象
@@ -22,14 +22,13 @@ define(['utils'], function (Utils) {
         Utils.bindEvents(bindings);
         $$("body").click();
         $$("input[type=file]").on("change",  function(){
-            lrz(this.files[0])
-                .then(function(){
-                    submit();
-                })
+            // lrz(this.files[0])
+            //     .then(function(){
+            //         submit();
+            //     })
+            submit();
         })
     }
-
-
 
     return {
         init: init
