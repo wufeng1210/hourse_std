@@ -87,6 +87,10 @@ public class LoginController {
 //        user.setUserId(userList[]);
 //        return user;
 //    }
+    @RequestMapping(value = "uploadImage")
+    public String uploadImage() {
+        return "upload_image_demo";
+    }
     @RequestMapping(value = "goLogin")
     public String login() {
         return "login";

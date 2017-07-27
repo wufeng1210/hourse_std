@@ -81,7 +81,7 @@ define(['utils'], function (Utils) {
         });
 
         Utils.bindEvents(bindings);
-        $$(document).find("#lendContent").on("change", "input[type=file]", function(){
+        $$("#uploadImage").on("change", function(){
             lrz(this.files[0])
                 .then(function(result){
                     var imgArr = $$("#productView .image_base").val().split(",");

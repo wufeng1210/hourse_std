@@ -66,51 +66,48 @@
             <li>
               <div class="item-content">
                 <div class="item-inner">
-                  <div class="item-title" style="overflow: visible;">户型</div>
-                  <div class="select-wrap">
-                    <select id="room" name="roomNum">
-                      <option value="0">0</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                    </select>
+                  <div class="item-title label">卧室</div>
+                  <div class="item-input">
+                    <input type="tel" name="roomNum" id="roomNum" placeholder="请输入房屋卧室数量">
                   </div>
-                  <div class="divider">室</div>
-                  <div class="select-wrap">
-                    <select id="office" name="hallNum">
-                      <option value="0">0</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                    </select>
-                  </div>
-                  <div class="divider">厅</div>
-                  <div class="select-wrap">
-                    <select id="toilet" name="toiletNum">
-                      <option value="0">0</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                    </select>
-                  </div>
-                  <div class="divider">卫</div>
                 </div>
               </div>
             </li>
             <li>
               <div class="item-content">
                 <div class="item-inner">
-                  <div class="item-title label">楼层及朝向</div>
+                  <div class="item-title label">客厅</div>
+                  <div class="item-input">
+                    <input type="tel" name="hallNum" id="hallNum" placeholder="请输入房屋客厅数量">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label">卫生间</div>
+                  <div class="item-input">
+                    <input type="tel" name="toiletNum" id="toiletNum" placeholder="请输入房屋卫生间数量">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label">楼层</div>
                   <div class="item-input">
                     <input type="text" name="floor" maxlength="3" placeholder="请输入楼层">
                   </div>
                   <div class="divider">楼</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label">朝向</div>
                   <div class="item-input">
                     <input type="text"  name="orientations" maxlength="4" placeholder="请输入朝向">
                   </div>
@@ -133,8 +130,8 @@
                   <div class="item-title" style="overflow: visible;">装修方式</div>
                   <div class="select-wrap">
                     <select id="fixture" name="fixtureType">
-                      <option value="精装">精装</option>
                       <option value="简装">简装</option>
+                      <option value="精装">精装</option>
                       <option value="毛胚">毛胚</option>
                     </select>
                   </div>
@@ -243,7 +240,7 @@
       </script>
       <div class="upload">
         <img src="../img/add.png" alt="身份证" style="width: 40%">
-        <input type="file" id="uploadImage" accept="image/*">
+        <input type="file" id="homeUploadImage" accept="image/*">
       </div>
       <div class="content-block">
         <a href="#" class="button button-big button-fill lend-next-button">提交</a>

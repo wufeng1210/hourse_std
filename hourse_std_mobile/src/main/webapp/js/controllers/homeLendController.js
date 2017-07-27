@@ -81,7 +81,7 @@ define(['utils'], function (Utils) {
         });
 
         Utils.bindEvents(bindings);
-        $$(document).find("#homeLendContent").on("change", "input[type=file]", function(){
+        $$("#homeUploadImage").on("change", function(){
             lrz(this.files[0])
                 .then(function(result){
                     var imgArr = $$("#workbenchView .image_base").val().split(",");
