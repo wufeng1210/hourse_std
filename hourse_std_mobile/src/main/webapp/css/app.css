@@ -1467,7 +1467,6 @@ html.with-statusbar-overlay body > .progressbar {
   border-bottom: 1px solid #f6f6f6;
 }
 .page-main .code-list .left {
-  width: 86px;
   height: 100px;
   margin-right: 15px;
 }
@@ -1601,7 +1600,6 @@ html.with-statusbar-overlay body > .progressbar {
   padding: 10px;
 }
 .rent .code-list .left {
-  width: 86px;
   height: 100px;
   margin-right: 15px;
 }
